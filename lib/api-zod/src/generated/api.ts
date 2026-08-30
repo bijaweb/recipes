@@ -96,6 +96,75 @@ export const SearchRecipesResponse = zod.object({
 
 
 /**
+ * @summary Create a new recipe from structured data (manually entered, or pre-filled by parseRecipeText)
+ */
+export const CreateRecipeBody = zod.object({
+  "name": zod.string(),
+  "category": zod.string(),
+  "yieldText": zod.string(),
+  "yieldServings": zod.number().optional(),
+  "ingredients": zod.array(zod.object({
+  "amountText": zod.string(),
+  "amountValue": zod.number().optional(),
+  "unit": zod.string().optional(),
+  "product": zod.string(),
+  "notes": zod.string()
+})),
+  "steps": zod.array(zod.string())
+}).and(zod.object({
+  "utensils": zod.array(zod.string()).optional()
+}))
+
+export const CreateRecipeResponse = zod.object({
+  "recipe": zod.object({
+  "id": zod.string(),
+  "slug": zod.string(),
+  "name": zod.string(),
+  "category": zod.string(),
+  "favorited": zod.boolean().optional()
+}).and(zod.object({
+  "yieldText": zod.string(),
+  "yieldServings": zod.number().optional(),
+  "ingredients": zod.array(zod.object({
+  "id": zod.string(),
+  "amountText": zod.string(),
+  "amountValue": zod.number().optional(),
+  "unit": zod.string().optional(),
+  "product": zod.string(),
+  "notes": zod.string()
+})),
+  "steps": zod.array(zod.string()),
+  "utensils": zod.array(zod.string())
+}))
+})
+
+
+/**
+ * @summary Use AI to extract structured recipe data (name, category, ingredients, steps) from pasted free-form recipe text
+ */
+export const ParseRecipeTextBody = zod.object({
+  "text": zod.string()
+})
+
+export const ParseRecipeTextResponse = zod.object({
+  "recipe": zod.object({
+  "name": zod.string(),
+  "category": zod.string(),
+  "yieldText": zod.string(),
+  "yieldServings": zod.number().optional(),
+  "ingredients": zod.array(zod.object({
+  "amountText": zod.string(),
+  "amountValue": zod.number().optional(),
+  "unit": zod.string().optional(),
+  "product": zod.string(),
+  "notes": zod.string()
+})),
+  "steps": zod.array(zod.string())
+})
+})
+
+
+/**
  * @summary Get the full detail (ingredients, steps, utensils) for one recipe
  */
 export const GetRecipeParams = zod.object({

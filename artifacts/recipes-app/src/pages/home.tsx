@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
 import { useLocation } from 'wouter';
 import { useQueryClient } from '@tanstack/react-query';
-import { Search as SearchIcon, Star, Clock, Sparkles } from 'lucide-react';
+import { Search as SearchIcon, Star, Clock, Sparkles, Plus } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import {
   useListCategories,
   useGetSearchShortcuts,
@@ -73,6 +74,7 @@ function ShortcutChip({ recipe }: { recipe: RecipeSummary }) {
 }
 
 export default function Home() {
+  const [, navigate] = useLocation();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
 
@@ -90,7 +92,12 @@ export default function Home() {
   return (
     <div className="min-h-[100dvh] bg-background pb-28">
       <header className="sticky top-0 z-10 border-b border-border bg-card px-4 py-4">
-        <p className="mx-auto max-w-[640px] font-serif text-2xl">Recipes</p>
+        <div className="mx-auto flex max-w-[640px] items-center justify-between">
+          <p className="font-serif text-2xl">Recipes</p>
+          <Button size="icon" variant="outline" onClick={() => navigate('/add')} aria-label="Add recipe">
+            <Plus className="h-4 w-4" />
+          </Button>
+        </div>
       </header>
 
       <div className="mx-auto max-w-[640px] space-y-4 px-4 py-4">

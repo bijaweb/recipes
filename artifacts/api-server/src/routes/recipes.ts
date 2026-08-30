@@ -10,6 +10,7 @@ import {
   recentSearchesTable,
   type RecipeRecord,
 } from "@workspace/db";
+import { parseRecipeText } from "@workspace/ai";
 import {
   ListCategoriesResponse,
   GetSearchShortcutsResponse,
@@ -18,6 +19,10 @@ import {
   RenameCategoryBody,
   RenameCategoryResponse,
   DeleteRecipeResponse,
+  ParseRecipeTextBody,
+  ParseRecipeTextResponse,
+  CreateRecipeBody,
+  CreateRecipeResponse,
 } from "@workspace/api-zod";
 import { requireAuth } from "../middlewares/require-auth";
 
@@ -40,6 +45,54 @@ function toSummary(r: RecipeRecord, favorited: boolean) {
     category: r.category,
     favorited,
   };
+}
+
+async function buildRecipeDetail(recipe: RecipeRecord, userId: number) {
+  const [ingredients, steps, utensils, favorited] = await Promise.all([
+    db.select().from(ingredientsTable).where(eq(ingredientsTable.recipeId, recipe.id)).orderBy(ingredientsTable.position),
+    db.select().from(stepsTable).where(eq(stepsTable.recipeId, recipe.id)).orderBy(stepsTable.position),
+    db.select().from(utensilsTable).where(eq(utensilsTable.recipeId, recipe.id)),
+    favoritedRecipeIds(userId, [recipe.id]),
+  ]);
+
+  return {
+    ...toSummary(recipe, favorited.has(recipe.id)),
+    yieldText: recipe.yieldText,
+    yieldServings: recipe.yieldServings ?? undefined,
+    ingredients: ingredients.map((i) => ({
+      id: String(i.id),
+      amountText: i.amountText,
+      amountValue: i.amountValue ?? undefined,
+      unit: i.unit ?? undefined,
+      product: i.product,
+      notes: i.notes,
+    })),
+    steps: steps.map((s) => s.instruction),
+    utensils: utensils.map((u) => u.name),
+  };
+}
+
+function slugify(name: string): string {
+  return (
+    name
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "") || "recipe"
+  );
+}
+
+async function uniqueSlug(name: string): Promise<string> {
+  const base = slugify(name);
+  let candidate = base;
+  let suffix = 1;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const [existing] = await db.select({ id: recipesTable.id }).from(recipesTable).where(eq(recipesTable.slug, candidate));
+    if (!existing) return candidate;
+    suffix += 1;
+    candidate = `${base}-${suffix}`;
+  }
 }
 
 router.get("/categories", async (_req, res): Promise<void> => {
@@ -115,12 +168,7 @@ router.get("/recipes/:slug", requireAuth, async (req, res): Promise<void> => {
     return;
   }
 
-  const [ingredients, steps, utensils, favorited] = await Promise.all([
-    db.select().from(ingredientsTable).where(eq(ingredientsTable.recipeId, recipe.id)).orderBy(ingredientsTable.position),
-    db.select().from(stepsTable).where(eq(stepsTable.recipeId, recipe.id)).orderBy(stepsTable.position),
-    db.select().from(utensilsTable).where(eq(utensilsTable.recipeId, recipe.id)),
-    favoritedRecipeIds(req.user!.id, [recipe.id]),
-  ]);
+  const detail = await buildRecipeDetail(recipe, req.user!.id);
 
   await db.insert(recentSearchesTable).values({
     userId: req.user!.id,
@@ -128,25 +176,68 @@ router.get("/recipes/:slug", requireAuth, async (req, res): Promise<void> => {
     query: recipe.name,
   });
 
-  res.json(
-    GetRecipeResponse.parse({
-      recipe: {
-        ...toSummary(recipe, favorited.has(recipe.id)),
-        yieldText: recipe.yieldText,
-        yieldServings: recipe.yieldServings ?? undefined,
-        ingredients: ingredients.map((i) => ({
-          id: String(i.id),
-          amountText: i.amountText,
-          amountValue: i.amountValue ?? undefined,
-          unit: i.unit ?? undefined,
-          product: i.product,
-          notes: i.notes,
-        })),
-        steps: steps.map((s) => s.instruction),
-        utensils: utensils.map((u) => u.name),
-      },
-    }),
-  );
+  res.json(GetRecipeResponse.parse({ recipe: detail }));
+});
+
+router.post("/recipes/parse", requireAuth, async (req, res): Promise<void> => {
+  const parsed = ParseRecipeTextBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.message });
+    return;
+  }
+
+  try {
+    const draft = await parseRecipeText(parsed.data.text);
+    res.json(ParseRecipeTextResponse.parse({ recipe: draft }));
+  } catch (err) {
+    res.status(502).json({ error: err instanceof Error ? err.message : "Failed to parse recipe text." });
+  }
+});
+
+router.post("/recipes", requireAuth, async (req, res): Promise<void> => {
+  const parsed = CreateRecipeBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.message });
+    return;
+  }
+  const data = parsed.data;
+
+  const slug = await uniqueSlug(data.name);
+
+  const [recipe] = await db
+    .insert(recipesTable)
+    .values({
+      name: data.name.trim(),
+      slug,
+      category: data.category.trim(),
+      yieldText: data.yieldText.trim(),
+      yieldServings: data.yieldServings ?? null,
+      sourceSheet: "manual",
+    })
+    .returning();
+
+  if (data.ingredients.length > 0) {
+    await db.insert(ingredientsTable).values(
+      data.ingredients.map((ing, position) => ({
+        recipeId: recipe.id,
+        position,
+        amountText: ing.amountText,
+        amountValue: ing.amountValue ?? null,
+        unit: ing.unit ?? null,
+        product: ing.product,
+        notes: ing.notes,
+      })),
+    );
+  }
+  if (data.steps.length > 0) {
+    await db.insert(stepsTable).values(data.steps.map((instruction, position) => ({ recipeId: recipe.id, position, instruction })));
+  }
+  if (data.utensils && data.utensils.length > 0) {
+    await db.insert(utensilsTable).values(data.utensils.map((name) => ({ recipeId: recipe.id, name })));
+  }
+
+  const detail = await buildRecipeDetail(recipe, req.user!.id);
+  res.json(CreateRecipeResponse.parse({ recipe: detail }));
 });
 
 router.put("/categories/:category", requireAuth, async (req, res): Promise<void> => {

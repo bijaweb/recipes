@@ -106,6 +106,47 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RecipeSummaryListResponse"
+    post:
+      operationId: createRecipe
+      tags: [recipes]
+      summary: Create a new recipe from structured data (manually entered, or pre-filled by parseRecipeText)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRecipeInput"
+      responses:
+        "200":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeDetailResponse"
+  /recipes/parse:
+    post:
+      operationId: parseRecipeText
+      tags: [recipes]
+      summary: Use AI to extract structured recipe data (name, category, ingredients, steps) from pasted free-form recipe text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ParseRecipeInput"
+      responses:
+        "200":
+          description: Parsed recipe draft
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ParseRecipeResponse"
+        "502":
+          description: The AI parser failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /recipes/{slug}:
     get:
       operationId: getRecipe
@@ -346,6 +387,61 @@ components:
       properties:
         name:
           type: string
+    IngredientDraft:
+      type: object
+      required: [amountText, product, notes]
+      properties:
+        amountText:
+          type: string
+        amountValue:
+          type: number
+        unit:
+          type: string
+        product:
+          type: string
+        notes:
+          type: string
+    RecipeDraft:
+      type: object
+      required: [name, category, yieldText, ingredients, steps]
+      properties:
+        name:
+          type: string
+        category:
+          type: string
+        yieldText:
+          type: string
+        yieldServings:
+          type: number
+        ingredients:
+          type: array
+          items:
+            $ref: "#/components/schemas/IngredientDraft"
+        steps:
+          type: array
+          items:
+            type: string
+    ParseRecipeInput:
+      type: object
+      required: [text]
+      properties:
+        text:
+          type: string
+    ParseRecipeResponse:
+      type: object
+      required: [recipe]
+      properties:
+        recipe:
+          $ref: "#/components/schemas/RecipeDraft"
+    CreateRecipeInput:
+      allOf:
+        - $ref: "#/components/schemas/RecipeDraft"
+        - type: object
+          properties:
+            utensils:
+              type: array
+              items:
+                type: string
     SuccessResponse:
       type: object
       required: [success]

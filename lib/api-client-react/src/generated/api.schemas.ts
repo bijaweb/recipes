@@ -71,6 +71,35 @@ export interface CategoryRenameInput {
   name: string;
 }
 
+export interface IngredientDraft {
+  amountText: string;
+  amountValue?: number;
+  unit?: string;
+  product: string;
+  notes: string;
+}
+
+export interface RecipeDraft {
+  name: string;
+  category: string;
+  yieldText: string;
+  yieldServings?: number;
+  ingredients: IngredientDraft[];
+  steps: string[];
+}
+
+export interface ParseRecipeInput {
+  text: string;
+}
+
+export interface ParseRecipeResponse {
+  recipe: RecipeDraft;
+}
+
+export type CreateRecipeInput = RecipeDraft & {
+  utensils?: string[];
+};
+
 export interface SuccessResponse {
   success: boolean;
 }

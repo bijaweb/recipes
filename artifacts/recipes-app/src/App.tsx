@@ -9,6 +9,7 @@ import { BottomTabBar } from '@/components/bottom-tab-bar';
 import NotFound from '@/pages/not-found';
 import Home from '@/pages/home';
 import RecipeDetail from '@/pages/recipe-detail';
+import AddRecipe from '@/pages/add-recipe';
 import Favorites from '@/pages/favorites';
 import Settings from '@/pages/settings';
 
@@ -29,6 +30,7 @@ function Router() {
     <RoutedErrorBoundary>
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/add" component={AddRecipe} />
         <Route path="/recipe/:slug" component={RecipeDetail} />
         <Route path="/favorites" component={Favorites} />
         <Route path="/settings" component={Settings} />

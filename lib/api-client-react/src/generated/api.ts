@@ -23,9 +23,12 @@ import type {
   AuthResponse,
   CategoryListResponse,
   CategoryRenameInput,
+  CreateRecipeInput,
   ErrorResponse,
   GoogleSignInRequest,
   HealthStatus,
+  ParseRecipeInput,
+  ParseRecipeResponse,
   RecipeDetailResponse,
   RecipeSummaryListResponse,
   SearchRecipesParams,
@@ -525,6 +528,148 @@ export function useSearchRecipes<TData = Awaited<ReturnType<typeof searchRecipes
 
 
 
+
+export const getCreateRecipeUrl = () => {
+
+
+
+
+  return `/api/recipes`
+}
+
+/**
+ * @summary Create a new recipe from structured data (manually entered, or pre-filled by parseRecipeText)
+ */
+export const createRecipe = async (createRecipeInput: CreateRecipeInput, options?: Parameters<typeof customFetch>[1]): Promise<RecipeDetailResponse> => {
+
+  return customFetch<RecipeDetailResponse>(getCreateRecipeUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(createRecipeInput)
+  }
+);}
+
+
+
+
+
+export const getCreateRecipeMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createRecipe>>, TError,{data: BodyType<CreateRecipeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createRecipe>>, TError,{data: BodyType<CreateRecipeInput>}, TContext> => {
+
+const mutationKey = ['createRecipe'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createRecipe>>, {data: BodyType<CreateRecipeInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  createRecipe(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateRecipeMutationResult = NonNullable<Awaited<ReturnType<typeof createRecipe>>>
+    export type CreateRecipeMutationBody = BodyType<CreateRecipeInput>
+    export type CreateRecipeMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Create a new recipe from structured data (manually entered, or pre-filled by parseRecipeText)
+ */
+export const useCreateRecipe = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createRecipe>>, TError,{data: BodyType<CreateRecipeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createRecipe>>,
+        TError,
+        {data: BodyType<CreateRecipeInput>},
+        TContext
+      > => {
+      return useMutation(getCreateRecipeMutationOptions(options));
+    }
+
+export const getParseRecipeTextUrl = () => {
+
+
+
+
+  return `/api/recipes/parse`
+}
+
+/**
+ * @summary Use AI to extract structured recipe data (name, category, ingredients, steps) from pasted free-form recipe text
+ */
+export const parseRecipeText = async (parseRecipeInput: ParseRecipeInput, options?: Parameters<typeof customFetch>[1]): Promise<ParseRecipeResponse> => {
+
+  return customFetch<ParseRecipeResponse>(getParseRecipeTextUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(parseRecipeInput)
+  }
+);}
+
+
+
+
+
+export const getParseRecipeTextMutationOptions = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof parseRecipeText>>, TError,{data: BodyType<ParseRecipeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof parseRecipeText>>, TError,{data: BodyType<ParseRecipeInput>}, TContext> => {
+
+const mutationKey = ['parseRecipeText'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof parseRecipeText>>, {data: BodyType<ParseRecipeInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  parseRecipeText(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type ParseRecipeTextMutationResult = NonNullable<Awaited<ReturnType<typeof parseRecipeText>>>
+    export type ParseRecipeTextMutationBody = BodyType<ParseRecipeInput>
+    export type ParseRecipeTextMutationError = ErrorType<ErrorResponse>
+
+    /**
+ * @summary Use AI to extract structured recipe data (name, category, ingredients, steps) from pasted free-form recipe text
+ */
+export const useParseRecipeText = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof parseRecipeText>>, TError,{data: BodyType<ParseRecipeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof parseRecipeText>>,
+        TError,
+        {data: BodyType<ParseRecipeInput>},
+        TContext
+      > => {
+      return useMutation(getParseRecipeTextMutationOptions(options));
+    }
 
 export const getGetRecipeUrl = (slug: string,) => {
 
