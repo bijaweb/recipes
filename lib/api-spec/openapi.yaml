@@ -130,6 +130,48 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+  /categories/{category}:
+    put:
+      operationId: renameCategory
+      tags: [recipes]
+      summary: Rename a category, updating every recipe currently tagged with it
+      parameters:
+        - name: category
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoryRenameInput"
+      responses:
+        "200":
+          description: Renamed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /recipes/{recipeId}/delete:
+    delete:
+      operationId: deleteRecipe
+      tags: [recipes]
+      summary: Permanently delete a recipe
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
   /favorites:
     get:
       operationId: listFavorites
@@ -298,6 +340,12 @@ components:
       properties:
         recipe:
           $ref: "#/components/schemas/RecipeDetail"
+    CategoryRenameInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
     SuccessResponse:
       type: object
       required: [success]

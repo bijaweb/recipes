@@ -8,6 +8,7 @@
 
 export * from './authResponse';
 export * from './categoryListResponse';
+export * from './categoryRenameInput';
 export * from './errorResponse';
 export * from './googleSignInRequest';
 export * from './healthStatus';

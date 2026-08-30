@@ -127,6 +127,34 @@ export const GetRecipeResponse = zod.object({
 
 
 /**
+ * @summary Rename a category, updating every recipe currently tagged with it
+ */
+export const RenameCategoryParams = zod.object({
+  "category": zod.coerce.string()
+})
+
+export const RenameCategoryBody = zod.object({
+  "name": zod.string()
+})
+
+export const RenameCategoryResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
+ * @summary Permanently delete a recipe
+ */
+export const DeleteRecipeParams = zod.object({
+  "recipeId": zod.coerce.string()
+})
+
+export const DeleteRecipeResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
  * @summary List the signed-in user's favorited recipes
  */
 export const ListFavoritesResponse = zod.object({

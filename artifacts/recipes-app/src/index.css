@@ -151,3 +151,11 @@ html.dark body,
     border: 1px solid #e5e7eb !important;
   }
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'wouter';
-import { Search, Star } from 'lucide-react';
+import { Search, Star, Settings as SettingsIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const TABS = [
   { path: '/', label: 'Search', Icon: Search },
   { path: '/favorites', label: 'Favorites', Icon: Star },
+  { path: '/settings', label: 'Settings', Icon: SettingsIcon },
 ] as const;
 
 export function BottomTabBar() {

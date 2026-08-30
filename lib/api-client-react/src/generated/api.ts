@@ -22,6 +22,7 @@ import type {
 import type {
   AuthResponse,
   CategoryListResponse,
+  CategoryRenameInput,
   ErrorResponse,
   GoogleSignInRequest,
   HealthStatus,
@@ -601,6 +602,149 @@ export function useGetRecipe<TData = Awaited<ReturnType<typeof getRecipe>>, TErr
 
 
 
+
+export const getRenameCategoryUrl = (category: string,) => {
+
+
+
+
+  return `/api/categories/${category}`
+}
+
+/**
+ * @summary Rename a category, updating every recipe currently tagged with it
+ */
+export const renameCategory = async (category: string,
+    categoryRenameInput: CategoryRenameInput, options?: Parameters<typeof customFetch>[1]): Promise<SuccessResponse> => {
+
+  return customFetch<SuccessResponse>(getRenameCategoryUrl(category),
+  {
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(categoryRenameInput)
+  }
+);}
+
+
+
+
+
+export const getRenameCategoryMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof renameCategory>>, TError,{category: string;data: BodyType<CategoryRenameInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof renameCategory>>, TError,{category: string;data: BodyType<CategoryRenameInput>}, TContext> => {
+
+const mutationKey = ['renameCategory'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof renameCategory>>, {category: string;data: BodyType<CategoryRenameInput>}> = (props) => {
+          const {category,data} = props ?? {};
+
+          return  renameCategory(category,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type RenameCategoryMutationResult = NonNullable<Awaited<ReturnType<typeof renameCategory>>>
+    export type RenameCategoryMutationBody = BodyType<CategoryRenameInput>
+    export type RenameCategoryMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Rename a category, updating every recipe currently tagged with it
+ */
+export const useRenameCategory = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof renameCategory>>, TError,{category: string;data: BodyType<CategoryRenameInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof renameCategory>>,
+        TError,
+        {category: string;data: BodyType<CategoryRenameInput>},
+        TContext
+      > => {
+      return useMutation(getRenameCategoryMutationOptions(options));
+    }
+
+export const getDeleteRecipeUrl = (recipeId: string,) => {
+
+
+
+
+  return `/api/recipes/${recipeId}/delete`
+}
+
+/**
+ * @summary Permanently delete a recipe
+ */
+export const deleteRecipe = async (recipeId: string, options?: Parameters<typeof customFetch>[1]): Promise<SuccessResponse> => {
+
+  return customFetch<SuccessResponse>(getDeleteRecipeUrl(recipeId),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteRecipeMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteRecipe>>, TError,{recipeId: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteRecipe>>, TError,{recipeId: string}, TContext> => {
+
+const mutationKey = ['deleteRecipe'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteRecipe>>, {recipeId: string}> = (props) => {
+          const {recipeId} = props ?? {};
+
+          return  deleteRecipe(recipeId,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteRecipeMutationResult = NonNullable<Awaited<ReturnType<typeof deleteRecipe>>>
+
+    export type DeleteRecipeMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Permanently delete a recipe
+ */
+export const useDeleteRecipe = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteRecipe>>, TError,{recipeId: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteRecipe>>,
+        TError,
+        {recipeId: string},
+        TContext
+      > => {
+      return useMutation(getDeleteRecipeMutationOptions(options));
+    }
 
 export const getListFavoritesUrl = () => {
 

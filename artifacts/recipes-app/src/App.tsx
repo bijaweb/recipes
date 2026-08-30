@@ -10,6 +10,7 @@ import NotFound from '@/pages/not-found';
 import Home from '@/pages/home';
 import RecipeDetail from '@/pages/recipe-detail';
 import Favorites from '@/pages/favorites';
+import Settings from '@/pages/settings';
 
 import {
   Route,
@@ -22,7 +23,7 @@ const queryClient = new QueryClient();
 
 function Router() {
   const [location] = useLocation();
-  const showTabBar = location === '/' || location === '/favorites';
+  const showTabBar = location === '/' || location === '/favorites' || location === '/settings';
 
   return (
     <RoutedErrorBoundary>
@@ -30,6 +31,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/recipe/:slug" component={RecipeDetail} />
         <Route path="/favorites" component={Favorites} />
+        <Route path="/settings" component={Settings} />
         <Route component={NotFound} />
       </Switch>
       {showTabBar && <BottomTabBar />}

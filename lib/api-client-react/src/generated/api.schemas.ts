@@ -67,6 +67,10 @@ export interface RecipeDetailResponse {
   recipe: RecipeDetail;
 }
 
+export interface CategoryRenameInput {
+  name: string;
+}
+
 export interface SuccessResponse {
   success: boolean;
 }

@@ -15,6 +15,9 @@ import {
   GetSearchShortcutsResponse,
   SearchRecipesResponse,
   GetRecipeResponse,
+  RenameCategoryBody,
+  RenameCategoryResponse,
+  DeleteRecipeResponse,
 } from "@workspace/api-zod";
 import { requireAuth } from "../middlewares/require-auth";
 
@@ -144,6 +147,33 @@ router.get("/recipes/:slug", requireAuth, async (req, res): Promise<void> => {
       },
     }),
   );
+});
+
+router.put("/categories/:category", requireAuth, async (req, res): Promise<void> => {
+  const parsed = RenameCategoryBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.message });
+    return;
+  }
+
+  await db
+    .update(recipesTable)
+    .set({ category: parsed.data.name.trim() })
+    .where(eq(recipesTable.category, String(req.params.category)));
+
+  res.json(RenameCategoryResponse.parse({ success: true }));
+});
+
+router.delete("/recipes/:recipeId/delete", requireAuth, async (req, res): Promise<void> => {
+  const recipeId = Number(req.params.recipeId);
+  if (!Number.isInteger(recipeId)) {
+    res.status(400).json({ error: "Invalid recipe id" });
+    return;
+  }
+
+  await db.delete(recipesTable).where(eq(recipesTable.id, recipeId));
+
+  res.json(DeleteRecipeResponse.parse({ success: true }));
 });
 
 export default router;
