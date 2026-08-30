@@ -1,0 +1,313 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: Recipes API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: auth
+    description: Authentication operations
+  - name: recipes
+    description: Recipe browsing, search, and detail operations
+  - name: favorites
+    description: Per-user favorite recipe operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /auth/google:
+    post:
+      operationId: signInWithGoogle
+      tags: [auth]
+      summary: Sign in with Google
+      description: Verifies a Google ID token and returns an app session token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GoogleSignInRequest"
+      responses:
+        "200":
+          description: Signed in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+  /auth/me:
+    get:
+      operationId: getCurrentUser
+      tags: [auth]
+      summary: Get the current signed-in user
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [recipes]
+      summary: List distinct recipe categories, for the search-page filter chips
+      responses:
+        "200":
+          description: Categories
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CategoryListResponse"
+  /recipes/shortcuts:
+    get:
+      operationId: getSearchShortcuts
+      tags: [recipes]
+      summary: The signed-in user's last 3 searched recipes, plus 5 random recipes for discovery
+      responses:
+        "200":
+          description: Shortcuts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShortcutsResponse"
+  /recipes:
+    get:
+      operationId: searchRecipes
+      tags: [recipes]
+      summary: Search recipes by name or category
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Matching recipes
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeSummaryListResponse"
+  /recipes/{slug}:
+    get:
+      operationId: getRecipe
+      tags: [recipes]
+      summary: Get the full detail (ingredients, steps, utensils) for one recipe
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Recipe detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeDetailResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /favorites:
+    get:
+      operationId: listFavorites
+      tags: [favorites]
+      summary: List the signed-in user's favorited recipes
+      responses:
+        "200":
+          description: Favorites
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeSummaryListResponse"
+  /favorites/{recipeId}:
+    put:
+      operationId: addFavorite
+      tags: [favorites]
+      summary: Favorite a recipe
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Favorited
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+    delete:
+      operationId: removeFavorite
+      tags: [favorites]
+      summary: Unfavorite a recipe
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Unfavorited
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        name:
+          type: "string"
+        picture:
+          type: "string"
+      required: [id, email]
+    GoogleSignInRequest:
+      type: object
+      properties:
+        credential:
+          type: string
+      required: [credential]
+    AuthResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: "#/components/schemas/User"
+      required: [token, user]
+    CategoryListResponse:
+      type: object
+      required: [categories]
+      properties:
+        categories:
+          type: array
+          items:
+            type: string
+    RecipeSummary:
+      type: object
+      required: [id, slug, name, category]
+      properties:
+        id:
+          type: string
+        slug:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+        favorited:
+          type: boolean
+    RecipeSummaryListResponse:
+      type: object
+      required: [recipes]
+      properties:
+        recipes:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecipeSummary"
+    ShortcutsResponse:
+      type: object
+      required: [recent, random]
+      properties:
+        recent:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecipeSummary"
+        random:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecipeSummary"
+    Ingredient:
+      type: object
+      required: [id, amountText, product, notes]
+      properties:
+        id:
+          type: string
+        amountText:
+          type: string
+        amountValue:
+          type: number
+        unit:
+          type: string
+        product:
+          type: string
+        notes:
+          type: string
+    RecipeDetail:
+      allOf:
+        - $ref: "#/components/schemas/RecipeSummary"
+        - type: object
+          required: [yieldText, ingredients, steps, utensils]
+          properties:
+            yieldText:
+              type: string
+            yieldServings:
+              type: number
+            ingredients:
+              type: array
+              items:
+                $ref: "#/components/schemas/Ingredient"
+            steps:
+              type: array
+              items:
+                type: string
+            utensils:
+              type: array
+              items:
+                type: string
+    RecipeDetailResponse:
+      type: object
+      required: [recipe]
+      properties:
+        recipe:
+          $ref: "#/components/schemas/RecipeDetail"
+    SuccessResponse:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string

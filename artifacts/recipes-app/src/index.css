@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Fraunces', serif;
+  --font-display: 'Fraunces', serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+}
+
+:root {
+  color-scheme: light;
+  
+  /* Warm paper #FDFBF7 */
+  --background: 40 33% 98%;
+  --foreground: 20 20% 20%;
+  
+  --border: 40 20% 90%;
+  --input: 40 20% 90%;
+  --ring: 25 80% 50%;
+  
+  /* White cards but warmer */
+  --card: 40 33% 99%;
+  --card-foreground: 20 20% 20%;
+  --card-border: 40 15% 88%;
+  
+  --popover: 40 33% 99%;
+  --popover-foreground: 20 20% 20%;
+  --popover-border: 40 15% 88%;
+
+  /* Soft warm accent */
+  --primary: 25 80% 50%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Sage/Teal */
+  --secondary: 160 30% 45%;
+  --secondary-foreground: 0 0% 100%;
+
+  /* Soft taupe/beige for muted elements */
+  --muted: 40 20% 94%;
+  --muted-foreground: 30 10% 45%;
+
+  /* Golden yellow */
+  --accent: 40 90% 55%;
+  --accent-foreground: 20 20% 20%;
+
+  --destructive: 348 68% 64%;
+  --destructive-foreground: 0 0% 100%;
+
+  --chart-1: 25 80% 50%;
+  --chart-2: 160 30% 45%;
+  --chart-3: 40 90% 55%;
+  --chart-4: 195 32% 58%;
+  --chart-5: 348 68% 64%;
+
+  --radius: 0.75rem;
+}
+
+/* Force light mode regardless of system or app settings */
+html,
+body,
+#root {
+  min-height: 100%;
+  color-scheme: light !important;
+  background-color: hsl(var(--background)) !important;
+}
+
+html.dark,
+html.dark body,
+.dark,
+.dark body {
+  color-scheme: light !important;
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+  #root {
+    padding: 0;
+    margin: 0;
+  }
+  .print-shadow-none {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+  }
+}
