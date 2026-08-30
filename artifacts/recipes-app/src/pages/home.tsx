@@ -64,7 +64,7 @@ function ShortcutChip({ recipe }: { recipe: RecipeSummary }) {
     <button
       type="button"
       onClick={() => navigate(`/recipe/${recipe.slug}`)}
-      className="shrink-0 snap-start rounded-2xl border border-border bg-card px-5 py-4 text-left transition-colors hover:border-primary w-[9.5rem]"
+      className="rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:border-primary"
     >
       <p className="text-sm font-semibold leading-snug text-foreground line-clamp-2">{recipe.name}</p>
       {recipe.category && <p className="mt-1 text-xs text-muted-foreground">{recipe.category}</p>}
@@ -141,7 +141,7 @@ export default function Home() {
                   <Clock className="h-3.5 w-3.5" />
                   Recently viewed
                 </p>
-                <div className="no-scrollbar -mx-4 flex snap-x gap-2.5 overflow-x-auto px-4 pb-1">
+                <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                   {shortcutsQuery.data!.recent.map((r) => (
                     <ShortcutChip key={r.id} recipe={r} />
                   ))}
@@ -154,7 +154,7 @@ export default function Home() {
                   <Sparkles className="h-3.5 w-3.5" />
                   Discover
                 </p>
-                <div className="no-scrollbar -mx-4 flex snap-x gap-2.5 overflow-x-auto px-4 pb-1">
+                <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                   {shortcutsQuery.data!.random.map((r) => (
                     <ShortcutChip key={r.id} recipe={r} />
                   ))}

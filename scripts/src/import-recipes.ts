@@ -237,6 +237,12 @@ async function main() {
   }
 
   const seenNames = new Set<string>();
+  // Seed with recipes already in the DB so re-running against additional
+  // files (e.g. importing a second workbook later) doesn't re-add ones
+  // that came from an earlier run.
+  const existing = await db.select({ name: recipesTable.name }).from(recipesTable);
+  for (const row of existing) seenNames.add(row.name.trim().toLowerCase());
+
   const stats: ImportStats = { tabsSeen: 0, parsed: 0, skippedNoTemplate: 0, imported: 0, duplicatesSkipped: 0 };
 
   for (const file of files) {
