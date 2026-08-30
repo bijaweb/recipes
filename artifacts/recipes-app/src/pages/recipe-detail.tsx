@@ -20,7 +20,7 @@ export default function RecipeDetail() {
   const [, params] = useRoute('/recipe/:slug');
   const [, navigate] = useLocation();
   const qc = useQueryClient();
-  const [system, setSystem] = useState<UnitSystem>('imperial');
+  const [system, setSystem] = useState<UnitSystem>('metric');
   const [scale, setScale] = useState(1);
 
   const slug = params?.slug ?? '';
