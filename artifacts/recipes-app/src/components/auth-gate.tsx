@@ -1,7 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { useAuth } from '@/hooks/use-auth';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const GOOGLE_SCRIPT_ID = 'google-identity-script';
 
@@ -59,7 +57,7 @@ function GoogleSignInButton({ onCredential }: { onCredential: (credential: strin
 }
 
 export function AuthGate({ children }: { children: ReactNode }) {
-  const { user, isLoading, error, signIn, signOut } = useAuth();
+  const { user, isLoading, error, signIn } = useAuth();
 
   if (isLoading) {
     return null;
@@ -83,21 +81,5 @@ export function AuthGate({ children }: { children: ReactNode }) {
     );
   }
 
-  return (
-    <div className="relative">
-      <div className="fixed bottom-16 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border bg-card/95 py-1 pl-1 pr-3 shadow-sm backdrop-blur">
-        <Avatar className="h-6 w-6">
-          <AvatarImage src={user.picture} alt={user.name ?? user.email} />
-          <AvatarFallback>{(user.name ?? user.email).slice(0, 1).toUpperCase()}</AvatarFallback>
-        </Avatar>
-        <span className="max-w-[10rem] truncate text-xs text-muted-foreground">
-          {user.name ?? user.email}
-        </span>
-        <Button variant="ghost" size="sm" className="h-6 px-2 text-xs" onClick={signOut}>
-          Sign out
-        </Button>
-      </div>
-      {children}
-    </div>
-  );
+  return <>{children}</>;
 }

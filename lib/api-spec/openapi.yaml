@@ -318,7 +318,19 @@ components:
           type: "string"
         isAdmin:
           type: boolean
+        apps:
+          type: array
+          items:
+            $ref: "#/components/schemas/AppMenuItem"
       required: [id, email]
+    AppMenuItem:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+      required: [name, url]
     GoogleSignInRequest:
       type: object
       properties:

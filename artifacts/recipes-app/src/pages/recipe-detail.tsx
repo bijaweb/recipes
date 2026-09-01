@@ -143,7 +143,7 @@ export default function RecipeDetail() {
 
   return (
     <div className="min-h-[100dvh] bg-background pb-16">
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-card px-4 py-3">
+      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-card py-3 pl-4 pr-24">
         <Button variant="ghost" size="icon" onClick={() => (isEditing ? cancelEditing() : navigate('/'))}>
           {isEditing ? <X className="h-4 w-4" /> : <ArrowLeft className="h-4 w-4" />}
         </Button>

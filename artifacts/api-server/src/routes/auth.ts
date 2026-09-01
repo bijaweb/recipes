@@ -3,7 +3,8 @@ import { eq } from "drizzle-orm";
 import { db, usersTable } from "@workspace/db";
 import { SignInWithGoogleBody, SignInWithGoogleResponse, GetCurrentUserResponse } from "@workspace/api-zod";
 import { signAppToken, verifyGoogleCredential } from "../lib/auth";
-import { hasPlatformAccess, getPlatformPreferredName, isPlatformAdmin } from "../lib/platform-access";
+import { hasPlatformAccess } from "../lib/platform-access";
+import { buildUserPayload } from "../lib/user-response";
 import { requireAuth } from "../middlewares/require-auth";
 
 const router: IRouter = Router();
@@ -49,21 +50,11 @@ router.post("/auth/google", async (req, res): Promise<void> => {
     .returning();
 
   const token = signAppToken({ id: user.id, email: user.email });
-  const [preferredName, isAdmin] = await Promise.all([
-    getPlatformPreferredName(user.email),
-    isPlatformAdmin(user.email),
-  ]);
 
   res.json(
     SignInWithGoogleResponse.parse({
       token,
-      user: {
-        id: String(user.id),
-        email: user.email,
-        name: preferredName ?? user.name ?? undefined,
-        picture: user.picture ?? undefined,
-        isAdmin,
-      },
+      user: await buildUserPayload(user),
     }),
   );
 });
@@ -76,20 +67,7 @@ router.get("/auth/me", requireAuth, async (req, res): Promise<void> => {
     return;
   }
 
-  const [preferredName, isAdmin] = await Promise.all([
-    getPlatformPreferredName(user.email),
-    isPlatformAdmin(user.email),
-  ]);
-
-  res.json(
-    GetCurrentUserResponse.parse({
-      id: String(user.id),
-      email: user.email,
-      name: preferredName ?? user.name ?? undefined,
-      picture: user.picture ?? undefined,
-      isAdmin,
-    }),
-  );
+  res.json(GetCurrentUserResponse.parse(await buildUserPayload(user)));
 });
 
 export default router;

@@ -1,10 +1,12 @@
 import { type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Plus } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { AuthProvider } from '@/hooks/use-auth';
 import { AuthGate } from '@/components/auth-gate';
+import { AppSwitcher } from '@/components/app-switcher';
 import { BottomTabBar } from '@/components/bottom-tab-bar';
 import NotFound from '@/pages/not-found';
 import Home from '@/pages/home';
@@ -14,6 +16,7 @@ import Favorites from '@/pages/favorites';
 import Settings from '@/pages/settings';
 
 import {
+  Link,
   Route,
   Switch,
   useLocation,
@@ -28,6 +31,17 @@ function Router() {
 
   return (
     <RoutedErrorBoundary>
+      <AppSwitcher
+        leftSlot={
+          <Link
+            href="/add"
+            aria-label="Add recipe"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-card/95 text-muted-foreground shadow-md backdrop-blur transition-colors hover:text-foreground"
+          >
+            <Plus className="h-4 w-4" />
+          </Link>
+        }
+      />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/add" component={AddRecipe} />

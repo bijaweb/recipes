@@ -6,6 +6,7 @@
  * OpenAPI spec version: 0.1.0
  */
 
+export * from './appMenuItem';
 export * from './authResponse';
 export * from './categoryListResponse';
 export * from './categoryRenameInput';

@@ -12,7 +12,7 @@ export function BottomTabBar() {
   const [location] = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-20 bg-card border-t border-border pb-safe-bottom shadow-[0_-2px_10px_rgba(0,0,0,.06)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-20 bg-card border-t border-border pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-2px_10px_rgba(0,0,0,.06)]">
       <div className="flex">
         {TABS.map(({ path, label, Icon }) => {
           const active = location === path;
@@ -25,7 +25,7 @@ export function BottomTabBar() {
                 active ? 'text-primary' : 'text-muted-foreground',
               )}
             >
-              <Icon className={cn('h-5 w-5 transition-transform', active && 'scale-110')} strokeWidth={active ? 2.5 : 1.8} />
+              <Icon className={cn('h-4 w-4 transition-transform', active && 'scale-110')} strokeWidth={active ? 2.5 : 1.8} />
               {label}
             </Link>
           );

@@ -5,6 +5,7 @@
  * Recipes API
  * OpenAPI spec version: 0.1.0
  */
+import type { AppMenuItem } from './appMenuItem';
 
 export interface User {
   id: string;
@@ -12,4 +13,5 @@ export interface User {
   name?: string;
   picture?: string;
   isAdmin?: boolean;
+  apps?: AppMenuItem[];
 }

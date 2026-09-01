@@ -9,12 +9,18 @@ export interface HealthStatus {
   status: string;
 }
 
+export interface AppMenuItem {
+  name: string;
+  url: string;
+}
+
 export interface User {
   id: string;
   email: string;
   name?: string;
   picture?: string;
   isAdmin?: boolean;
+  apps?: AppMenuItem[];
 }
 
 export interface GoogleSignInRequest {

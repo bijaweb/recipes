@@ -32,7 +32,11 @@ export const SignInWithGoogleResponse = zod.object({
   "email": zod.string(),
   "name": zod.string().optional(),
   "picture": zod.string().optional(),
-  "isAdmin": zod.boolean().optional()
+  "isAdmin": zod.boolean().optional(),
+  "apps": zod.array(zod.object({
+  "name": zod.string(),
+  "url": zod.string()
+})).optional()
 })
 })
 
@@ -45,7 +49,11 @@ export const GetCurrentUserResponse = zod.object({
   "email": zod.string(),
   "name": zod.string().optional(),
   "picture": zod.string().optional(),
-  "isAdmin": zod.boolean().optional()
+  "isAdmin": zod.boolean().optional(),
+  "apps": zod.array(zod.object({
+  "name": zod.string(),
+  "url": zod.string()
+})).optional()
 })
 
 

@@ -36,6 +36,37 @@ export async function isPlatformAdmin(email: string): Promise<boolean> {
   return (result.rows[0] as { is_admin?: boolean } | undefined)?.is_admin === true;
 }
 
+export interface AppMenuItem {
+  name: string;
+  url: string;
+}
+
+// Reads the platform's admin flag and the list of apps this email has been
+// granted access to, for the "switch apps" burger menu shown in the header.
+// BijaCorp itself isn't a row in the apps table (everyone with a platform
+// account can already reach it), so the frontend adds that entry itself,
+// gated on isAdmin.
+export async function getPlatformAppMenu(email: string): Promise<{ isAdmin: boolean; apps: AppMenuItem[] }> {
+  const userResult = await db.execute(sql`
+    SELECT is_admin FROM users WHERE email = ${email} LIMIT 1
+  `);
+  const isAdmin = Boolean((userResult.rows[0] as { is_admin?: boolean } | undefined)?.is_admin);
+
+  const appsResult = await db.execute(sql`
+    SELECT a.name, a.url
+    FROM apps a
+    JOIN user_app_access uaa ON uaa.app_id = a.id
+    JOIN users u ON u.id = uaa.user_id
+    WHERE u.email = ${email}
+    ORDER BY a.name ASC
+  `);
+
+  return {
+    isAdmin,
+    apps: appsResult.rows.map((r) => r as unknown as AppMenuItem),
+  };
+}
+
 // Reads the platform's own preferred display name for this email, if the
 // user has set one in Account Settings ("Call me by"). Returns null when
 // unset so callers can fall back to this app's own Google-derived name.
