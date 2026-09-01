@@ -12,7 +12,7 @@ export function BottomTabBar() {
   const [location] = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-20 bg-card border-t border-border pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-2px_10px_rgba(0,0,0,.06)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-20 bg-card border-t border-border pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-2px_10px_rgba(0,0,0,.06)] after:pointer-events-none after:absolute after:inset-x-0 after:top-full after:h-[50vh] after:bg-card">
       <div className="flex">
         {TABS.map(({ path, label, Icon }) => {
           const active = location === path;
