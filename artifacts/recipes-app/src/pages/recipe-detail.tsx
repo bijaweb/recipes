@@ -304,7 +304,8 @@ export default function RecipeDetail() {
                   if (ing.amountValue !== undefined && ing.unit) {
                     const scaled = ing.amountValue * scale;
                     const converted = convertAmount(scaled, ing.unit, system);
-                    display = `${formatAmount(converted.value)} ${unitLabel(converted.unit)}`.trim();
+                    const roundUp = system === 'metric' && ['g', 'kg', 'ml', 'l'].includes(converted.unit);
+                    display = `${formatAmount(converted.value, roundUp)} ${unitLabel(converted.unit)}`.trim();
                   } else if (ing.amountValue !== undefined) {
                     display = formatAmount(ing.amountValue * scale);
                   }
