@@ -748,6 +748,78 @@ export function useGetRecipe<TData = Awaited<ReturnType<typeof getRecipe>>, TErr
 
 
 
+export const getUpdateRecipeUrl = (recipeId: string,) => {
+
+
+
+
+  return `/api/recipes/${recipeId}`
+}
+
+/**
+ * @summary Update a recipe's details, ingredients, steps, and utensils (admin only)
+ */
+export const updateRecipe = async (recipeId: string,
+    createRecipeInput: CreateRecipeInput, options?: Parameters<typeof customFetch>[1]): Promise<RecipeDetailResponse> => {
+
+  return customFetch<RecipeDetailResponse>(getUpdateRecipeUrl(recipeId),
+  {
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(createRecipeInput)
+  }
+);}
+
+
+
+
+
+export const getUpdateRecipeMutationOptions = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateRecipe>>, TError,{recipeId: string;data: BodyType<CreateRecipeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateRecipe>>, TError,{recipeId: string;data: BodyType<CreateRecipeInput>}, TContext> => {
+
+const mutationKey = ['updateRecipe'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateRecipe>>, {recipeId: string;data: BodyType<CreateRecipeInput>}> = (props) => {
+          const {recipeId,data} = props ?? {};
+
+          return  updateRecipe(recipeId,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type UpdateRecipeMutationResult = NonNullable<Awaited<ReturnType<typeof updateRecipe>>>
+    export type UpdateRecipeMutationBody = BodyType<CreateRecipeInput>
+    export type UpdateRecipeMutationError = ErrorType<ErrorResponse>
+
+    /**
+ * @summary Update a recipe's details, ingredients, steps, and utensils (admin only)
+ */
+export const useUpdateRecipe = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateRecipe>>, TError,{recipeId: string;data: BodyType<CreateRecipeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof updateRecipe>>,
+        TError,
+        {recipeId: string;data: BodyType<CreateRecipeInput>},
+        TContext
+      > => {
+      return useMutation(getUpdateRecipeMutationOptions(options));
+    }
+
 export const getRenameCategoryUrl = (category: string,) => {
 
 

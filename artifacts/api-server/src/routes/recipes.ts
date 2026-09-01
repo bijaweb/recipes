@@ -23,8 +23,10 @@ import {
   ParseRecipeTextResponse,
   CreateRecipeBody,
   CreateRecipeResponse,
+  UpdateRecipeBody,
+  UpdateRecipeResponse,
 } from "@workspace/api-zod";
-import { requireAuth } from "../middlewares/require-auth";
+import { requireAuth, requireAdmin } from "../middlewares/require-auth";
 
 const router: IRouter = Router();
 
@@ -238,6 +240,68 @@ router.post("/recipes", requireAuth, async (req, res): Promise<void> => {
 
   const detail = await buildRecipeDetail(recipe, req.user!.id);
   res.json(CreateRecipeResponse.parse({ recipe: detail }));
+});
+
+router.put("/recipes/:recipeId", requireAuth, requireAdmin, async (req, res): Promise<void> => {
+  const recipeId = Number(req.params.recipeId);
+  if (!Number.isInteger(recipeId)) {
+    res.status(400).json({ error: "Invalid recipe id" });
+    return;
+  }
+
+  const parsed = UpdateRecipeBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.message });
+    return;
+  }
+  const data = parsed.data;
+
+  const [existing] = await db.select().from(recipesTable).where(eq(recipesTable.id, recipeId));
+  if (!existing) {
+    res.status(404).json({ error: "Recipe not found" });
+    return;
+  }
+
+  const [recipe] = await db
+    .update(recipesTable)
+    .set({
+      name: data.name.trim(),
+      category: data.category.trim(),
+      yieldText: data.yieldText.trim(),
+      yieldServings: data.yieldServings ?? null,
+      updatedAt: new Date(),
+    })
+    .where(eq(recipesTable.id, recipeId))
+    .returning();
+
+  await Promise.all([
+    db.delete(ingredientsTable).where(eq(ingredientsTable.recipeId, recipeId)),
+    db.delete(stepsTable).where(eq(stepsTable.recipeId, recipeId)),
+    db.delete(utensilsTable).where(eq(utensilsTable.recipeId, recipeId)),
+  ]);
+
+  if (data.ingredients.length > 0) {
+    await db.insert(ingredientsTable).values(
+      data.ingredients.map((ing, position) => ({
+        recipeId,
+        position,
+        amountText: ing.amountText,
+        amountValue: ing.amountValue ?? null,
+        unit: ing.unit ?? null,
+        product: ing.product,
+        notes: ing.notes,
+      })),
+    );
+  }
+  if (data.steps.length > 0) {
+    await db.insert(stepsTable).values(data.steps.map((instruction, position) => ({ recipeId, position, instruction })));
+  }
+  if (data.utensils && data.utensils.length > 0) {
+    await db.insert(utensilsTable).values(data.utensils.map((name) => ({ recipeId, name })));
+  }
+
+  const detail = await buildRecipeDetail(recipe, req.user!.id);
+  res.json(UpdateRecipeResponse.parse({ recipe: detail }));
 });
 
 router.put("/categories/:category", requireAuth, async (req, res): Promise<void> => {

@@ -24,6 +24,18 @@ export async function hasPlatformAccess(email: string): Promise<boolean> {
   return result.rows.length > 0;
 }
 
+// Reads the platform's own admin flag for this email, used to gate
+// recipe editing to the platform admin(s) rather than every signed-in user.
+export async function isPlatformAdmin(email: string): Promise<boolean> {
+  const result = await db.execute(sql`
+    SELECT is_admin
+    FROM users
+    WHERE email = ${email}
+    LIMIT 1
+  `);
+  return (result.rows[0] as { is_admin?: boolean } | undefined)?.is_admin === true;
+}
+
 // Reads the platform's own preferred display name for this email, if the
 // user has set one in Account Settings ("Call me by"). Returns null when
 // unset so callers can fall back to this app's own Google-derived name.

@@ -31,7 +31,8 @@ export const SignInWithGoogleResponse = zod.object({
   "id": zod.string(),
   "email": zod.string(),
   "name": zod.string().optional(),
-  "picture": zod.string().optional()
+  "picture": zod.string().optional(),
+  "isAdmin": zod.boolean().optional()
 })
 })
 
@@ -43,7 +44,8 @@ export const GetCurrentUserResponse = zod.object({
   "id": zod.string(),
   "email": zod.string(),
   "name": zod.string().optional(),
-  "picture": zod.string().optional()
+  "picture": zod.string().optional(),
+  "isAdmin": zod.boolean().optional()
 })
 
 
@@ -172,6 +174,54 @@ export const GetRecipeParams = zod.object({
 })
 
 export const GetRecipeResponse = zod.object({
+  "recipe": zod.object({
+  "id": zod.string(),
+  "slug": zod.string(),
+  "name": zod.string(),
+  "category": zod.string(),
+  "favorited": zod.boolean().optional()
+}).and(zod.object({
+  "yieldText": zod.string(),
+  "yieldServings": zod.number().optional(),
+  "ingredients": zod.array(zod.object({
+  "id": zod.string(),
+  "amountText": zod.string(),
+  "amountValue": zod.number().optional(),
+  "unit": zod.string().optional(),
+  "product": zod.string(),
+  "notes": zod.string()
+})),
+  "steps": zod.array(zod.string()),
+  "utensils": zod.array(zod.string())
+}))
+})
+
+
+/**
+ * @summary Update a recipe's details, ingredients, steps, and utensils (admin only)
+ */
+export const UpdateRecipeParams = zod.object({
+  "recipeId": zod.coerce.string()
+})
+
+export const UpdateRecipeBody = zod.object({
+  "name": zod.string(),
+  "category": zod.string(),
+  "yieldText": zod.string(),
+  "yieldServings": zod.number().optional(),
+  "ingredients": zod.array(zod.object({
+  "amountText": zod.string(),
+  "amountValue": zod.number().optional(),
+  "unit": zod.string().optional(),
+  "product": zod.string(),
+  "notes": zod.string()
+})),
+  "steps": zod.array(zod.string())
+}).and(zod.object({
+  "utensils": zod.array(zod.string()).optional()
+}))
+
+export const UpdateRecipeResponse = zod.object({
   "recipe": zod.object({
   "id": zod.string(),
   "slug": zod.string(),

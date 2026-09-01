@@ -171,6 +171,42 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+  /recipes/{recipeId}:
+    put:
+      operationId: updateRecipe
+      tags: [recipes]
+      summary: Update a recipe's details, ingredients, steps, and utensils (admin only)
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRecipeInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeDetailResponse"
+        "403":
+          description: Not an admin
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /categories/{category}:
     put:
       operationId: renameCategory
@@ -280,6 +316,8 @@ components:
           type: "string"
         picture:
           type: "string"
+        isAdmin:
+          type: boolean
       required: [id, email]
     GoogleSignInRequest:
       type: object

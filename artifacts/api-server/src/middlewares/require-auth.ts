@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import { verifyAppToken, type AppTokenPayload } from "../lib/auth";
-import { hasPlatformAccess } from "../lib/platform-access";
+import { hasPlatformAccess, isPlatformAdmin } from "../lib/platform-access";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -37,5 +37,15 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   }
 
   req.user = payload;
+  next();
+}
+
+// Run after requireAuth. Gates recipe editing to the platform admin(s)
+// rather than every signed-in user with recipe access.
+export async function requireAdmin(req: Request, res: Response, next: NextFunction): Promise<void> {
+  if (!(await isPlatformAdmin(req.user!.email))) {
+    res.status(403).json({ error: "Admin access required" });
+    return;
+  }
   next();
 }
