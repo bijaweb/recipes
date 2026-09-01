@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useRoute } from 'wouter';
 import { useQueryClient } from '@tanstack/react-query';
-import { ArrowLeft, Loader2, Pencil, Plus, Star, Trash2, X } from 'lucide-react';
+import { ArrowLeft, Loader2, Minus, Pencil, Plus, Star, Trash2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -47,6 +47,20 @@ export default function RecipeDetail() {
   const updateRecipe = useUpdateRecipe();
 
   const recipe = data?.recipe;
+
+  // Anchors scaling to a whole-egg count instead of an arbitrary multiplier,
+  // for recipes where eggs are listed as a discrete count ("3 each") rather
+  // than weighed by gram — the common case for whole/cracked eggs.
+  const eggIngredient = recipe?.ingredients.find(
+    (ing) => /\begg/i.test(ing.product) && ing.unit === 'each' && ing.amountValue !== undefined && ing.amountValue > 0,
+  );
+  const baseEggs = eggIngredient?.amountValue;
+  const currentEggs = baseEggs !== undefined ? Math.max(1, Math.round(baseEggs * scale)) : undefined;
+
+  const setEggCount = (count: number) => {
+    if (baseEggs === undefined || baseEggs <= 0) return;
+    setScale(count / baseEggs);
+  };
 
   const toggleFavorite = () => {
     if (!recipe) return;
@@ -265,35 +279,62 @@ export default function RecipeDetail() {
               {recipe.yieldText && <p className="mt-1 text-sm text-muted-foreground">Yield: {recipe.yieldText}</p>}
             </div>
 
-            <Card className="flex flex-wrap items-center justify-between gap-3 p-4">
-              <div className="flex items-center gap-1.5">
-                {(['imperial', 'metric'] as UnitSystem[]).map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => setSystem(s)}
-                    className={`rounded-full border px-3 py-1 text-xs font-semibold capitalize transition-colors ${
-                      system === s ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
-                    }`}
-                  >
-                    {s}
-                  </button>
-                ))}
+            <Card className="space-y-3 p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-1.5">
+                  {(['imperial', 'metric'] as UnitSystem[]).map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => setSystem(s)}
+                      className={`rounded-full border px-3 py-1 text-xs font-semibold capitalize transition-colors ${
+                        system === s ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  {SCALES.map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => setScale(s)}
+                      className={`rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
+                        scale === s ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
+                      }`}
+                    >
+                      {s}×
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="flex items-center gap-1.5">
-                {SCALES.map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => setScale(s)}
-                    className={`rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
-                      scale === s ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
-                    }`}
-                  >
-                    {s}×
-                  </button>
-                ))}
-              </div>
+              {currentEggs !== undefined && (
+                <div className="flex items-center justify-between gap-3 border-t border-border pt-3">
+                  <span className="text-xs font-semibold text-muted-foreground">Eggs</span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setEggCount(currentEggs - 1)}
+                      disabled={currentEggs <= 1}
+                      aria-label="Fewer eggs"
+                      className="flex h-7 w-7 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-accent disabled:opacity-40"
+                    >
+                      <Minus className="h-3.5 w-3.5" />
+                    </button>
+                    <span className="w-6 text-center text-sm font-semibold text-foreground">{currentEggs}</span>
+                    <button
+                      type="button"
+                      onClick={() => setEggCount(currentEggs + 1)}
+                      aria-label="More eggs"
+                      className="flex h-7 w-7 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-accent"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                </div>
+              )}
             </Card>
 
             <Card className="p-4">
