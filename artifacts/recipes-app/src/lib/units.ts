@@ -65,7 +65,8 @@ export function convertAmount(value: number, fromUnit: string, system: UnitSyste
   return { value, unit: fromUnit };
 }
 
-export function formatAmount(value: number): string {
+export function formatAmount(value: number, roundUp = false): string {
+  if (roundUp) return String(Math.ceil(value));
   const rounded = Math.round(value * 100) / 100;
   if (Number.isInteger(rounded)) return String(rounded);
   return rounded.toFixed(2).replace(/0$/, '').replace(/\.$/, '');
