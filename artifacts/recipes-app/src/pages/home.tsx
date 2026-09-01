@@ -102,23 +102,23 @@ export default function Home() {
 
       <div className="mx-auto max-w-[640px] space-y-4 px-4 py-4">
         <div className="relative">
-          <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <SearchIcon className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search by name or category..."
-            className="pl-9"
+            className="h-12 pl-10 text-base"
           />
         </div>
 
         {categories.length > 0 && (
-          <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-1">
+          <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-1">
             {categories.map((c) => (
               <button
                 key={c}
                 type="button"
                 onClick={() => setCategory((prev) => (prev === c ? null : c))}
-                className={`shrink-0 whitespace-nowrap rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${
+                className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
                   category === c
                     ? 'border-primary bg-primary text-primary-foreground'
                     : 'border-border bg-background text-muted-foreground hover:text-foreground'
