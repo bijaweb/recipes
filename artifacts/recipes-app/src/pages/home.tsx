@@ -107,7 +107,7 @@ export default function Home() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search by name or category..."
-            className="h-12 pl-10 text-base"
+            className="h-12 border-primary/20 bg-primary/10 pl-10 text-base"
           />
         </div>
 
