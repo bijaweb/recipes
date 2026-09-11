@@ -29,8 +29,7 @@ import {
 const queryClient = new QueryClient();
 
 function Router() {
-  const [location, setLocation] = useLocation();
-  const showTabBar = location === '/' || location === '/favorites';
+  const [, setLocation] = useLocation();
 
   return (
     <RoutedErrorBoundary>
@@ -57,7 +56,7 @@ function Router() {
         <Route path="/settings/ingredients" component={SettingsIngredients} />
         <Route component={NotFound} />
       </Switch>
-      {showTabBar && <BottomTabBar />}
+      <BottomTabBar />
     </RoutedErrorBoundary>
   );
 }
