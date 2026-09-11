@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "import-recipes": "tsx ./src/import-recipes.ts",
+    "import-ingredient-catalog": "tsx ./src/import-ingredient-catalog.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@workspace/db": "workspace:*",
+    "csv-parse": "^5.6.0",
     "drizzle-orm": "catalog:",
     "xlsx": "^0.18.5"
   },

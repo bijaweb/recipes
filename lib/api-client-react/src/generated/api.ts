@@ -27,6 +27,8 @@ import type {
   ErrorResponse,
   GoogleSignInRequest,
   HealthStatus,
+  IngredientCatalogListResponse,
+  ListIngredientCatalogParams,
   ParseRecipeInput,
   ParseRecipeResponse,
   RecipeDetailResponse,
@@ -961,6 +963,161 @@ export const useDeleteRecipe = <TError = ErrorType<unknown>,
         TContext
       > => {
       return useMutation(getDeleteRecipeMutationOptions(options));
+    }
+
+export const getListIngredientCatalogUrl = (params?: ListIngredientCatalogParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/ingredient-catalog?${stringifiedParams}` : `/api/ingredient-catalog`
+}
+
+/**
+ * @summary Search the ingredient catalog (paginated)
+ */
+export const listIngredientCatalog = async (params?: ListIngredientCatalogParams, options?: Parameters<typeof customFetch>[1]): Promise<IngredientCatalogListResponse> => {
+
+  return customFetch<IngredientCatalogListResponse>(getListIngredientCatalogUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListIngredientCatalogQueryKey = (params?: ListIngredientCatalogParams,) => {
+    return [
+    `/api/ingredient-catalog`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getListIngredientCatalogQueryOptions = <TData = Awaited<ReturnType<typeof listIngredientCatalog>>, TError = ErrorType<unknown>>(params?: ListIngredientCatalogParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listIngredientCatalog>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListIngredientCatalogQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listIngredientCatalog>>> = ({ signal }) => listIngredientCatalog(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listIngredientCatalog>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListIngredientCatalogQueryResult = NonNullable<Awaited<ReturnType<typeof listIngredientCatalog>>>
+export type ListIngredientCatalogQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary Search the ingredient catalog (paginated)
+ */
+
+export function useListIngredientCatalog<TData = Awaited<ReturnType<typeof listIngredientCatalog>>, TError = ErrorType<unknown>>(
+ params?: ListIngredientCatalogParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listIngredientCatalog>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListIngredientCatalogQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getDeleteIngredientCatalogItemUrl = (id: string,) => {
+
+
+
+
+  return `/api/ingredient-catalog/${id}`
+}
+
+/**
+ * @summary Permanently remove an ingredient from the catalog
+ */
+export const deleteIngredientCatalogItem = async (id: string, options?: Parameters<typeof customFetch>[1]): Promise<SuccessResponse> => {
+
+  return customFetch<SuccessResponse>(getDeleteIngredientCatalogItemUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteIngredientCatalogItemMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteIngredientCatalogItem>>, TError,{id: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteIngredientCatalogItem>>, TError,{id: string}, TContext> => {
+
+const mutationKey = ['deleteIngredientCatalogItem'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteIngredientCatalogItem>>, {id: string}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteIngredientCatalogItem(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteIngredientCatalogItemMutationResult = NonNullable<Awaited<ReturnType<typeof deleteIngredientCatalogItem>>>
+
+    export type DeleteIngredientCatalogItemMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Permanently remove an ingredient from the catalog
+ */
+export const useDeleteIngredientCatalogItem = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteIngredientCatalogItem>>, TError,{id: string}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteIngredientCatalogItem>>,
+        TError,
+        {id: string},
+        TContext
+      > => {
+      return useMutation(getDeleteIngredientCatalogItemMutationOptions(options));
     }
 
 export const getListFavoritesUrl = () => {

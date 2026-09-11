@@ -282,6 +282,39 @@ export const DeleteRecipeResponse = zod.object({
 
 
 /**
+ * @summary Search the ingredient catalog (paginated)
+ */
+export const ListIngredientCatalogQueryParams = zod.object({
+  "q": zod.coerce.string().optional(),
+  "limit": zod.coerce.number().optional(),
+  "offset": zod.coerce.number().optional()
+})
+
+export const ListIngredientCatalogResponse = zod.object({
+  "ingredients": zod.array(zod.object({
+  "id": zod.string(),
+  "name": zod.string(),
+  "pluralName": zod.string(),
+  "category": zod.string(),
+  "aliases": zod.array(zod.string())
+})),
+  "total": zod.number()
+})
+
+
+/**
+ * @summary Permanently remove an ingredient from the catalog
+ */
+export const DeleteIngredientCatalogItemParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const DeleteIngredientCatalogItemResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
  * @summary List the signed-in user's favorited recipes
  */
 export const ListFavoritesResponse = zod.object({

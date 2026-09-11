@@ -32,6 +32,19 @@ export interface AuthResponse {
   user: User;
 }
 
+export interface IngredientCatalogEntry {
+  id: string;
+  name: string;
+  pluralName: string;
+  category: string;
+  aliases: string[];
+}
+
+export interface IngredientCatalogListResponse {
+  ingredients: IngredientCatalogEntry[];
+  total: number;
+}
+
 export interface CategoryListResponse {
   categories: string[];
 }
@@ -118,5 +131,11 @@ export interface ErrorResponse {
 export type SearchRecipesParams = {
 q?: string;
 category?: string;
+};
+
+export type ListIngredientCatalogParams = {
+q?: string;
+limit?: number;
+offset?: number;
 };
 

@@ -144,7 +144,19 @@ router.get("/recipes", requireAuth, async (req, res): Promise<void> => {
   const category = typeof req.query.category === "string" ? req.query.category.trim() : "";
 
   const conditions = [];
-  if (q) conditions.push(or(ilike(recipesTable.name, `%${q}%`), ilike(recipesTable.category, `%${q}%`)));
+  if (q) {
+    conditions.push(
+      or(
+        ilike(recipesTable.name, `%${q}%`),
+        ilike(recipesTable.category, `%${q}%`),
+        sql`EXISTS (
+          SELECT 1 FROM ${ingredientsTable}
+          WHERE ${ingredientsTable.recipeId} = ${recipesTable.id}
+            AND ${ingredientsTable.product} ILIKE ${`%${q}%`}
+        )`,
+      ),
+    );
+  }
   if (category) conditions.push(eq(recipesTable.category, category));
 
   const rows = await db

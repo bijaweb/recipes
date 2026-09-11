@@ -14,6 +14,9 @@ import RecipeDetail from '@/pages/recipe-detail';
 import AddRecipe from '@/pages/add-recipe';
 import Favorites from '@/pages/favorites';
 import Settings from '@/pages/settings';
+import SettingsCategories from '@/pages/settings-categories';
+import SettingsRecipes from '@/pages/settings-recipes';
+import SettingsIngredients from '@/pages/settings-ingredients';
 
 import {
   Link,
@@ -26,12 +29,13 @@ import {
 const queryClient = new QueryClient();
 
 function Router() {
-  const [location] = useLocation();
-  const showTabBar = location === '/' || location === '/favorites' || location === '/settings';
+  const [location, setLocation] = useLocation();
+  const showTabBar = location === '/' || location === '/favorites';
 
   return (
     <RoutedErrorBoundary>
       <AppSwitcher
+        onOpenSettings={() => setLocation('/settings')}
         leftSlot={
           <Link
             href="/add"
@@ -48,6 +52,9 @@ function Router() {
         <Route path="/recipe/:slug" component={RecipeDetail} />
         <Route path="/favorites" component={Favorites} />
         <Route path="/settings" component={Settings} />
+        <Route path="/settings/categories" component={SettingsCategories} />
+        <Route path="/settings/recipes" component={SettingsRecipes} />
+        <Route path="/settings/ingredients" component={SettingsIngredients} />
         <Route component={NotFound} />
       </Switch>
       {showTabBar && <BottomTabBar />}

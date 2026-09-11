@@ -16,6 +16,8 @@ tags:
     description: Recipe browsing, search, and detail operations
   - name: favorites
     description: Per-user favorite recipe operations
+  - name: ingredients
+    description: Ingredient catalog operations
 paths:
   /healthz:
     get:
@@ -249,6 +251,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuccessResponse"
+  /ingredient-catalog:
+    get:
+      operationId: listIngredientCatalog
+      tags: [ingredients]
+      summary: Search the ingredient catalog (paginated)
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: number
+        - name: offset
+          in: query
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Matching ingredients
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IngredientCatalogListResponse"
+  /ingredient-catalog/{id}:
+    delete:
+      operationId: deleteIngredientCatalogItem
+      tags: [ingredients]
+      summary: Permanently remove an ingredient from the catalog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
   /favorites:
     get:
       operationId: listFavorites
@@ -345,6 +390,32 @@ components:
         user:
           $ref: "#/components/schemas/User"
       required: [token, user]
+    IngredientCatalogEntry:
+      type: object
+      required: [id, name, pluralName, category, aliases]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        pluralName:
+          type: string
+        category:
+          type: string
+        aliases:
+          type: array
+          items:
+            type: string
+    IngredientCatalogListResponse:
+      type: object
+      required: [ingredients, total]
+      properties:
+        ingredients:
+          type: array
+          items:
+            $ref: "#/components/schemas/IngredientCatalogEntry"
+        total:
+          type: number
     CategoryListResponse:
       type: object
       required: [categories]
