@@ -48,8 +48,14 @@ function DayStrip({ recipeId }: { recipeId: string }) {
   const addEntry = useAddMealPlanEntry();
   const removeEntry = useRemoveMealPlanEntry();
 
+  const allEntries = planQuery.data?.entries ?? [];
   const entryIdByDate = new Map(
-    (planQuery.data?.entries ?? []).filter((e) => e.recipe.id === recipeId).map((e) => [e.date, e.id]),
+    allEntries.filter((e) => e.recipe.id === recipeId).map((e) => [e.date, e.id]),
+  );
+  // A day already holding a different recipe is off-limits here -- one
+  // recipe per day -- so it can't be silently overwritten by picking it.
+  const takenByOtherDate = new Set(
+    allEntries.filter((e) => e.recipe.id !== recipeId).map((e) => e.date),
   );
   const pending = addEntry.isPending || removeEntry.isPending;
 
@@ -80,19 +86,27 @@ function DayStrip({ recipeId }: { recipeId: string }) {
       {days.map((d) => {
         const dateStr = format(d, 'yyyy-MM-dd');
         const isPlanned = entryIdByDate.has(dateStr);
+        const isTaken = takenByOtherDate.has(dateStr);
         return (
           <button
             key={dateStr}
             type="button"
-            disabled={pending}
+            disabled={pending || isTaken}
             onClick={() => toggle(dateStr)}
-            aria-label={`${isPlanned ? 'Remove from' : 'Add to'} ${format(d, 'EEEE, MMM d')}`}
+            aria-label={
+              isTaken
+                ? `${format(d, 'EEEE, MMM d')} already has a recipe planned`
+                : `${isPlanned ? 'Remove from' : 'Add to'} ${format(d, 'EEEE, MMM d')}`
+            }
             aria-pressed={isPlanned}
+            title={isTaken ? 'Already has a recipe planned' : undefined}
             className={cn(
               'flex aspect-square flex-1 items-center justify-center rounded-full border text-sm font-bold transition-colors disabled:opacity-60',
               isPlanned
                 ? 'border-primary bg-primary text-primary-foreground'
-                : 'border-border bg-card text-muted-foreground hover:bg-muted',
+                : isTaken
+                  ? 'border-border bg-muted text-muted-foreground/50 cursor-not-allowed'
+                  : 'border-border bg-card text-muted-foreground hover:bg-muted',
             )}
           >
             {format(d, 'EEEEE')}
