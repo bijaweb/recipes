@@ -144,7 +144,7 @@ router.get("/recipes/shortcuts", requireAuth, async (req, res): Promise<void> =>
   const recent = recentRows.rows as unknown as RecipeRecord[];
 
   const randomRows = await db.execute(sql`
-    SELECT * FROM ${recipesTable}
+    SELECT * FROM ${recipesTable} r
     WHERE true ${dessertFilter}
     ORDER BY random()
     LIMIT 5
