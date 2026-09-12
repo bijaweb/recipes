@@ -1181,15 +1181,15 @@
         "lift": 9.35
       },
       {
-        "item": "Garlic-Tahini Sauce",
-        "recipe_count": 2,
-        "weighted_score": 30.7,
-        "lift": 19.19
-      },
-      {
         "item": "Chimichurri Sauce",
         "recipe_count": 2,
         "weighted_score": 28.5,
+        "lift": 19.19
+      },
+      {
+        "item": "Garlic-Tahini Sauce",
+        "recipe_count": 2,
+        "weighted_score": 30.7,
         "lift": 19.19
       }
     ],
@@ -8033,12 +8033,6 @@
         "lift": 25.44
       },
       {
-        "item": "Condensed Tomato Soup",
-        "recipe_count": 2,
-        "weighted_score": 2.0,
-        "lift": 17.95
-      },
-      {
         "item": "Sugar Snap Peas",
         "recipe_count": 3,
         "weighted_score": 81.6,
@@ -8067,6 +8061,12 @@
         "recipe_count": 3,
         "weighted_score": 75.0,
         "lift": 5.48
+      },
+      {
+        "item": "Yellow Onion",
+        "recipe_count": 4,
+        "weighted_score": 128.5,
+        "lift": 3.84
       }
     ],
     "top_carbs": [
@@ -8267,12 +8267,6 @@
         "lift": 21.68
       },
       {
-        "item": "Kosher Salt And Freshly Ground Pepper",
-        "recipe_count": 2,
-        "weighted_score": 2.0,
-        "lift": 15.53
-      },
-      {
         "item": "Yellow Onions",
         "recipe_count": 2,
         "weighted_score": 2.0,
@@ -8307,6 +8301,12 @@
         "recipe_count": 3,
         "weighted_score": 3.0,
         "lift": 1.85
+      },
+      {
+        "item": "Carrots",
+        "recipe_count": 6,
+        "weighted_score": 108.2,
+        "lift": 1.23
       }
     ],
     "top_carbs": [
@@ -11901,12 +11901,6 @@
     ],
     "top_veg": [
       {
-        "item": "Freshly Ground Pepper",
-        "recipe_count": 4,
-        "weighted_score": 4.0,
-        "lift": 28.2
-      },
-      {
         "item": "Romaine Lettuce Heart",
         "recipe_count": 2,
         "weighted_score": 71.7,
@@ -11947,6 +11941,12 @@
         "recipe_count": 2,
         "weighted_score": 37.1,
         "lift": 2.22
+      },
+      {
+        "item": "Spinach",
+        "recipe_count": 2,
+        "weighted_score": 38.2,
+        "lift": 2.1
       }
     ],
     "top_carbs": [

@@ -66,16 +66,61 @@ function PickerSection({
   value: string | null;
   onChange: (v: string) => void;
 }) {
-  if (items.length === 0) return null;
+  // The suggested chips only cover whatever cleared the pairing corpus's
+  // frequency threshold -- a real but less common choice (an aioli, say)
+  // can legitimately never show up there. A free-text option means the
+  // suggestions are a starting point, not a hard limit on what's pickable.
+  const [customOpen, setCustomOpen] = useState(false);
+  const [customText, setCustomText] = useState('');
+  const isCustomValue = value !== null && !items.some((it) => it.name === value);
+
+  useEffect(() => {
+    if (isCustomValue) setCustomText(value!);
+  }, [value, isCustomValue]);
+
+  const showInput = customOpen || isCustomValue || items.length === 0;
+
+  const commit = () => {
+    const trimmed = customText.trim();
+    if (trimmed) onChange(trimmed);
+  };
+
   return (
     <div>
       <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{title}</h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {items.slice(0, 6).map((it) => (
-          <Chip key={it.name} active={value === it.name} onClick={() => onChange(it.name)}>
+          <Chip
+            key={it.name}
+            active={value === it.name}
+            onClick={() => {
+              onChange(it.name);
+              setCustomOpen(false);
+            }}
+          >
             {it.name}
           </Chip>
         ))}
+        {showInput ? (
+          <input
+            value={customText}
+            onChange={(e) => setCustomText(e.target.value)}
+            onBlur={commit}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                commit();
+                (e.target as HTMLInputElement).blur();
+              }
+            }}
+            placeholder="Type your own..."
+            className="h-[34px] w-36 rounded-full border border-dashed border-border bg-card px-3 text-sm text-foreground outline-none focus:border-primary"
+          />
+        ) : (
+          <Chip active={false} onClick={() => setCustomOpen(true)}>
+            + Other
+          </Chip>
+        )}
       </div>
     </div>
   );

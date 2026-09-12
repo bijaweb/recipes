@@ -34,7 +34,7 @@ OVERRIDES = [
     ("peanut butter", "pantry"), ("almond butter", "pantry"), ("apple butter", "pantry"),
     ("tomato paste", "pantry"), ("tomato sauce", "sauce"), ("crushed tomato", "veg"),
     ("nutritional yeast", "seasoning"),
-    ("corn starch", "pantry"), ("cornstarch", "pantry"), ("corn syrup", "pantry"),
+    ("corn starch", "pantry"), ("cornstarch", "pantry"),
     ("sesame seed", "topping"), ("sesame oil", "pantry"),
     ("egg noodle", "carb"), ("egg roll", "carb"), ("egg white", "protein"), ("egg yolk", "protein"),
     ("aluminum tray", "other"), ("parchment", "other"), ("skewer", "other"), ("twine", "other"),
@@ -58,6 +58,12 @@ OVERRIDES = [
     ("garlic powder", "seasoning"), ("onion powder", "seasoning"),
     ("red pepper flake", "seasoning"), ("crushed red pepper", "seasoning"),
     ("black pepper", "seasoning"), ("white pepper", "seasoning"), ("pepper corn", "seasoning"),
+    ("ground pepper", "seasoning"),
+    # packaged/canned products whose name happens to contain a veg keyword
+    # ("tomato", "onion", "corn") but aren't the vegetable itself
+    ("tomato soup", "pantry"), ("onion soup", "pantry"), ("soup mix", "pantry"),
+    ("tomato juice", "pantry"), ("vegetable juice", "pantry"), ("juice cocktail", "pantry"),
+    ("corn oil", "pantry"), ("corn syrup", "pantry"),
 ]
 
 # Real prepared/cooking sauces -- things a recipe actively makes or reduces,
@@ -137,12 +143,21 @@ PANTRY_KW = ["oil","sugar","honey","flour","stock","broth","wine","beer","baking
 LEGUME_KW = ["chickpea","lentil","black bean","kidney bean","pinto bean","cannellini",
              "garbanzo","edamame","white bean","navy bean","fava bean"]
 
+OIL_RE = re.compile(r"\boils?\b")
+
+
 def classify_item(raw_item):
     text = raw_item.lower()
 
     for sub, role in OVERRIDES:
         if sub in text:
             return role, sub
+
+    # "oil" as a standalone word is essentially always a pantry cooking fat
+    # regardless of what precedes it ("corn or peanut oil", "chile oil"),
+    # so it needs to win over any veg/protein keyword also present in the name.
+    if OIL_RE.search(text):
+        return "pantry", "oil"
 
     if any(k in text for k in LEGUME_KW):
         hit = next(k for k in LEGUME_KW if k in text)

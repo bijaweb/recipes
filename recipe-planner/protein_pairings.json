@@ -882,76 +882,76 @@
     ],
     "top_veg": [
       {
-        "item": "Condensed Tomato Soup",
-        "recipe_count": 56,
-        "weighted_score": 56.0,
-        "lift": 4.0
-      },
-      {
-        "item": "Condensed French Onion Soup",
-        "recipe_count": 12,
-        "weighted_score": 12.0,
-        "lift": 4.77
-      },
-      {
-        "item": "Dry Onion Soup Mix",
-        "recipe_count": 54,
-        "weighted_score": 54.0,
-        "lift": 3.01
-      },
-      {
-        "item": "Tomato Juice",
-        "recipe_count": 31,
-        "weighted_score": 55.2,
-        "lift": 3.34
-      },
-      {
-        "item": "Envelope Onion Soup Mix",
-        "recipe_count": 7,
-        "weighted_score": 7.0,
-        "lift": 5.56
-      },
-      {
-        "item": "Salt And Freshly Ground Pepper",
-        "recipe_count": 44,
-        "weighted_score": 44.0,
-        "lift": 3.01
-      },
-      {
-        "item": "Corn Or Peanut Oil",
-        "recipe_count": 5,
-        "weighted_score": 5.0,
-        "lift": 6.36
-      },
-      {
-        "item": "Freshly Ground Pepper",
-        "recipe_count": 53,
-        "weighted_score": 53.0,
-        "lift": 2.57
-      },
-      {
-        "item": "Tomato-Vegetable Juice Cocktail",
-        "recipe_count": 13,
-        "weighted_score": 13.0,
-        "lift": 3.76
-      },
-      {
         "item": "Carrots",
         "recipe_count": 716,
         "weighted_score": 5515.8,
         "lift": 1.48
       },
       {
-        "item": "Envelope Dry Onion Soup Mix",
-        "recipe_count": 20,
-        "weighted_score": 20.0,
-        "lift": 3.18
-      },
-      {
         "item": "Onion",
         "recipe_count": 1222,
         "weighted_score": 1340.9,
         "lift": 1.36
+      },
+      {
+        "item": "Yellow Onion",
+        "recipe_count": 231,
+        "weighted_score": 3254.0,
+        "lift": 1.77
+      },
+      {
+        "item": "And Diced Tomatoes With Juice",
+        "recipe_count": 9,
+        "weighted_score": 9.0,
+        "lift": 4.09
+      },
+      {
+        "item": "Mushroom Stems And Pieces",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 4.45
+      },
+      {
+        "item": "Tomatoes",
+        "recipe_count": 321,
+        "weighted_score": 1171.7,
+        "lift": 1.54
+      },
+      {
+        "item": "Head Cabbage",
+        "recipe_count": 40,
+        "weighted_score": 40.0,
+        "lift": 2.38
+      },
+      {
+        "item": "Yellow Onions",
+        "recipe_count": 39,
+        "weighted_score": 64.7,
+        "lift": 2.38
+      },
+      {
+        "item": "Onions",
+        "recipe_count": 252,
+        "weighted_score": 252.0,
+        "lift": 1.58
+      },
+      {
+        "item": "Lettuce",
+        "recipe_count": 39,
+        "weighted_score": 39.0,
+        "lift": 2.27
+      },
+      {
+        "item": "Mushrooms",
+        "recipe_count": 279,
+        "weighted_score": 1448.1,
+        "lift": 1.42
+      },
+      {
+        "item": "Condensed Golden Mushroom Soup",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 3.63
       }
     ],
     "top_carbs": [
