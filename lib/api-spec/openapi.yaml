@@ -18,6 +18,8 @@ tags:
     description: Per-user favorite recipe operations
   - name: ingredients
     description: Ingredient catalog operations
+  - name: planner
+    description: Weekly meal planner operations
 paths:
   /healthz:
     get:
@@ -341,6 +343,151 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SuccessResponse"
+  /planner/proteins:
+    get:
+      operationId: listPlannerProteins
+      tags: [planner]
+      summary: Protein families for the planner picker, ranked by recipe count
+      responses:
+        "200":
+          description: Proteins
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PlannerProteinListResponse"
+  /planner/pairings:
+    get:
+      operationId: getPlannerPairings
+      tags: [planner]
+      summary: Recommended sauces/veg/carbs/cuisines for one protein family
+      parameters:
+        - name: familyKey
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: cuisine
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Pairings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PlannerPairingsResponse"
+        "404":
+          description: Unknown protein family
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /planner/build:
+    post:
+      operationId: buildPlannerRecipe
+      tags: [planner]
+      summary: Save a protein/sauce/veg/carb combo as a new recipe in the catalog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BuildPlannerRecipeInput"
+      responses:
+        "200":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeDetailResponse"
+  /planner/calendar:
+    get:
+      operationId: listMealPlan
+      tags: [planner]
+      summary: Meal plan entries in a date range
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: to
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Entries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MealPlanListResponse"
+    post:
+      operationId: addMealPlanEntry
+      tags: [planner]
+      summary: Add a recipe to a day
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddMealPlanEntryInput"
+      responses:
+        "200":
+          description: Added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MealPlanEntryResponse"
+  /planner/calendar/{id}:
+    patch:
+      operationId: moveMealPlanEntry
+      tags: [planner]
+      summary: Move a meal plan entry to a different day (drag-and-drop reschedule)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MoveMealPlanEntryInput"
+      responses:
+        "200":
+          description: Moved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MealPlanEntryResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      operationId: removeMealPlanEntry
+      tags: [planner]
+      summary: Remove a recipe from the plan
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Removed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
 components:
   schemas:
     HealthStatus:
@@ -474,6 +621,9 @@ components:
           type: string
         notes:
           type: string
+        productType:
+          type: string
+          description: "'fresh' | 'pantry', when this ingredient is linked to a catalog entry with a known classification."
     RecipeDetail:
       allOf:
         - $ref: "#/components/schemas/RecipeSummary"
@@ -576,3 +726,114 @@ components:
       properties:
         error:
           type: string
+
+    PlannerProtein:
+      type: object
+      required: [familyKey, label, icon, recipeCount]
+      properties:
+        familyKey:
+          type: string
+        label:
+          type: string
+        icon:
+          type: string
+        recipeCount:
+          type: number
+        avgRating:
+          type: number
+    PlannerProteinListResponse:
+      type: object
+      required: [proteins]
+      properties:
+        proteins:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlannerProtein"
+    PlannerPairingItem:
+      type: object
+      required: [name, recipeCount]
+      properties:
+        name:
+          type: string
+        recipeCount:
+          type: number
+        weightedScore:
+          type: number
+    PlannerPairingsResponse:
+      type: object
+      required: [familyKey, sauces, veg, carbs, cuisines]
+      properties:
+        familyKey:
+          type: string
+        sauces:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlannerPairingItem"
+        veg:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlannerPairingItem"
+        carbs:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlannerPairingItem"
+        cuisines:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlannerPairingItem"
+    BuildPlannerRecipeInput:
+      type: object
+      required: [familyKey, proteinLabel, sauce, veg, carb]
+      properties:
+        familyKey:
+          type: string
+        proteinLabel:
+          type: string
+        sauce:
+          type: string
+        veg:
+          type: string
+        carb:
+          type: string
+    MealPlanEntry:
+      type: object
+      required: [id, date, sortOrder, recipe]
+      properties:
+        id:
+          type: string
+        date:
+          type: string
+        sortOrder:
+          type: number
+        recipe:
+          $ref: "#/components/schemas/RecipeSummary"
+    MealPlanListResponse:
+      type: object
+      required: [entries]
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/MealPlanEntry"
+    MealPlanEntryResponse:
+      type: object
+      required: [entry]
+      properties:
+        entry:
+          $ref: "#/components/schemas/MealPlanEntry"
+    AddMealPlanEntryInput:
+      type: object
+      required: [date, recipeId]
+      properties:
+        date:
+          type: string
+        recipeId:
+          type: string
+    MoveMealPlanEntryInput:
+      type: object
+      required: [date]
+      properties:
+        date:
+          type: string
+        sortOrder:
+          type: number

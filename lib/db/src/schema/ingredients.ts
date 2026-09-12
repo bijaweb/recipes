@@ -1,5 +1,6 @@
 import { pgTable, serial, integer, text, doublePrecision } from "drizzle-orm/pg-core";
 import { recipesTable } from "./recipes";
+import { ingredientCatalogTable } from "./ingredient-catalog";
 
 // One row per ingredient line. amountValue/unit are populated only when the
 // source amount could be parsed into a scalable, convertible quantity (a
@@ -17,6 +18,13 @@ export const ingredientsTable = pgTable("recipes_ingredients", {
   unit: text("unit"),
   product: text("product").notNull().default(""),
   notes: text("notes").notNull().default(""),
+  // Best-effort link to the shared ingredient catalog, set when the
+  // planner (or a future importer) can confidently match `product` to a
+  // catalog entry. Null for most pre-existing recipes -- no backfill pass
+  // has been run.
+  ingredientCatalogId: integer("ingredient_catalog_id").references(() => ingredientCatalogTable.id, {
+    onDelete: "set null",
+  }),
 });
 
 export type InsertIngredient = typeof ingredientsTable.$inferInsert;

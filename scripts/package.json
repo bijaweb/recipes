@@ -6,6 +6,8 @@
   "scripts": {
     "import-recipes": "tsx ./src/import-recipes.ts",
     "import-ingredient-catalog": "tsx ./src/import-ingredient-catalog.ts",
+    "import-planner-data": "tsx ./src/import-planner-data.ts",
+    "backfill-ingredient-links": "tsx ./src/backfill-ingredient-links.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

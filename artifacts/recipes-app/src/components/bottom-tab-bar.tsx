@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'wouter';
-import { Search, Star } from 'lucide-react';
+import { Search, Star, CalendarDays } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const TABS = [
   { path: '/', label: 'Search', Icon: Search },
+  { path: '/planner', label: 'Planner', Icon: CalendarDays },
   { path: '/favorites', label: 'Favorites', Icon: Star },
 ] as const;
 

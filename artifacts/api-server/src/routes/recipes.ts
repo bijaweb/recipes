@@ -4,6 +4,7 @@ import {
   db,
   recipesTable,
   ingredientsTable,
+  ingredientCatalogTable,
   stepsTable,
   utensilsTable,
   favoritesTable,
@@ -30,7 +31,7 @@ import { requireAuth, requireAdmin } from "../middlewares/require-auth";
 
 const router: IRouter = Router();
 
-async function favoritedRecipeIds(userId: number, recipeIds: number[]): Promise<Set<number>> {
+export async function favoritedRecipeIds(userId: number, recipeIds: number[]): Promise<Set<number>> {
   if (recipeIds.length === 0) return new Set();
   const rows = await db
     .select({ recipeId: favoritesTable.recipeId })
@@ -39,7 +40,7 @@ async function favoritedRecipeIds(userId: number, recipeIds: number[]): Promise<
   return new Set(rows.map((r) => r.recipeId));
 }
 
-function toSummary(r: RecipeRecord, favorited: boolean) {
+export function toSummary(r: RecipeRecord, favorited: boolean) {
   return {
     id: String(r.id),
     slug: r.slug,
@@ -49,9 +50,22 @@ function toSummary(r: RecipeRecord, favorited: boolean) {
   };
 }
 
-async function buildRecipeDetail(recipe: RecipeRecord, userId: number) {
+export async function buildRecipeDetail(recipe: RecipeRecord, userId: number) {
   const [ingredients, steps, utensils, favorited] = await Promise.all([
-    db.select().from(ingredientsTable).where(eq(ingredientsTable.recipeId, recipe.id)).orderBy(ingredientsTable.position),
+    db
+      .select({
+        id: ingredientsTable.id,
+        amountText: ingredientsTable.amountText,
+        amountValue: ingredientsTable.amountValue,
+        unit: ingredientsTable.unit,
+        product: ingredientsTable.product,
+        notes: ingredientsTable.notes,
+        productType: ingredientCatalogTable.productType,
+      })
+      .from(ingredientsTable)
+      .leftJoin(ingredientCatalogTable, eq(ingredientCatalogTable.id, ingredientsTable.ingredientCatalogId))
+      .where(eq(ingredientsTable.recipeId, recipe.id))
+      .orderBy(ingredientsTable.position),
     db.select().from(stepsTable).where(eq(stepsTable.recipeId, recipe.id)).orderBy(stepsTable.position),
     db.select().from(utensilsTable).where(eq(utensilsTable.recipeId, recipe.id)),
     favoritedRecipeIds(userId, [recipe.id]),
@@ -68,13 +82,14 @@ async function buildRecipeDetail(recipe: RecipeRecord, userId: number) {
       unit: i.unit ?? undefined,
       product: i.product,
       notes: i.notes,
+      productType: i.productType ?? undefined,
     })),
     steps: steps.map((s) => s.instruction),
     utensils: utensils.map((u) => u.name),
   };
 }
 
-function slugify(name: string): string {
+export function slugify(name: string): string {
   return (
     name
       .toLowerCase()
@@ -84,7 +99,7 @@ function slugify(name: string): string {
   );
 }
 
-async function uniqueSlug(name: string): Promise<string> {
+export async function uniqueSlug(name: string): Promise<string> {
   const base = slugify(name);
   let candidate = base;
   let suffix = 1;

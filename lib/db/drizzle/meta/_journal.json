@@ -8,6 +8,20 @@
       "when": 1789167891466,
       "tag": "0000_glossy_toro",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789170605760,
+      "tag": "0001_acoustic_moondragon",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789170787083,
+      "tag": "0002_greedy_oracle",
+      "breakpoints": true
     }
   ]
 }

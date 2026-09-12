@@ -12,6 +12,10 @@ export const ingredientCatalogTable = pgTable("recipes_ingredient_catalog", {
   pluralName: text("plural_name").notNull().default(""),
   category: text("category").notNull().default(""),
   aliases: jsonb("aliases").$type<string[]>().notNull().default(sql`'[]'::jsonb`),
+  // 'fresh' | 'pantry' | null (not yet classified) -- backfilled from
+  // `category` via a heuristic mapping (see scripts/backfill-product-type.ts),
+  // powers the shopping list's Fresh / Pantry grouping.
+  productType: text("product_type"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

@@ -17,6 +17,7 @@ import Settings from '@/pages/settings';
 import SettingsCategories from '@/pages/settings-categories';
 import SettingsRecipes from '@/pages/settings-recipes';
 import SettingsIngredients from '@/pages/settings-ingredients';
+import Planner from '@/pages/planner';
 
 import {
   Link,
@@ -50,6 +51,7 @@ function Router() {
         <Route path="/add" component={AddRecipe} />
         <Route path="/recipe/:slug" component={RecipeDetail} />
         <Route path="/favorites" component={Favorites} />
+        <Route path="/planner" component={Planner} />
         <Route path="/settings" component={Settings} />
         <Route path="/settings/categories" component={SettingsCategories} />
         <Route path="/settings/recipes" component={SettingsRecipes} />

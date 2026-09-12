@@ -1,0 +1,1 @@
+ALTER TABLE "recipes_ingredient_catalog" ADD COLUMN "product_type" text;

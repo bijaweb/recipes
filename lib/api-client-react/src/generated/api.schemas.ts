@@ -73,6 +73,8 @@ export interface Ingredient {
   unit?: string;
   product: string;
   notes: string;
+  /** 'fresh' | 'pantry', when this ingredient is linked to a catalog entry with a known classification. */
+  productType?: string;
 }
 
 export type RecipeDetail = RecipeSummary & {
@@ -128,6 +130,65 @@ export interface ErrorResponse {
   error: string;
 }
 
+export interface PlannerProtein {
+  familyKey: string;
+  label: string;
+  icon: string;
+  recipeCount: number;
+  avgRating?: number;
+}
+
+export interface PlannerProteinListResponse {
+  proteins: PlannerProtein[];
+}
+
+export interface PlannerPairingItem {
+  name: string;
+  recipeCount: number;
+  weightedScore?: number;
+}
+
+export interface PlannerPairingsResponse {
+  familyKey: string;
+  sauces: PlannerPairingItem[];
+  veg: PlannerPairingItem[];
+  carbs: PlannerPairingItem[];
+  cuisines: PlannerPairingItem[];
+}
+
+export interface BuildPlannerRecipeInput {
+  familyKey: string;
+  proteinLabel: string;
+  sauce: string;
+  veg: string;
+  carb: string;
+}
+
+export interface MealPlanEntry {
+  id: string;
+  date: string;
+  sortOrder: number;
+  recipe: RecipeSummary;
+}
+
+export interface MealPlanListResponse {
+  entries: MealPlanEntry[];
+}
+
+export interface MealPlanEntryResponse {
+  entry: MealPlanEntry;
+}
+
+export interface AddMealPlanEntryInput {
+  date: string;
+  recipeId: string;
+}
+
+export interface MoveMealPlanEntryInput {
+  date: string;
+  sortOrder?: number;
+}
+
 export type SearchRecipesParams = {
 q?: string;
 category?: string;
@@ -137,5 +198,15 @@ export type ListIngredientCatalogParams = {
 q?: string;
 limit?: number;
 offset?: number;
+};
+
+export type GetPlannerPairingsParams = {
+familyKey: string;
+cuisine?: string;
+};
+
+export type ListMealPlanParams = {
+from: string;
+to: string;
 };
 

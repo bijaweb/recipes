@@ -13,4 +13,6 @@ export interface Ingredient {
   unit?: string;
   product: string;
   notes: string;
+  /** 'fresh' | 'pantry', when this ingredient is linked to a catalog entry with a known classification. */
+  productType?: string;
 }

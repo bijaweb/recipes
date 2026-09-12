@@ -141,7 +141,8 @@ export const CreateRecipeResponse = zod.object({
   "amountValue": zod.number().optional(),
   "unit": zod.string().optional(),
   "product": zod.string(),
-  "notes": zod.string()
+  "notes": zod.string(),
+  "productType": zod.string().optional().describe('\'fresh\' | \'pantry\', when this ingredient is linked to a catalog entry with a known classification.')
 })),
   "steps": zod.array(zod.string()),
   "utensils": zod.array(zod.string())
@@ -197,7 +198,8 @@ export const GetRecipeResponse = zod.object({
   "amountValue": zod.number().optional(),
   "unit": zod.string().optional(),
   "product": zod.string(),
-  "notes": zod.string()
+  "notes": zod.string(),
+  "productType": zod.string().optional().describe('\'fresh\' | \'pantry\', when this ingredient is linked to a catalog entry with a known classification.')
 })),
   "steps": zod.array(zod.string()),
   "utensils": zod.array(zod.string())
@@ -245,7 +247,8 @@ export const UpdateRecipeResponse = zod.object({
   "amountValue": zod.number().optional(),
   "unit": zod.string().optional(),
   "product": zod.string(),
-  "notes": zod.string()
+  "notes": zod.string(),
+  "productType": zod.string().optional().describe('\'fresh\' | \'pantry\', when this ingredient is linked to a catalog entry with a known classification.')
 })),
   "steps": zod.array(zod.string()),
   "utensils": zod.array(zod.string())
@@ -348,6 +351,177 @@ export const RemoveFavoriteParams = zod.object({
 })
 
 export const RemoveFavoriteResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
+ * @summary Protein families for the planner picker, ranked by recipe count
+ */
+export const ListPlannerProteinsResponse = zod.object({
+  "proteins": zod.array(zod.object({
+  "familyKey": zod.string(),
+  "label": zod.string(),
+  "icon": zod.string(),
+  "recipeCount": zod.number(),
+  "avgRating": zod.number().optional()
+}))
+})
+
+
+/**
+ * @summary Recommended sauces/veg/carbs/cuisines for one protein family
+ */
+export const GetPlannerPairingsQueryParams = zod.object({
+  "familyKey": zod.coerce.string(),
+  "cuisine": zod.coerce.string().optional()
+})
+
+export const GetPlannerPairingsResponse = zod.object({
+  "familyKey": zod.string(),
+  "sauces": zod.array(zod.object({
+  "name": zod.string(),
+  "recipeCount": zod.number(),
+  "weightedScore": zod.number().optional()
+})),
+  "veg": zod.array(zod.object({
+  "name": zod.string(),
+  "recipeCount": zod.number(),
+  "weightedScore": zod.number().optional()
+})),
+  "carbs": zod.array(zod.object({
+  "name": zod.string(),
+  "recipeCount": zod.number(),
+  "weightedScore": zod.number().optional()
+})),
+  "cuisines": zod.array(zod.object({
+  "name": zod.string(),
+  "recipeCount": zod.number(),
+  "weightedScore": zod.number().optional()
+}))
+})
+
+
+/**
+ * @summary Save a protein/sauce/veg/carb combo as a new recipe in the catalog
+ */
+export const BuildPlannerRecipeBody = zod.object({
+  "familyKey": zod.string(),
+  "proteinLabel": zod.string(),
+  "sauce": zod.string(),
+  "veg": zod.string(),
+  "carb": zod.string()
+})
+
+export const BuildPlannerRecipeResponse = zod.object({
+  "recipe": zod.object({
+  "id": zod.string(),
+  "slug": zod.string(),
+  "name": zod.string(),
+  "category": zod.string(),
+  "favorited": zod.boolean().optional()
+}).and(zod.object({
+  "yieldText": zod.string(),
+  "yieldServings": zod.number().optional(),
+  "ingredients": zod.array(zod.object({
+  "id": zod.string(),
+  "amountText": zod.string(),
+  "amountValue": zod.number().optional(),
+  "unit": zod.string().optional(),
+  "product": zod.string(),
+  "notes": zod.string(),
+  "productType": zod.string().optional().describe('\'fresh\' | \'pantry\', when this ingredient is linked to a catalog entry with a known classification.')
+})),
+  "steps": zod.array(zod.string()),
+  "utensils": zod.array(zod.string())
+}))
+})
+
+
+/**
+ * @summary Meal plan entries in a date range
+ */
+export const ListMealPlanQueryParams = zod.object({
+  "from": zod.coerce.string(),
+  "to": zod.coerce.string()
+})
+
+export const ListMealPlanResponse = zod.object({
+  "entries": zod.array(zod.object({
+  "id": zod.string(),
+  "date": zod.string(),
+  "sortOrder": zod.number(),
+  "recipe": zod.object({
+  "id": zod.string(),
+  "slug": zod.string(),
+  "name": zod.string(),
+  "category": zod.string(),
+  "favorited": zod.boolean().optional()
+})
+}))
+})
+
+
+/**
+ * @summary Add a recipe to a day
+ */
+export const AddMealPlanEntryBody = zod.object({
+  "date": zod.string(),
+  "recipeId": zod.string()
+})
+
+export const AddMealPlanEntryResponse = zod.object({
+  "entry": zod.object({
+  "id": zod.string(),
+  "date": zod.string(),
+  "sortOrder": zod.number(),
+  "recipe": zod.object({
+  "id": zod.string(),
+  "slug": zod.string(),
+  "name": zod.string(),
+  "category": zod.string(),
+  "favorited": zod.boolean().optional()
+})
+})
+})
+
+
+/**
+ * @summary Move a meal plan entry to a different day (drag-and-drop reschedule)
+ */
+export const MoveMealPlanEntryParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const MoveMealPlanEntryBody = zod.object({
+  "date": zod.string(),
+  "sortOrder": zod.number().optional()
+})
+
+export const MoveMealPlanEntryResponse = zod.object({
+  "entry": zod.object({
+  "id": zod.string(),
+  "date": zod.string(),
+  "sortOrder": zod.number(),
+  "recipe": zod.object({
+  "id": zod.string(),
+  "slug": zod.string(),
+  "name": zod.string(),
+  "category": zod.string(),
+  "favorited": zod.boolean().optional()
+})
+})
+})
+
+
+/**
+ * @summary Remove a recipe from the plan
+ */
+export const RemoveMealPlanEntryParams = zod.object({
+  "id": zod.coerce.string()
+})
+
+export const RemoveMealPlanEntryResponse = zod.object({
   "success": zod.boolean()
 })
 
