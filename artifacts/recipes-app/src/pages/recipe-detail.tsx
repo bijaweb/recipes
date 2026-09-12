@@ -479,7 +479,7 @@ export default function RecipeDetail() {
                   }
                   return (
                     <li key={ing.id} className="flex items-baseline gap-[14px] text-sm">
-                      <span className="w-10 shrink-0 whitespace-nowrap text-left font-semibold text-foreground">{display}</span>
+                      <span className="w-20 min-w-20 shrink-0 overflow-hidden whitespace-nowrap text-left font-semibold text-foreground">{display}</span>
                       <span className="text-foreground">
                         {ing.product}
                         {ing.notes && <span className="text-muted-foreground"> — {ing.notes}</span>}
