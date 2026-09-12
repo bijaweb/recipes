@@ -90,7 +90,16 @@ export async function generatePlannerRecipe(input: {
       "prepared -- not just a restatement of the four component names. You may add reasonable supporting " +
       "ingredients (oil, aromatics, salt, pepper, acid, herbs) that a real recipe for this dish would need, but " +
       "the given protein/sauce/veg/carb must remain the centerpiece of their respective role. Write this recipe " +
-      "from scratch -- never reproduce another company's or publication's exact recipe text.",
+      "from scratch -- never reproduce another company's or publication's exact recipe text.\n\n" +
+      "Unit selection matters -- pick the unit a home cook would actually use, never a raw conversion: " +
+      "small amounts of dry spices, salt, pepper, extracts, baking powder/soda, and other measuring-spoon " +
+      "ingredients get 'tsp' or 'tbsp', never 'ml' or 'l' (salt is not a liquid; '10 ml salt' is wrong, " +
+      "'2 tsp salt' is right). Butter and other solid fats get 'tbsp', 'cup', 'g', or 'oz' -- never 'ml'. " +
+      "Ingredients normally weighed (meat, flour, sugar, cheese, produce) get 'g', 'kg', 'oz', or 'lb', or " +
+      "'each' when it's naturally a count (eggs, cloves of garlic, chiles). Reserve 'ml', 'l', 'fl_oz', " +
+      "'qt', and 'gal' for things actually poured by volume in real quantity: stock, milk, wine, water, oil. " +
+      "When in doubt, ask what unit would appear on the ingredient's own label or on a measuring spoon/cup " +
+      "in a home kitchen, not what's mathematically convertible.",
     messages: [
       {
         role: "user",

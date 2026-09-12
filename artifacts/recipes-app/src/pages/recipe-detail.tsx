@@ -21,6 +21,7 @@ import {
   type IngredientDraft,
 } from '@workspace/api-client-react';
 import { convertAmount, formatAmount, unitLabel, UNIT_LABELS, type UnitSystem } from '@/lib/units';
+import { highlightIngredients } from '@/lib/highlight-ingredients';
 
 const SCALES = [0.5, 1, 2, 3, 4];
 const emptyIngredient: IngredientDraft = { amountText: '', product: '', notes: '' };
@@ -143,19 +144,29 @@ export default function RecipeDetail() {
 
   return (
     <div className="min-h-[100dvh] bg-background pb-16">
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-card py-3 pl-4 pr-24">
+      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-card py-3 pl-4 pr-[104px]">
         <Button variant="ghost" size="icon" onClick={() => (isEditing ? cancelEditing() : navigate('/'))}>
           {isEditing ? <X className="h-4 w-4" /> : <ArrowLeft className="h-4 w-4" />}
         </Button>
         {recipe && !isEditing && (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {user?.isAdmin && (
-              <button type="button" onClick={startEditing} aria-label="Edit recipe" className="p-1 text-muted-foreground hover:text-accent">
-                <Pencil className="h-5 w-5" />
+              <button
+                type="button"
+                onClick={startEditing}
+                aria-label="Edit recipe"
+                className="flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground hover:bg-muted hover:text-accent"
+              >
+                <Pencil className="h-4 w-4" />
               </button>
             )}
-            <button type="button" onClick={toggleFavorite} aria-label="Toggle favorite" className="p-1 text-muted-foreground hover:text-accent">
-              <Star className={`h-5 w-5 ${recipe.favorited ? 'fill-accent text-accent' : ''}`} />
+            <button
+              type="button"
+              onClick={toggleFavorite}
+              aria-label="Toggle favorite"
+              className="flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground hover:bg-muted hover:text-accent"
+            >
+              <Star className={`h-4 w-4 ${recipe.favorited ? 'fill-accent text-accent' : ''}`} />
             </button>
           </div>
         )}
@@ -378,16 +389,18 @@ export default function RecipeDetail() {
 
             <Card className="p-4">
               <h2 className="mb-3 font-serif text-lg">Steps</h2>
-              <ol className="space-y-3">
+              <ol className="space-y-4">
                 {recipe.steps.map((step, i) =>
                   step.startsWith('—') ? (
                     <li key={i} className="pt-1 text-xs font-bold uppercase tracking-wide text-accent">
                       {step.replace(/—/g, '').trim()}
                     </li>
                   ) : (
-                    <li key={i} className="flex gap-3 text-sm">
-                      <span className="shrink-0 font-semibold text-primary">{i + 1}.</span>
-                      <span>{step}</span>
+                    <li key={i} className="flex gap-3 text-base leading-relaxed">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                        {i + 1}
+                      </span>
+                      <span>{highlightIngredients(step, recipe.ingredients.map((ing) => ing.product))}</span>
                     </li>
                   ),
                 )}

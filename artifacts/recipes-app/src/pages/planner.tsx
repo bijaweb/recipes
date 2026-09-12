@@ -81,10 +81,74 @@ function PickerSection({
   );
 }
 
+function AddSavedRecipeToDayDialog({
+  recipe,
+  onClose,
+}: {
+  recipe: { id: string; slug: string; name: string } | null;
+  onClose: () => void;
+}) {
+  const [, navigate] = useLocation();
+  const qc = useQueryClient();
+  const addEntry = useAddMealPlanEntry();
+
+  const todayStr = format(new Date(), 'yyyy-MM-dd');
+  const weekStart = startOfWeek(new Date(), { weekStartsOn: 1 });
+  const availableDays = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i)).filter(
+    (d) => format(d, 'yyyy-MM-dd') >= todayStr,
+  );
+
+  const finish = () => {
+    onClose();
+    if (recipe) navigate(`/recipe/${recipe.slug}`);
+  };
+
+  return (
+    <Dialog open={recipe !== null} onOpenChange={(open) => !open && finish()}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Add to a day this week?</DialogTitle>
+        </DialogHeader>
+        <p className="text-sm text-muted-foreground">"{recipe?.name}" is saved to your recipes.</p>
+        <div className="grid grid-cols-2 gap-2">
+          {availableDays.map((d) => {
+            const dateStr = format(d, 'yyyy-MM-dd');
+            return (
+              <Button
+                key={dateStr}
+                type="button"
+                variant="outline"
+                disabled={addEntry.isPending}
+                onClick={() => {
+                  if (!recipe) return;
+                  addEntry.mutate(
+                    { data: { date: dateStr, recipeId: recipe.id } },
+                    {
+                      onSuccess: () => {
+                        void qc.invalidateQueries();
+                        finish();
+                      },
+                    },
+                  );
+                }}
+              >
+                {dateStr === todayStr ? `Today (${format(d, 'EEE d')})` : format(d, 'EEE d')}
+              </Button>
+            );
+          })}
+        </div>
+        <Button type="button" variant="ghost" className="w-full" onClick={finish}>
+          Skip, just view the recipe
+        </Button>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 function BuildTab() {
   const proteinsQuery = useListPlannerProteins();
   const qc = useQueryClient();
-  const [, navigate] = useLocation();
+  const [savedRecipe, setSavedRecipe] = useState<{ id: string; slug: string; name: string } | null>(null);
   const [search, setSearch] = useState('');
   const [familyKey, setFamilyKey] = useState<string | null>(null);
   const [cuisine, setCuisine] = useState<string | null>(null);
@@ -134,7 +198,7 @@ function BuildTab() {
         onSuccess: (res) => {
           toast({ description: `Saved "${res.recipe.name}"` });
           void qc.invalidateQueries({ queryKey: getSearchRecipesQueryKey() });
-          navigate(`/recipe/${res.recipe.slug}`);
+          setSavedRecipe({ id: res.recipe.id, slug: res.recipe.slug, name: res.recipe.name });
         },
         onError: () => {
           toast({ description: 'Could not write a recipe for that combo -- try again.', variant: 'destructive' });
@@ -227,6 +291,8 @@ function BuildTab() {
           )}
         </>
       )}
+
+      <AddSavedRecipeToDayDialog recipe={savedRecipe} onClose={() => setSavedRecipe(null)} />
     </div>
   );
 }
@@ -250,11 +316,15 @@ function DraggableEntry({ entry, onRemove }: { entry: MealPlanEntry; onRemove: (
       <button
         type="button"
         onPointerDown={(e) => e.stopPropagation()}
-        onClick={onRemove}
+        onTouchStart={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+          onRemove();
+        }}
         aria-label={`Remove ${entry.recipe.name}`}
-        className="shrink-0 text-muted-foreground hover:text-destructive"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-destructive"
       >
-        <X className="h-3.5 w-3.5" />
+        <X className="h-4 w-4" />
       </button>
     </div>
   );
