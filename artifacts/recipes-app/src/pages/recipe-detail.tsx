@@ -451,8 +451,8 @@ export default function RecipeDetail() {
                     display = formatAmount(ing.amountValue * scale);
                   }
                   return (
-                    <li key={ing.id} className="flex items-baseline gap-2 text-sm">
-                      <span className="w-20 shrink-0 font-semibold text-foreground">{display}</span>
+                    <li key={ing.id} className="flex items-baseline gap-1 text-sm">
+                      <span className="w-10 shrink-0 whitespace-nowrap text-left font-semibold text-foreground">{display}</span>
                       <span className="text-foreground">
                         {ing.product}
                         {ing.notes && <span className="text-muted-foreground"> — {ing.notes}</span>}
