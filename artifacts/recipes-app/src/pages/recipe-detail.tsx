@@ -30,8 +30,8 @@ import { highlightIngredients } from '@/lib/highlight-ingredients';
 import { cn } from '@/lib/utils';
 
 const SCALES = [0.5, 1, 2, 3, 4];
-const PERSON_OPTIONS = [2, 4, 6];
-const PLANNER_DAYS = 10;
+const PERSON_OPTIONS = [2, 4, 6, 8];
+const PLANNER_DAYS = 7;
 const emptyIngredient: IngredientDraft = { amountText: '', product: '', notes: '' };
 
 function DayStrip({ recipeId }: { recipeId: string }) {
@@ -61,7 +61,7 @@ function DayStrip({ recipeId }: { recipeId: string }) {
   };
 
   return (
-    <div className="flex gap-1.5 overflow-x-auto pb-1">
+    <div className="flex gap-1.5">
       {days.map((d) => {
         const dateStr = format(d, 'yyyy-MM-dd');
         const isPlanned = entryIdByDate.has(dateStr);
@@ -75,7 +75,7 @@ function DayStrip({ recipeId }: { recipeId: string }) {
             aria-label={`${isPlanned ? 'Remove from' : 'Add to'} ${format(d, 'EEEE, MMM d')}`}
             aria-pressed={isPlanned}
             className={cn(
-              'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-bold transition-colors disabled:opacity-60',
+              'flex aspect-square flex-1 items-center justify-center rounded-full border text-sm font-bold transition-colors disabled:opacity-60',
               isPlanned
                 ? 'border-primary bg-primary text-primary-foreground'
                 : 'border-border bg-card text-muted-foreground hover:bg-muted',
