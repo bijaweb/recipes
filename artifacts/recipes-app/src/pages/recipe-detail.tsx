@@ -31,7 +31,10 @@ import { cn } from '@/lib/utils';
 
 const SCALES = [0.5, 1, 2, 3, 4];
 const PERSON_OPTIONS = [2, 4, 6, 8];
-const PLANNER_DAYS = 7;
+// Kept one shorter than the calendar's own 7-day window so every day
+// offered here (tomorrow through +6) is guaranteed to fall inside the
+// Planner's default "This Week" view (today through +6) with no navigation.
+const PLANNER_DAYS = 6;
 const emptyIngredient: IngredientDraft = { amountText: '', product: '', notes: '' };
 
 function DayStrip({ recipeId }: { recipeId: string }) {

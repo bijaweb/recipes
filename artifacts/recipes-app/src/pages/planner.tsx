@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useLocation } from 'wouter';
 import { useQueryClient, useQueries } from '@tanstack/react-query';
-import { format, addDays, startOfWeek } from 'date-fns';
+import { format, addDays } from 'date-fns';
 import { ChevronLeft, ChevronRight, Loader2, Plus, Save, X } from 'lucide-react';
 import {
   DndContext,
@@ -564,7 +564,10 @@ function ShoppingTab({ from, to }: { from: string; to: string }) {
 
 export default function Planner() {
   const [tab, setTab] = useState<'build' | 'week' | 'shopping'>('build');
-  const [weekStart, setWeekStart] = useState<Date>(() => startOfWeek(new Date(), { weekStartsOn: 1 }));
+  // Rolling 7-day window anchored on today, not the Mon-Sun calendar week --
+  // this keeps "This Week" in sync with the recipe page's own day-picker,
+  // which also counts forward from today rather than snapping to Monday.
+  const [weekStart, setWeekStart] = useState<Date>(() => new Date());
   const from = format(weekStart, 'yyyy-MM-dd');
   const to = format(addDays(weekStart, 6), 'yyyy-MM-dd');
 
