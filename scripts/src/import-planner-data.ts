@@ -61,7 +61,18 @@ async function main() {
   await db.delete(plannerPairingsTable);
   await db.delete(plannerProteinsTable);
 
+  // The 5 icons shown by default (before search) are curated, not driven by
+  // raw recipe count -- egg/plant-based have more corpus rows but aren't what
+  // the user wants leading the picker.
+  const PINNED_TOP_FIVE = ["chicken", "beef", "pork", "salmon", "lamb"];
+
   const families = Object.entries(globalData).sort((a, b) => b[1].recipe_count - a[1].recipe_count);
+  const pinnedRank = new Map(PINNED_TOP_FIVE.map((key, i) => [key, i]));
+  const sortOrderOf = (familyKey: string): number => {
+    if (pinnedRank.has(familyKey)) return pinnedRank.get(familyKey)!;
+    const rest = families.map(([k]) => k).filter((k) => !pinnedRank.has(k));
+    return PINNED_TOP_FIVE.length + rest.indexOf(familyKey);
+  };
 
   for (const [familyKey, stats] of families) {
     const meta = PROTEIN_META[familyKey];
@@ -76,7 +87,7 @@ async function main() {
       icon: meta.icon,
       recipeCount: stats.recipe_count,
       avgRating: stats.avg_rating,
-      sortOrder: families.findIndex(([k]) => k === familyKey),
+      sortOrder: sortOrderOf(familyKey),
     });
 
     const rows: (typeof plannerPairingsTable.$inferInsert)[] = [];

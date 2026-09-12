@@ -49,6 +49,43 @@ def clean_pairing_name(name: str) -> str:
     return cleaned if cleaned else name
 
 
+# Prep-instruction adjectives ("Grated Carrots", "Finely Chopped Celery")
+# splinter what's really one ingredient into many differently-worded pairing
+# entries, diluting each one's rank against generically-worded items. Strip
+# them repeatedly so "Finely Diced Red Onion" reduces all the way down.
+PREP_DESCRIPTOR_RE = re.compile(
+    r"^(grated|shredded|sliced|chopped|diced|minced|julienned|cubed|halved|quartered|"
+    r"trimmed|peeled|cored|seeded|deveined|crumbled|crushed|mashed|pureed|whole|fresh|"
+    r"frozen|baby|large|medium|small|finely|coarsely|roughly|thinly|unpeeled)\s+",
+    re.IGNORECASE,
+)
+
+
+def strip_prep_descriptors(name: str) -> str:
+    prev = None
+    while prev != name:
+        prev = name
+        name = PREP_DESCRIPTOR_RE.sub("", name).strip()
+    return name if name else prev
+
+
+# Bell peppers and carrots are named a dozen slightly different ways
+# ("Red Pepper", "Sweet Peppers", "Bell Pepper" / "Carrots", "Baby Carrots")
+# that all mean the same vegetable; merging them into one canonical label is
+# the difference between them ever cracking a top-8 list or not.
+BELL_PEPPER_RE = re.compile(r"^(red|green|yellow|orange|sweet|bell)\s*(bell\s*)?peppers?$", re.IGNORECASE)
+CARROT_RE = re.compile(r"^(baby\s*)?carrots?$", re.IGNORECASE)
+
+
+def canonicalize_veg(name: str) -> str:
+    cleaned = strip_prep_descriptors(name)
+    if BELL_PEPPER_RE.match(cleaned):
+        return "Bell Pepper"
+    if CARROT_RE.match(cleaned):
+        return "Carrots"
+    return cleaned
+
+
 def reclassify(row):
     """Pool every item this recipe was ever bucketed under, then re-run the
     (now condiment/sauce/pantry-corrected) classifier over each one, and
@@ -64,11 +101,11 @@ def reclassify(row):
         role, _hit = classify_item(raw_item)
         item = clean_pairing_name(raw_item)
         if role == "sauce":
-            sauce.append(item)
+            sauce.append(strip_prep_descriptors(item))
         elif role == "veg":
-            veg.append(item)
+            veg.append(canonicalize_veg(item))
         elif role == "carb":
-            carb.append(item)
+            carb.append(strip_prep_descriptors(item))
         elif role == "condiment":
             condiment.append(item)
     return sauce, veg, carb, condiment

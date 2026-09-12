@@ -105,20 +105,23 @@ FRUIT_KW = ["lemon","lime","orange","apple","berry","mango","avocado","banana","
             "clementine","tangerine","kiwi","pomegranate",
             "watermelon","cantaloupe","nectarine","currant"]
 
-VEG_KW = ["garlic","onion","scallion","carrot","pepper","broccoli","spinach","zucchini",
+VEG_KW = ["onion","carrot","pepper","broccoli","spinach","zucchini",
           "cucumber","mushroom","kale","cabbage","cauliflower","asparagus","green bean",
           "pea","eggplant","squash","corn","radish","beet","leek","fennel","artichoke",
-          "celery","arugula","lettuce","greens","shallot","tomato","potato green",
+          "celery","arugula","lettuce","greens","tomato","potato green",
           "brussels sprout","chard","bok choy","okra","jicama","turnip","parsnip",
           "sweet potato","yam","chile pepper","jalape","poblano","serrano","habanero",
-          "mirepoix","aromatic","edamame pod"]
+          "mirepoix","edamame pod"]
 
 SEASONING_KW = ["spice","cumin","paprika","chili powder","seasoning","basil","thyme",
                 "rosemary","oregano","cilantro","dill","mint","tarragon","sage","chive",
                 "parsley","bay leaf","cinnamon","nutmeg","clove","cardamom","turmeric",
                 "curry powder","za'atar","zaatar","sumac","five spice","peppercorn",
                 "red pepper flakes","garlic powder","onion powder","herbes de provence",
-                "salt","saffron","ginger","fennel seed","mustard seed","coriander"]
+                "salt","saffron","ginger","fennel seed","mustard seed","coriander",
+                # aromatics -- used in small quantity to build flavor, not "the vegetable"
+                # in a plated meal, so they don't belong in veg pairing suggestions
+                "garlic","scallion","shallot","aromatic"]
 
 NUT_KW = ["almond","walnut","pecan","cashew","peanut","pistachio","hazelnut","pine nut",
           "pumpkin seed","sunflower seed","chia seed","flax seed","pepita"]
