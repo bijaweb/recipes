@@ -219,7 +219,7 @@ export default function RecipeDetail() {
                 type="button"
                 onClick={startEditing}
                 aria-label="Edit recipe"
-                className="flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground hover:bg-muted hover:text-accent"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-card/95 text-muted-foreground shadow-md backdrop-blur transition-colors hover:text-accent"
               >
                 <Pencil className="h-4 w-4" />
               </button>
@@ -228,7 +228,7 @@ export default function RecipeDetail() {
               type="button"
               onClick={toggleFavorite}
               aria-label="Toggle favorite"
-              className="flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground hover:bg-muted hover:text-accent"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-card/95 text-muted-foreground shadow-md backdrop-blur transition-colors hover:text-accent"
             >
               <Star className={`h-4 w-4 ${recipe.favorited ? 'fill-accent text-accent' : ''}`} />
             </button>
