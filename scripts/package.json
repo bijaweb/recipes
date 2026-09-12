@@ -13,6 +13,7 @@
     "classify-dessert": "tsx ./src/classify-dessert.ts",
     "import-blue-apron-recipes": "tsx ./src/import-blue-apron-recipes.ts",
     "import-blue-apron-simple": "tsx ./src/import-blue-apron-simple.ts"
+    "import-ben-recipes": "tsx ./src/import-ben-recipes.ts"
   },
   "dependencies": {
     "@workspace/db": "workspace:*",
