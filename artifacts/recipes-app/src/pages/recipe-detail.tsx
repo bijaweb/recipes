@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useRoute } from 'wouter';
 import { useQueryClient } from '@tanstack/react-query';
+import { format, addDays } from 'date-fns';
 import { ArrowLeft, Loader2, Minus, Pencil, Plus, Star, Trash2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -13,18 +14,80 @@ import {
   useAddFavorite,
   useRemoveFavorite,
   useUpdateRecipe,
+  useListMealPlan,
+  useAddMealPlanEntry,
+  useRemoveMealPlanEntry,
   getListFavoritesQueryKey,
   getGetSearchShortcutsQueryKey,
   getGetRecipeQueryKey,
   getListCategoriesQueryKey,
   getSearchRecipesQueryKey,
+  getListMealPlanQueryKey,
   type IngredientDraft,
 } from '@workspace/api-client-react';
 import { convertAmount, formatAmount, unitLabel, UNIT_LABELS, type UnitSystem } from '@/lib/units';
 import { highlightIngredients } from '@/lib/highlight-ingredients';
+import { cn } from '@/lib/utils';
 
 const SCALES = [0.5, 1, 2, 3, 4];
+const PLANNER_DAYS = 10;
 const emptyIngredient: IngredientDraft = { amountText: '', product: '', notes: '' };
+
+function DayStrip({ recipeId }: { recipeId: string }) {
+  const qc = useQueryClient();
+  const today = new Date();
+  const days = Array.from({ length: PLANNER_DAYS }, (_, i) => addDays(today, i));
+  const params = { from: format(days[0], 'yyyy-MM-dd'), to: format(days[days.length - 1], 'yyyy-MM-dd') };
+  const planQuery = useListMealPlan(params, { query: { queryKey: getListMealPlanQueryKey(params) } });
+  const addEntry = useAddMealPlanEntry();
+  const removeEntry = useRemoveMealPlanEntry();
+
+  const entryIdByDate = new Map(
+    (planQuery.data?.entries ?? []).filter((e) => e.recipe.id === recipeId).map((e) => [e.date, e.id]),
+  );
+  const todayStr = format(today, 'yyyy-MM-dd');
+  const pending = addEntry.isPending || removeEntry.isPending;
+
+  const invalidate = () => void qc.invalidateQueries({ queryKey: getListMealPlanQueryKey(params) });
+
+  const toggle = (dateStr: string) => {
+    const existingId = entryIdByDate.get(dateStr);
+    if (existingId) {
+      removeEntry.mutate({ id: existingId }, { onSuccess: invalidate });
+    } else {
+      addEntry.mutate({ data: { date: dateStr, recipeId } }, { onSuccess: invalidate });
+    }
+  };
+
+  return (
+    <div className="flex gap-1.5 overflow-x-auto pb-1">
+      {days.map((d) => {
+        const dateStr = format(d, 'yyyy-MM-dd');
+        const isPlanned = entryIdByDate.has(dateStr);
+        const isToday = dateStr === todayStr;
+        return (
+          <button
+            key={dateStr}
+            type="button"
+            disabled={pending}
+            onClick={() => toggle(dateStr)}
+            aria-label={`${isPlanned ? 'Remove from' : 'Add to'} ${format(d, 'EEEE, MMM d')}`}
+            aria-pressed={isPlanned}
+            className={cn(
+              'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-bold transition-colors disabled:opacity-60',
+              isPlanned
+                ? 'border-primary bg-primary text-primary-foreground'
+                : 'border-border bg-card text-muted-foreground hover:bg-muted',
+              isToday && !isPlanned && 'ring-2 ring-primary/40',
+            )}
+          >
+            {format(d, 'EEEEE')}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function RecipeDetail() {
   const [, params] = useRoute('/recipe/:slug');
@@ -284,6 +347,8 @@ export default function RecipeDetail() {
 
         {recipe && !isEditing && (
           <>
+            <DayStrip recipeId={recipe.id} />
+
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{recipe.category}</p>
               <h1 className="font-serif text-3xl">{recipe.name}</h1>
