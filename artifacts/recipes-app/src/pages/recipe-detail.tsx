@@ -37,7 +37,9 @@ const emptyIngredient: IngredientDraft = { amountText: '', product: '', notes: '
 function DayStrip({ recipeId }: { recipeId: string }) {
   const qc = useQueryClient();
   const today = new Date();
-  const days = Array.from({ length: PLANNER_DAYS }, (_, i) => addDays(today, i));
+  // Starts tomorrow -- today's meal is already decided by the time you're
+  // browsing a recipe, so it isn't a plannable slot here.
+  const days = Array.from({ length: PLANNER_DAYS }, (_, i) => addDays(today, i + 1));
   const params = { from: format(days[0], 'yyyy-MM-dd'), to: format(days[days.length - 1], 'yyyy-MM-dd') };
   const planQuery = useListMealPlan(params, { query: { queryKey: getListMealPlanQueryKey(params) } });
   const addEntry = useAddMealPlanEntry();
@@ -46,15 +48,25 @@ function DayStrip({ recipeId }: { recipeId: string }) {
   const entryIdByDate = new Map(
     (planQuery.data?.entries ?? []).filter((e) => e.recipe.id === recipeId).map((e) => [e.date, e.id]),
   );
-  const todayStr = format(today, 'yyyy-MM-dd');
   const pending = addEntry.isPending || removeEntry.isPending;
 
   const invalidate = () => void qc.invalidateQueries({ queryKey: getListMealPlanQueryKey(params) });
 
+  // Only one day (within this strip's visible range) can hold this recipe
+  // at a time -- picking a new day moves it rather than adding a second
+  // slot; tapping the already-picked day clears it.
   const toggle = (dateStr: string) => {
     const existingId = entryIdByDate.get(dateStr);
     if (existingId) {
       removeEntry.mutate({ id: existingId }, { onSuccess: invalidate });
+      return;
+    }
+    const otherEntry = [...entryIdByDate.entries()].find(([otherDate]) => otherDate !== dateStr);
+    if (otherEntry) {
+      removeEntry.mutate(
+        { id: otherEntry[1] },
+        { onSuccess: () => addEntry.mutate({ data: { date: dateStr, recipeId } }, { onSuccess: invalidate }) },
+      );
     } else {
       addEntry.mutate({ data: { date: dateStr, recipeId } }, { onSuccess: invalidate });
     }
@@ -65,7 +77,6 @@ function DayStrip({ recipeId }: { recipeId: string }) {
       {days.map((d) => {
         const dateStr = format(d, 'yyyy-MM-dd');
         const isPlanned = entryIdByDate.has(dateStr);
-        const isToday = dateStr === todayStr;
         return (
           <button
             key={dateStr}
@@ -79,7 +90,6 @@ function DayStrip({ recipeId }: { recipeId: string }) {
               isPlanned
                 ? 'border-primary bg-primary text-primary-foreground'
                 : 'border-border bg-card text-muted-foreground hover:bg-muted',
-              isToday && !isPlanned && 'ring-2 ring-primary/40',
             )}
           >
             {format(d, 'EEEEE')}
@@ -451,7 +461,7 @@ export default function RecipeDetail() {
                     display = formatAmount(ing.amountValue * scale);
                   }
                   return (
-                    <li key={ing.id} className="flex items-baseline gap-1 text-sm">
+                    <li key={ing.id} className="flex items-baseline gap-[14px] text-sm">
                       <span className="w-10 shrink-0 whitespace-nowrap text-left font-semibold text-foreground">{display}</span>
                       <span className="text-foreground">
                         {ing.product}
