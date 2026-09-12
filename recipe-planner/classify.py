@@ -34,7 +34,7 @@ OVERRIDES = [
     ("peanut butter", "pantry"), ("almond butter", "pantry"), ("apple butter", "pantry"),
     ("tomato paste", "pantry"), ("tomato sauce", "sauce"), ("crushed tomato", "veg"),
     ("nutritional yeast", "seasoning"),
-    ("corn starch", "pantry"), ("cornstarch", "pantry"),
+    ("corn starch", "pantry"), ("cornstarch", "pantry"), ("corn syrup", "pantry"),
     ("sesame seed", "topping"), ("sesame oil", "pantry"),
     ("egg noodle", "carb"), ("egg roll", "carb"), ("egg white", "protein"), ("egg yolk", "protein"),
     ("aluminum tray", "other"), ("parchment", "other"), ("skewer", "other"), ("twine", "other"),

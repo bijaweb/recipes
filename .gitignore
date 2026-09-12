@@ -52,3 +52,4 @@ Thumbs.db
 .env.local
 *.env
 !.env.example
+recipe-planner/__pycache__/

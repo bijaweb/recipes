@@ -1,227 +1,227 @@
 {
   "egg": {
-    "recipe_count": 507,
+    "recipe_count": 6639,
     "avg_rating": 4.14,
     "top_sauces": [
       {
+        "item": "Chocolate-Hazelnut Spread",
+        "recipe_count": 24,
+        "weighted_score": 24.0,
+        "lift": 4.45
+      },
+      {
+        "item": "Chocolate Hazelnut Spread",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 4.45
+      },
+      {
+        "item": "Dill Pickle Relish",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 2.6
+      },
+      {
+        "item": "Whole Cranberry Sauce",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 2.54
+      },
+      {
+        "item": "Pasta Sauce",
+        "recipe_count": 15,
+        "weighted_score": 15.0,
+        "lift": 1.91
+      },
+      {
         "item": "Kimchi",
-        "recipe_count": 12,
-        "weighted_score": 287.2,
-        "lift": 4.07
+        "recipe_count": 16,
+        "weighted_score": 291.2,
+        "lift": 1.74
+      },
+      {
+        "item": "Creamy Salad Dressing",
+        "recipe_count": 25,
+        "weighted_score": 25.0,
+        "lift": 1.5
+      },
+      {
+        "item": "Sweet Pickle Relish",
+        "recipe_count": 35,
+        "weighted_score": 50.0,
+        "lift": 1.22
+      },
+      {
+        "item": "Dash Hot Pepper Sauce",
+        "recipe_count": 22,
+        "weighted_score": 22.0,
+        "lift": 1.22
       },
       {
         "item": "Blueberry Bourbon Spread",
         "recipe_count": 8,
         "weighted_score": 201.4,
-        "lift": 3.83
+        "lift": 1.62
       },
       {
-        "item": "Soy-Miso Sauce",
-        "recipe_count": 10,
-        "weighted_score": 241.6,
-        "lift": 2.92
+        "item": "Spaghetti Sauce",
+        "recipe_count": 27,
+        "weighted_score": 27.0,
+        "lift": 1.05
       },
       {
-        "item": "Soy Sauce",
-        "recipe_count": 65,
-        "weighted_score": 1846.2,
-        "lift": 1.66
-      },
-      {
-        "item": "Vegetable Demi-Glace",
-        "recipe_count": 16,
-        "weighted_score": 418.3,
-        "lift": 2.41
-      },
-      {
-        "item": "Furikake",
-        "recipe_count": 14,
-        "weighted_score": 441.7,
-        "lift": 2.38
-      },
-      {
-        "item": "Tahini",
-        "recipe_count": 21,
-        "weighted_score": 532.0,
-        "lift": 2.05
-      },
-      {
-        "item": "Sambal Oelek",
-        "recipe_count": 43,
-        "weighted_score": 1144.4,
-        "lift": 1.43
-      },
-      {
-        "item": "Mirin",
-        "recipe_count": 16,
-        "weighted_score": 447.1,
-        "lift": 1.87
-      },
-      {
-        "item": "Sour Cherry Spread",
-        "recipe_count": 11,
-        "weighted_score": 268.0,
-        "lift": 2.07
-      },
-      {
-        "item": "Gochujang",
-        "recipe_count": 24,
-        "weighted_score": 589.5,
-        "lift": 1.51
-      },
-      {
-        "item": "Sweet White Miso Paste",
-        "recipe_count": 19,
-        "weighted_score": 528.9,
-        "lift": 1.59
+        "item": "Marinara Sauce",
+        "recipe_count": 15,
+        "weighted_score": 15.0,
+        "lift": 1.21
       }
     ],
     "top_veg": [
       {
-        "item": "East Asian-Style Sautéed Aromatics",
-        "recipe_count": 29,
-        "weighted_score": 686.6,
-        "lift": 2.85
+        "item": "Grated Zucchini",
+        "recipe_count": 95,
+        "weighted_score": 95.0,
+        "lift": 4.45
       },
       {
-        "item": "Shiitake Mushrooms",
+        "item": "Shredded Zucchini",
+        "recipe_count": 67,
+        "weighted_score": 67.0,
+        "lift": 4.26
+      },
+      {
+        "item": "Grated Carrots",
+        "recipe_count": 62,
+        "weighted_score": 62.0,
+        "lift": 3.54
+      },
+      {
+        "item": "Carrot Baby Food",
+        "recipe_count": 11,
+        "weighted_score": 11.0,
+        "lift": 4.45
+      },
+      {
+        "item": "Frozen Chopped Spinach",
+        "recipe_count": 82,
+        "weighted_score": 82.0,
+        "lift": 2.33
+      },
+      {
+        "item": "Green Tomatoes",
+        "recipe_count": 13,
+        "weighted_score": 13.0,
+        "lift": 3.62
+      },
+      {
+        "item": "Grated Unpeeled Zucchini",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 4.45
+      },
+      {
+        "item": "Finely Grated Carrots",
         "recipe_count": 9,
-        "weighted_score": 250.3,
-        "lift": 3.95
+        "weighted_score": 9.0,
+        "lift": 4.01
       },
       {
-        "item": "Mushrooms",
-        "recipe_count": 51,
-        "weighted_score": 1304.5,
-        "lift": 2.16
-      },
-      {
-        "item": "Lacinato Kale",
-        "recipe_count": 9,
-        "weighted_score": 275.1,
-        "lift": 3.16
-      },
-      {
-        "item": "Swiss Chard",
-        "recipe_count": 5,
-        "weighted_score": 147.8,
-        "lift": 4.05
-      },
-      {
-        "item": "Black Garlic",
-        "recipe_count": 5,
-        "weighted_score": 179.2,
-        "lift": 3.76
-      },
-      {
-        "item": "Arugula",
-        "recipe_count": 39,
-        "weighted_score": 1056.0,
-        "lift": 1.49
-      },
-      {
-        "item": "Cauliflower",
+        "item": "Dry Corn Muffin Mix",
         "recipe_count": 12,
-        "weighted_score": 386.7,
-        "lift": 2.0
+        "weighted_score": 12.0,
+        "lift": 3.56
       },
       {
-        "item": "Cremini Mushrooms",
-        "recipe_count": 18,
-        "weighted_score": 572.3,
-        "lift": 1.74
+        "item": "Shredded Carrots",
+        "recipe_count": 46,
+        "weighted_score": 46.0,
+        "lift": 2.33
       },
       {
-        "item": "Bell Pepper",
-        "recipe_count": 25,
-        "weighted_score": 586.7,
-        "lift": 1.53
+        "item": "Finely Grated Peeled Carrots",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 4.45
       },
       {
-        "item": "Baby Bok Choy",
-        "recipe_count": 41,
-        "weighted_score": 1124.2,
-        "lift": 1.33
-      },
-      {
-        "item": "Scallions",
-        "recipe_count": 108,
-        "weighted_score": 3078.2,
-        "lift": 1.06
+        "item": "Mashed Cooked Carrots",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 4.45
       }
     ],
     "top_carbs": [
       {
-        "item": "Pie Crusts",
-        "recipe_count": 36,
-        "weighted_score": 1102.2,
-        "lift": 10.24
-      },
-      {
         "item": "Rolled Oats",
-        "recipe_count": 9,
-        "weighted_score": 218.0,
-        "lift": 10.52
+        "recipe_count": 379,
+        "weighted_score": 588.0,
+        "lift": 4.35
       },
       {
-        "item": "Pie Crust",
-        "recipe_count": 30,
-        "weighted_score": 849.4,
-        "lift": 6.07
+        "item": "Graham Cracker Crumbs",
+        "recipe_count": 155,
+        "weighted_score": 155.0,
+        "lift": 4.45
       },
       {
-        "item": "Biscuit Mix",
-        "recipe_count": 27,
-        "weighted_score": 611.6,
-        "lift": 4.82
+        "item": "Quick Cooking Oats",
+        "recipe_count": 130,
+        "weighted_score": 130.0,
+        "lift": 4.32
       },
       {
-        "item": "Cornbread Mix",
-        "recipe_count": 10,
-        "weighted_score": 229.9,
-        "lift": 4.38
+        "item": "Bread Flour",
+        "recipe_count": 137,
+        "weighted_score": 137.0,
+        "lift": 4.09
       },
       {
-        "item": "Fresh Ramen Noodles",
-        "recipe_count": 10,
-        "weighted_score": 291.3,
-        "lift": 4.05
+        "item": "Recipe Pastry For A 9 Inch Single Crust Pie",
+        "recipe_count": 86,
+        "weighted_score": 86.0,
+        "lift": 4.35
       },
       {
-        "item": "Fresh Udon Noodles (previously frozen)",
-        "recipe_count": 7,
-        "weighted_score": 227.9,
-        "lift": 4.6
+        "item": "Unbaked Pie Crust",
+        "recipe_count": 95,
+        "weighted_score": 95.0,
+        "lift": 4.23
       },
       {
-        "item": "Fresh Ramen Noodles (Previously Frozen)",
-        "recipe_count": 7,
-        "weighted_score": 239.5,
+        "item": "Quick-Cooking Oats",
+        "recipe_count": 69,
+        "weighted_score": 69.0,
         "lift": 4.33
       },
       {
-        "item": "Sourdough Pullman Bread",
-        "recipe_count": 8,
-        "weighted_score": 211.7,
-        "lift": 4.01
+        "item": "Yellow Cornmeal",
+        "recipe_count": 150,
+        "weighted_score": 150.0,
+        "lift": 3.59
       },
       {
-        "item": "Ramen Noodles",
-        "recipe_count": 6,
-        "weighted_score": 109.3,
-        "lift": 4.51
+        "item": "Old-Fashioned Oats",
+        "recipe_count": 52,
+        "weighted_score": 52.0,
+        "lift": 4.45
       },
       {
-        "item": "Udon Noodles",
-        "recipe_count": 12,
-        "weighted_score": 243.1,
-        "lift": 3.32
+        "item": "Cornmeal",
+        "recipe_count": 156,
+        "weighted_score": 180.1,
+        "lift": 3.44
       },
       {
-        "item": "Challah Buns",
-        "recipe_count": 17,
-        "weighted_score": 341.4,
-        "lift": 2.32
+        "item": "Pie Crust",
+        "recipe_count": 99,
+        "weighted_score": 918.4,
+        "lift": 3.64
+      },
+      {
+        "item": "Prepared Graham Cracker Crust",
+        "recipe_count": 46,
+        "weighted_score": 46.0,
+        "lift": 4.1
       }
     ],
     "top_cuisines": [
@@ -237,23 +237,23 @@
       },
       {
         "item": "Japanese",
-        "recipe_count": 41,
-        "weighted_score": 1181.8
+        "recipe_count": 51,
+        "weighted_score": 1191.8
       },
       {
         "item": "French",
-        "recipe_count": 32,
-        "weighted_score": 987.0
+        "recipe_count": 208,
+        "weighted_score": 1163.0
       },
       {
         "item": "Italian",
-        "recipe_count": 27,
-        "weighted_score": 802.0
+        "recipe_count": 64,
+        "weighted_score": 839.0
       },
       {
         "item": "Mexican",
-        "recipe_count": 16,
-        "weighted_score": 504.6
+        "recipe_count": 41,
+        "weighted_score": 529.6
       },
       {
         "item": "Middle Eastern",
@@ -262,234 +262,234 @@
       },
       {
         "item": "Korean",
-        "recipe_count": 11,
-        "weighted_score": 272.4
+        "recipe_count": 13,
+        "weighted_score": 274.4
       }
     ]
   },
   "pork": {
-    "recipe_count": 868,
+    "recipe_count": 5517,
     "avg_rating": 4.28,
     "top_sauces": [
+      {
+        "item": "Pizza Sauce",
+        "recipe_count": 40,
+        "weighted_score": 40.0,
+        "lift": 4.12
+      },
       {
         "item": "Pork Demi-Glace",
         "recipe_count": 12,
         "weighted_score": 411.1,
-        "lift": 6.15
+        "lift": 5.36
       },
       {
         "item": "Béchamel Sauce",
         "recipe_count": 32,
         "weighted_score": 563.7,
-        "lift": 4.47
+        "lift": 3.81
       },
       {
-        "item": "Tomato Sauce",
-        "recipe_count": 42,
-        "weighted_score": 1012.5,
-        "lift": 2.15
+        "item": "Barbeque Sauce",
+        "recipe_count": 68,
+        "weighted_score": 68.0,
+        "lift": 2.43
+      },
+      {
+        "item": "Alfredo Sauce",
+        "recipe_count": 20,
+        "weighted_score": 20.0,
+        "lift": 2.75
+      },
+      {
+        "item": "Marinara Sauce",
+        "recipe_count": 26,
+        "weighted_score": 26.0,
+        "lift": 2.53
+      },
+      {
+        "item": "Prepared Marinara Sauce",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 3.3
       },
       {
         "item": "Fig Spread",
         "recipe_count": 23,
         "weighted_score": 599.8,
-        "lift": 2.52
+        "lift": 2.2
+      },
+      {
+        "item": "Garlic Basil Spread",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 3.83
       },
       {
         "item": "Calabrian Chile Paste",
         "recipe_count": 79,
         "weighted_score": 1889.8,
-        "lift": 1.79
+        "lift": 1.56
       },
       {
         "item": "Raspberry Jalapeño Spread",
         "recipe_count": 8,
         "weighted_score": 214.2,
-        "lift": 3.28
+        "lift": 2.86
       },
       {
-        "item": "Sour Cherry Spread",
-        "recipe_count": 20,
-        "weighted_score": 596.8,
-        "lift": 2.2
-      },
-      {
-        "item": "Basil Pesto",
-        "recipe_count": 35,
-        "weighted_score": 819.6,
-        "lift": 1.58
-      },
-      {
-        "item": "Romesco Sauce (Contains Almonds)",
-        "recipe_count": 27,
-        "weighted_score": 739.6,
-        "lift": 1.64
-      },
-      {
-        "item": "Pepper Sofrito",
-        "recipe_count": 10,
-        "weighted_score": 232.2,
-        "lift": 2.28
-      },
-      {
-        "item": "Guajillo Chile Pepper Sauce",
-        "recipe_count": 23,
-        "weighted_score": 562.0,
-        "lift": 1.61
-      },
-      {
-        "item": "Gochujang",
-        "recipe_count": 35,
-        "weighted_score": 958.7,
-        "lift": 1.29
+        "item": "Tomato Sauce",
+        "recipe_count": 150,
+        "weighted_score": 1120.5,
+        "lift": 1.19
       }
     ],
     "top_veg": [
       {
-        "item": "Baby Spinach",
-        "recipe_count": 89,
-        "weighted_score": 1825.1,
-        "lift": 1.89
-      },
-      {
-        "item": "Romaine Lettuce Hearts",
+        "item": "Dry Black-Eyed Peas",
         "recipe_count": 9,
-        "weighted_score": 224.4,
-        "lift": 3.25
+        "weighted_score": 9.0,
+        "lift": 4.82
       },
       {
-        "item": "Pickled Peppadew Peppers",
-        "recipe_count": 48,
-        "weighted_score": 1074.6,
-        "lift": 1.88
+        "item": "White Hominy",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 3.75
+      },
+      {
+        "item": "Dried Split Peas",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 3.75
+      },
+      {
+        "item": "Fresh Green Beans",
+        "recipe_count": 43,
+        "weighted_score": 43.0,
+        "lift": 2.68
+      },
+      {
+        "item": "Broccoli Rabe",
+        "recipe_count": 21,
+        "weighted_score": 21.0,
+        "lift": 3.21
       },
       {
         "item": "Brussels Sprouts",
-        "recipe_count": 60,
-        "weighted_score": 1710.8,
-        "lift": 1.77
+        "recipe_count": 99,
+        "weighted_score": 1749.8,
+        "lift": 1.99
       },
       {
-        "item": "Mushrooms",
-        "recipe_count": 64,
-        "weighted_score": 1338.1,
-        "lift": 1.59
+        "item": "Onion",
+        "recipe_count": 1013,
+        "weighted_score": 1029.5,
+        "lift": 1.3
       },
       {
-        "item": "Delicata Squash",
-        "recipe_count": 27,
-        "weighted_score": 680.7,
-        "lift": 1.98
-      },
-      {
-        "item": "Arugula",
-        "recipe_count": 67,
-        "weighted_score": 1437.1,
-        "lift": 1.5
-      },
-      {
-        "item": "Sliced Roasted Red Peppers",
-        "recipe_count": 45,
-        "weighted_score": 1206.4,
-        "lift": 1.5
-      },
-      {
-        "item": "Bell Pepper",
-        "recipe_count": 42,
-        "weighted_score": 1049.8,
-        "lift": 1.5
-      },
-      {
-        "item": "Romaine Lettuce Heart",
-        "recipe_count": 21,
-        "weighted_score": 545.3,
-        "lift": 1.82
-      },
-      {
-        "item": "Shallot",
-        "recipe_count": 100,
-        "weighted_score": 3085.9,
-        "lift": 1.21
-      },
-      {
-        "item": "Roasted Piquillo Peppers",
+        "item": "Collard Greens - Rinsed",
         "recipe_count": 7,
-        "weighted_score": 241.9,
-        "lift": 2.69
+        "weighted_score": 7.0,
+        "lift": 4.17
+      },
+      {
+        "item": "Head Cabbage",
+        "recipe_count": 45,
+        "weighted_score": 45.0,
+        "lift": 2.25
+      },
+      {
+        "item": "Black-Eyed Peas",
+        "recipe_count": 20,
+        "weighted_score": 20.0,
+        "lift": 2.75
+      },
+      {
+        "item": "Sweet Onions",
+        "recipe_count": 16,
+        "weighted_score": 16.0,
+        "lift": 2.86
+      },
+      {
+        "item": "Dried Black-Eyed Peas",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 3.35
       }
     ],
     "top_carbs": [
       {
-        "item": "Cavatappi Pasta",
-        "recipe_count": 23,
-        "weighted_score": 533.5,
-        "lift": 4.42
-      },
-      {
         "item": "Gnocchi",
-        "recipe_count": 44,
-        "weighted_score": 977.5,
-        "lift": 3.61
+        "recipe_count": 45,
+        "weighted_score": 978.5,
+        "lift": 3.17
       },
       {
         "item": "Five Cheese Ravioli",
         "recipe_count": 12,
         "weighted_score": 309.7,
-        "lift": 5.27
+        "lift": 4.59
+      },
+      {
+        "item": "Cavatappi Pasta",
+        "recipe_count": 24,
+        "weighted_score": 534.5,
+        "lift": 3.57
+      },
+      {
+        "item": "Orecchiette Pasta",
+        "recipe_count": 14,
+        "weighted_score": 322.3,
+        "lift": 4.17
+      },
+      {
+        "item": "Batch Thin Crust Pizza Dough",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 5.36
+      },
+      {
+        "item": "Pizza Dough",
+        "recipe_count": 28,
+        "weighted_score": 387.1,
+        "lift": 3.19
       },
       {
         "item": "Cooked Rigatoni Pasta",
         "recipe_count": 11,
         "weighted_score": 196.8,
-        "lift": 4.83
+        "lift": 4.21
       },
       {
-        "item": "Orecchiette Pasta",
-        "recipe_count": 10,
-        "weighted_score": 318.3,
-        "lift": 4.73
+        "item": "Baking Potatoes",
+        "recipe_count": 34,
+        "weighted_score": 34.0,
+        "lift": 2.72
       },
       {
-        "item": "Pizza Dough",
-        "recipe_count": 21,
-        "weighted_score": 380.1,
-        "lift": 3.49
+        "item": "Rigatoni",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 4.29
       },
       {
         "item": "Piece Focaccia Bread",
         "recipe_count": 14,
         "weighted_score": 340.8,
-        "lift": 3.91
+        "lift": 3.41
+      },
+      {
+        "item": "Penne Pasta",
+        "recipe_count": 37,
+        "weighted_score": 37.0,
+        "lift": 2.39
       },
       {
         "item": "Cooked Gemelli Pasta",
         "recipe_count": 7,
         "weighted_score": 140.5,
-        "lift": 4.78
-      },
-      {
-        "item": "Lumaca Rigata Pasta",
-        "recipe_count": 10,
-        "weighted_score": 274.2,
-        "lift": 3.23
-      },
-      {
-        "item": "Mafalda Pasta",
-        "recipe_count": 13,
-        "weighted_score": 349.3,
-        "lift": 2.66
-      },
-      {
-        "item": "Cascatelli Pasta",
-        "recipe_count": 7,
-        "weighted_score": 147.0,
-        "lift": 3.07
-      },
-      {
-        "item": "Sourdough Pullman Bread",
-        "recipe_count": 9,
-        "weighted_score": 168.3,
-        "lift": 2.63
+        "lift": 4.17
       }
     ],
     "top_cuisines": [
@@ -500,13 +500,13 @@
       },
       {
         "item": "Italian",
-        "recipe_count": 242,
-        "weighted_score": 6554.7
+        "recipe_count": 358,
+        "weighted_score": 6670.7
       },
       {
         "item": "Mexican",
-        "recipe_count": 86,
-        "weighted_score": 2405.1
+        "recipe_count": 106,
+        "weighted_score": 2425.1
       },
       {
         "item": "Asian",
@@ -520,244 +520,244 @@
       },
       {
         "item": "Japanese",
-        "recipe_count": 20,
-        "weighted_score": 613.0
+        "recipe_count": 23,
+        "weighted_score": 616.0
       },
       {
         "item": "Chinese",
-        "recipe_count": 22,
-        "weighted_score": 591.9
+        "recipe_count": 46,
+        "weighted_score": 615.9
       },
       {
         "item": "Spanish",
-        "recipe_count": 18,
-        "weighted_score": 551.9
+        "recipe_count": 32,
+        "weighted_score": 565.9
       }
     ]
   },
   "chicken": {
-    "recipe_count": 1399,
+    "recipe_count": 4324,
     "avg_rating": 4.14,
     "top_sauces": [
       {
         "item": "Buffalo Sauce",
         "recipe_count": 7,
         "weighted_score": 31.8,
-        "lift": 3.81
+        "lift": 6.83
       },
       {
         "item": "Savory Tomato Chutney",
         "recipe_count": 21,
         "weighted_score": 700.0,
-        "lift": 2.29
+        "lift": 4.1
       },
       {
         "item": "Tzatziki (Cucumber-Yogurt Sauce)",
         "recipe_count": 50,
         "weighted_score": 1492.3,
-        "lift": 1.58
-      },
-      {
-        "item": "Tahini",
-        "recipe_count": 43,
-        "weighted_score": 1365.9,
-        "lift": 1.52
-      },
-      {
-        "item": "Hoisin Sauce",
-        "recipe_count": 75,
-        "weighted_score": 2371.8,
-        "lift": 1.32
+        "lift": 2.82
       },
       {
         "item": "Coconut Cashew Korma Sauce",
         "recipe_count": 6,
         "weighted_score": 192.1,
-        "lift": 2.86
+        "lift": 5.13
       },
       {
         "item": "Spreadable Goat Cheese",
         "recipe_count": 14,
         "weighted_score": 465.6,
-        "lift": 2.05
+        "lift": 3.68
       },
       {
-        "item": "Soy Sauce",
-        "recipe_count": 120,
-        "weighted_score": 3636.4,
-        "lift": 1.11
+        "item": "Blue Cheese Salad Dressing",
+        "recipe_count": 11,
+        "weighted_score": 11.0,
+        "lift": 3.96
+      },
+      {
+        "item": "Buffalo Wing Sauce",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 4.02
+      },
+      {
+        "item": "Hoisin Sauce",
+        "recipe_count": 99,
+        "weighted_score": 2395.8,
+        "lift": 2.05
       },
       {
         "item": "Yellow Curry Paste",
         "recipe_count": 39,
         "weighted_score": 1163.3,
-        "lift": 1.39
+        "lift": 2.47
+      },
+      {
+        "item": "Soy Sauce",
+        "recipe_count": 404,
+        "weighted_score": 3920.4,
+        "lift": 1.49
       },
       {
         "item": "Sweet Chili Sauce",
-        "recipe_count": 42,
-        "weighted_score": 1311.8,
-        "lift": 1.35
+        "recipe_count": 45,
+        "weighted_score": 1314.8,
+        "lift": 2.31
       },
       {
-        "item": "Basil Pesto",
-        "recipe_count": 41,
-        "weighted_score": 1220.0,
-        "lift": 1.15
-      },
-      {
-        "item": "Fig Spread",
-        "recipe_count": 20,
-        "weighted_score": 537.4,
-        "lift": 1.36
+        "item": "Pesto Sauce",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 4.88
       }
     ],
     "top_veg": [
       {
-        "item": "Broccoli Florets",
-        "recipe_count": 11,
-        "weighted_score": 150.4,
-        "lift": 3.23
-      },
-      {
-        "item": "Carrots",
-        "recipe_count": 249,
-        "weighted_score": 8045.7,
-        "lift": 1.28
-      },
-      {
-        "item": "Garlic",
-        "recipe_count": 680,
-        "weighted_score": 21954.9,
-        "lift": 1.02
+        "item": "Whole Onion",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 5.98
       },
       {
         "item": "Honeynut Squash",
         "recipe_count": 7,
         "weighted_score": 273.1,
-        "lift": 2.97
+        "lift": 5.32
       },
       {
-        "item": "Cabbage",
-        "recipe_count": 38,
-        "weighted_score": 1320.4,
-        "lift": 1.65
+        "item": "Red Pepper",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 4.27
       },
       {
-        "item": "Kale",
-        "recipe_count": 91,
-        "weighted_score": 3106.5,
-        "lift": 1.23
-      },
-      {
-        "item": "Green Beans",
-        "recipe_count": 101,
-        "weighted_score": 2987.9,
-        "lift": 1.2
-      },
-      {
-        "item": "Scallions",
-        "recipe_count": 269,
-        "weighted_score": 8528.0,
-        "lift": 0.95
-      },
-      {
-        "item": "Zucchini",
-        "recipe_count": 130,
-        "weighted_score": 4253.7,
-        "lift": 1.06
-      },
-      {
-        "item": "Broccoli",
-        "recipe_count": 107,
-        "weighted_score": 3421.4,
-        "lift": 1.11
-      },
-      {
-        "item": "Celery",
-        "recipe_count": 44,
-        "weighted_score": 1399.4,
-        "lift": 1.35
+        "item": "Carrots",
+        "recipe_count": 431,
+        "weighted_score": 8227.7,
+        "lift": 1.62
       },
       {
         "item": "Sweet Peppers",
         "recipe_count": 99,
         "weighted_score": 3131.7,
-        "lift": 1.12
+        "lift": 1.99
+      },
+      {
+        "item": "Scallions",
+        "recipe_count": 322,
+        "weighted_score": 8581.0,
+        "lift": 1.58
+      },
+      {
+        "item": "Broccoli",
+        "recipe_count": 118,
+        "weighted_score": 3432.4,
+        "lift": 1.9
+      },
+      {
+        "item": "Garlic",
+        "recipe_count": 1250,
+        "weighted_score": 22524.9,
+        "lift": 1.27
+      },
+      {
+        "item": "Sweet Piquante Peppers",
+        "recipe_count": 35,
+        "weighted_score": 1177.1,
+        "lift": 2.47
+      },
+      {
+        "item": "Broccoli Coleslaw Mix",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 4.88
+      },
+      {
+        "item": "Sliced Roasted Red Peppers",
+        "recipe_count": 58,
+        "weighted_score": 1766.5,
+        "lift": 2.12
+      },
+      {
+        "item": "Kale",
+        "recipe_count": 96,
+        "weighted_score": 3111.5,
+        "lift": 1.86
       }
     ],
     "top_carbs": [
       {
         "item": "Jasmine Rice",
-        "recipe_count": 135,
-        "weighted_score": 4720.0,
-        "lift": 1.55
+        "recipe_count": 142,
+        "weighted_score": 4727.0,
+        "lift": 2.78
       },
       {
         "item": "Golden Potatoes",
         "recipe_count": 55,
         "weighted_score": 1825.8,
-        "lift": 1.63
+        "lift": 2.91
       },
       {
         "item": "Semi-Pearled Farro",
         "recipe_count": 82,
         "weighted_score": 2667.7,
-        "lift": 1.45
+        "lift": 2.59
       },
       {
         "item": "Cooked Tri-Color Quinoa",
         "recipe_count": 6,
         "weighted_score": 134.5,
-        "lift": 3.27
+        "lift": 5.86
       },
       {
         "item": "Yellow Couscous",
         "recipe_count": 23,
         "weighted_score": 785.6,
-        "lift": 1.95
+        "lift": 3.49
+      },
+      {
+        "item": "Long Grain And Wild Rice Mix",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 5.32
       },
       {
         "item": "Rice Vinegar",
-        "recipe_count": 189,
-        "weighted_score": 6143.6,
-        "lift": 1.16
-      },
-      {
-        "item": "Cooked White Rice",
-        "recipe_count": 13,
-        "weighted_score": 196.7,
-        "lift": 2.25
+        "recipe_count": 233,
+        "weighted_score": 6187.6,
+        "lift": 1.86
       },
       {
         "item": "Orzo Pasta",
-        "recipe_count": 46,
-        "weighted_score": 1514.1,
-        "lift": 1.4
+        "recipe_count": 52,
+        "weighted_score": 1520.1,
+        "lift": 2.49
       },
       {
         "item": "Elicoidali Pasta",
         "recipe_count": 8,
         "weighted_score": 269.4,
-        "lift": 2.35
+        "lift": 4.21
       },
       {
-        "item": "Pearl Couscous",
-        "recipe_count": 20,
-        "weighted_score": 693.8,
-        "lift": 1.66
+        "item": "Corn Tortillas",
+        "recipe_count": 59,
+        "weighted_score": 353.7,
+        "lift": 2.18
       },
       {
-        "item": "Red Potatoes",
-        "recipe_count": 17,
-        "weighted_score": 607.6,
-        "lift": 1.71
+        "item": "Buttermilk Biscuit Mix",
+        "recipe_count": 5,
+        "weighted_score": 183.9,
+        "lift": 4.88
       },
       {
-        "item": "Yukon Gold Potatoes",
-        "recipe_count": 34,
-        "weighted_score": 1195.9,
-        "lift": 1.38
+        "item": "Long Grain White Rice",
+        "recipe_count": 126,
+        "weighted_score": 3508.3,
+        "lift": 1.78
       }
     ],
     "top_cuisines": [
@@ -768,8 +768,8 @@
       },
       {
         "item": "Italian",
-        "recipe_count": 189,
-        "weighted_score": 5923.2
+        "recipe_count": 210,
+        "weighted_score": 5944.2
       },
       {
         "item": "Asian",
@@ -778,8 +778,13 @@
       },
       {
         "item": "Mexican",
-        "recipe_count": 143,
-        "weighted_score": 4362.4
+        "recipe_count": 165,
+        "weighted_score": 4384.4
+      },
+      {
+        "item": "Chinese",
+        "recipe_count": 103,
+        "weighted_score": 2141.8
       },
       {
         "item": "Middle Eastern",
@@ -787,14 +792,9 @@
         "weighted_score": 2122.5
       },
       {
-        "item": "Chinese",
-        "recipe_count": 69,
-        "weighted_score": 2107.8
-      },
-      {
         "item": "Indian",
-        "recipe_count": 54,
-        "weighted_score": 1716.1
+        "recipe_count": 74,
+        "weighted_score": 1736.1
       },
       {
         "item": "Southern",
@@ -804,154 +804,154 @@
     ]
   },
   "beef": {
-    "recipe_count": 982,
+    "recipe_count": 4649,
     "avg_rating": 4.22,
     "top_sauces": [
       {
         "item": "Beef Demi-Glace",
-        "recipe_count": 19,
-        "weighted_score": 583.2,
-        "lift": 5.16
+        "recipe_count": 24,
+        "weighted_score": 588.2,
+        "lift": 6.1
+      },
+      {
+        "item": "Beef Gravy",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 6.36
+      },
+      {
+        "item": "Dry Brown Gravy Mix",
+        "recipe_count": 18,
+        "weighted_score": 18.0,
+        "lift": 4.98
+      },
+      {
+        "item": "Tomato Sauce",
+        "recipe_count": 268,
+        "weighted_score": 926.9,
+        "lift": 2.53
+      },
+      {
+        "item": "Taco Sauce",
+        "recipe_count": 16,
+        "weighted_score": 16.0,
+        "lift": 4.84
+      },
+      {
+        "item": "Sloppy Joe Sauce",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 5.3
+      },
+      {
+        "item": "Dry Au Jus Mix",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 6.36
       },
       {
         "item": "Soy Glaze",
         "recipe_count": 133,
         "weighted_score": 3805.7,
-        "lift": 1.79
+        "lift": 2.1
       },
       {
-        "item": "Garlic & Herb Spreadable Butter",
-        "recipe_count": 17,
-        "weighted_score": 483.8,
-        "lift": 1.92
+        "item": "Spaghetti Sauce",
+        "recipe_count": 47,
+        "weighted_score": 47.0,
+        "lift": 2.6
       },
       {
-        "item": "Cumin & Sichuan Peppercorn Sauce",
-        "recipe_count": 11,
-        "weighted_score": 311.1,
-        "lift": 2.13
-      },
-      {
-        "item": "Guajillo Chile Pepper Sauce",
-        "recipe_count": 26,
-        "weighted_score": 732.8,
-        "lift": 1.61
-      },
-      {
-        "item": "Hoisin Sauce",
-        "recipe_count": 49,
-        "weighted_score": 1337.2,
-        "lift": 1.23
-      },
-      {
-        "item": "Gochujang",
-        "recipe_count": 39,
-        "weighted_score": 1195.0,
-        "lift": 1.27
-      },
-      {
-        "item": "Calabrian Chile Paste",
-        "recipe_count": 56,
-        "weighted_score": 1699.5,
-        "lift": 1.12
-      },
-      {
-        "item": "Red Harissa Paste",
-        "recipe_count": 25,
-        "weighted_score": 772.1,
-        "lift": 1.28
-      },
-      {
-        "item": "Sambal Oelek",
-        "recipe_count": 57,
-        "weighted_score": 1650.4,
-        "lift": 0.98
+        "item": "Browning Sauce",
+        "recipe_count": 12,
+        "weighted_score": 12.0,
+        "lift": 3.81
       },
       {
         "item": "Soy Sauce",
-        "recipe_count": 70,
-        "weighted_score": 2068.1,
-        "lift": 0.92
+        "recipe_count": 444,
+        "weighted_score": 2442.1,
+        "lift": 1.52
       },
       {
-        "item": "Chipotle Chile Paste",
-        "recipe_count": 32,
-        "weighted_score": 998.9,
-        "lift": 1.11
+        "item": "Thousand Island Dressing",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 4.45
       }
     ],
     "top_veg": [
       {
-        "item": "Yellow Onion",
-        "recipe_count": 106,
-        "weighted_score": 3129.0,
-        "lift": 1.43
+        "item": "Condensed Tomato Soup",
+        "recipe_count": 56,
+        "weighted_score": 56.0,
+        "lift": 4.0
       },
       {
-        "item": "Crispy Onions",
+        "item": "Condensed French Onion Soup",
+        "recipe_count": 12,
+        "weighted_score": 12.0,
+        "lift": 4.77
+      },
+      {
+        "item": "Dry Onion Soup Mix",
+        "recipe_count": 54,
+        "weighted_score": 54.0,
+        "lift": 3.01
+      },
+      {
+        "item": "Tomato Juice",
+        "recipe_count": 31,
+        "weighted_score": 55.2,
+        "lift": 3.34
+      },
+      {
+        "item": "Envelope Onion Soup Mix",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 5.56
+      },
+      {
+        "item": "Salt And Freshly Ground Pepper",
         "recipe_count": 44,
-        "weighted_score": 1146.0,
-        "lift": 1.72
+        "weighted_score": 44.0,
+        "lift": 3.01
       },
       {
-        "item": "Garlic",
-        "recipe_count": 488,
-        "weighted_score": 15509.0,
-        "lift": 1.05
-      },
-      {
-        "item": "Cremini Mushrooms",
-        "recipe_count": 33,
-        "weighted_score": 1197.4,
-        "lift": 1.64
-      },
-      {
-        "item": "Red Onion",
-        "recipe_count": 120,
-        "weighted_score": 3741.3,
-        "lift": 1.19
-      },
-      {
-        "item": "Romanesco Cauliflower",
-        "recipe_count": 11,
-        "weighted_score": 256.6,
-        "lift": 2.21
-      },
-      {
-        "item": "Radishes",
-        "recipe_count": 69,
-        "weighted_score": 2290.4,
-        "lift": 1.29
-      },
-      {
-        "item": "Baby Bok Choy",
-        "recipe_count": 75,
-        "weighted_score": 2395.4,
-        "lift": 1.25
-      },
-      {
-        "item": "Scallions",
-        "recipe_count": 202,
-        "weighted_score": 5946.7,
-        "lift": 1.02
+        "item": "Corn Or Peanut Oil",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 6.36
       },
       {
         "item": "Carrots",
-        "recipe_count": 145,
-        "weighted_score": 4222.2,
-        "lift": 1.06
+        "recipe_count": 479,
+        "weighted_score": 4556.2,
+        "lift": 1.67
       },
       {
-        "item": "Chayote Squash",
-        "recipe_count": 6,
-        "weighted_score": 154.8,
-        "lift": 2.72
+        "item": "Freshly Ground Pepper",
+        "recipe_count": 53,
+        "weighted_score": 53.0,
+        "lift": 2.57
       },
       {
-        "item": "Sweet Onion",
-        "recipe_count": 16,
-        "weighted_score": 560.4,
-        "lift": 1.85
+        "item": "Tomato-Vegetable Juice Cocktail",
+        "recipe_count": 13,
+        "weighted_score": 13.0,
+        "lift": 3.76
+      },
+      {
+        "item": "Onion",
+        "recipe_count": 939,
+        "weighted_score": 1042.8,
+        "lift": 1.43
+      },
+      {
+        "item": "Shredded Lettuce",
+        "recipe_count": 35,
+        "weighted_score": 35.0,
+        "lift": 2.71
       }
     ],
     "top_carbs": [
@@ -959,73 +959,73 @@
         "item": "Burger Buns",
         "recipe_count": 31,
         "weighted_score": 687.9,
-        "lift": 4.81
+        "lift": 5.63
       },
       {
         "item": "Challah Buns",
         "recipe_count": 49,
         "weighted_score": 1397.2,
-        "lift": 3.46
+        "lift": 4.05
       },
       {
         "item": "Potato Buns",
-        "recipe_count": 74,
-        "weighted_score": 2696.2,
-        "lift": 3.05
+        "recipe_count": 75,
+        "weighted_score": 2697.2,
+        "lift": 3.56
       },
       {
-        "item": "Russet Potatoes",
-        "recipe_count": 26,
-        "weighted_score": 907.9,
-        "lift": 2.67
+        "item": "Hamburger Buns",
+        "recipe_count": 71,
+        "weighted_score": 105.8,
+        "lift": 3.42
+      },
+      {
+        "item": "Egg Noodles",
+        "recipe_count": 48,
+        "weighted_score": 102.6,
+        "lift": 2.88
       },
       {
         "item": "Potatoes",
-        "recipe_count": 129,
-        "weighted_score": 2965.7,
-        "lift": 1.5
-      },
-      {
-        "item": "Potato Flakes",
-        "recipe_count": 5,
-        "weighted_score": 147.6,
-        "lift": 3.88
-      },
-      {
-        "item": "Pocketless Pitas",
-        "recipe_count": 26,
-        "weighted_score": 845.0,
-        "lift": 1.88
-      },
-      {
-        "item": "Biscuit Mix",
-        "recipe_count": 21,
-        "weighted_score": 539.2,
-        "lift": 1.93
-      },
-      {
-        "item": "Small Baguette",
-        "recipe_count": 25,
-        "weighted_score": 842.9,
+        "recipe_count": 331,
+        "weighted_score": 3167.7,
         "lift": 1.81
       },
       {
-        "item": "Breadcrumbs",
+        "item": "Dry Lasagna Noodles",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 5.3
+      },
+      {
+        "item": "Cocktail Rye Bread",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 5.3
+      },
+      {
+        "item": "Mostaccioli Pasta",
         "recipe_count": 6,
-        "weighted_score": 175.4,
-        "lift": 2.96
+        "weighted_score": 6.0,
+        "lift": 4.77
       },
       {
-        "item": "Rice Vinegar",
-        "recipe_count": 125,
-        "weighted_score": 3835.9,
-        "lift": 1.09
+        "item": "Uncooked Elbow Macaroni",
+        "recipe_count": 18,
+        "weighted_score": 18.0,
+        "lift": 3.09
       },
       {
-        "item": "Sweet Potatoes",
-        "recipe_count": 46,
-        "weighted_score": 1459.2,
-        "lift": 1.31
+        "item": "Pearl Barley",
+        "recipe_count": 17,
+        "weighted_score": 17.0,
+        "lift": 2.92
+      },
+      {
+        "item": "Corn Tortilla Chips",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 3.63
       }
     ],
     "top_cuisines": [
@@ -1036,8 +1036,8 @@
       },
       {
         "item": "Italian",
-        "recipe_count": 117,
-        "weighted_score": 3513.8
+        "recipe_count": 150,
+        "weighted_score": 3546.8
       },
       {
         "item": "Asian",
@@ -1046,8 +1046,8 @@
       },
       {
         "item": "Mexican",
-        "recipe_count": 105,
-        "weighted_score": 3156.7
+        "recipe_count": 153,
+        "weighted_score": 3204.7
       },
       {
         "item": "Middle Eastern",
@@ -1056,170 +1056,170 @@
       },
       {
         "item": "Chinese",
-        "recipe_count": 41,
-        "weighted_score": 1272.5
+        "recipe_count": 51,
+        "weighted_score": 1282.5
       },
       {
         "item": "French",
-        "recipe_count": 23,
-        "weighted_score": 809.7
+        "recipe_count": 47,
+        "weighted_score": 833.7
       },
       {
         "item": "Japanese",
-        "recipe_count": 29,
-        "weighted_score": 792.7
+        "recipe_count": 40,
+        "weighted_score": 803.7
       }
     ]
   },
   "salmon": {
-    "recipe_count": 307,
+    "recipe_count": 841,
     "avg_rating": 4.2,
     "top_sauces": [
+      {
+        "item": "Prepared White Horseradish",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 12.95
+      },
       {
         "item": "Yuzu Kosho",
         "recipe_count": 11,
         "weighted_score": 325.9,
-        "lift": 4.66
+        "lift": 9.43
       },
       {
         "item": "Mirin (Salted Cooking Wine)",
         "recipe_count": 19,
         "weighted_score": 564.4,
-        "lift": 3.44
+        "lift": 6.96
       },
       {
         "item": "Coconut Aminos (Seasoning Sauce)",
         "recipe_count": 6,
         "weighted_score": 201.0,
-        "lift": 4.17
+        "lift": 8.43
       },
       {
         "item": "Sweet White Miso Paste",
         "recipe_count": 19,
         "weighted_score": 624.8,
-        "lift": 2.62
+        "lift": 5.3
       },
       {
         "item": "Vegetarian Ponzu Sauce",
         "recipe_count": 20,
         "weighted_score": 694.9,
-        "lift": 2.36
-      },
-      {
-        "item": "Salsa Verde",
-        "recipe_count": 10,
-        "weighted_score": 298.8,
-        "lift": 2.59
+        "lift": 4.78
       },
       {
         "item": "Cilantro Sauce",
         "recipe_count": 15,
         "weighted_score": 473.7,
-        "lift": 1.88
+        "lift": 3.79
+      },
+      {
+        "item": "Salsa Verde",
+        "recipe_count": 10,
+        "weighted_score": 298.8,
+        "lift": 4.23
       },
       {
         "item": "Sambal Oelek",
         "recipe_count": 26,
         "weighted_score": 807.3,
-        "lift": 1.43
+        "lift": 2.82
+      },
+      {
+        "item": "Soy Sauce",
+        "recipe_count": 97,
+        "weighted_score": 649.0,
+        "lift": 1.84
+      },
+      {
+        "item": "Prepared Horseradish",
+        "recipe_count": 12,
+        "weighted_score": 77.2,
+        "lift": 3.27
       },
       {
         "item": "Mirin",
-        "recipe_count": 7,
-        "weighted_score": 217.0,
-        "lift": 1.35
-      },
-      {
-        "item": "Basil Pesto",
-        "recipe_count": 9,
-        "weighted_score": 306.1,
-        "lift": 1.15
-      },
-      {
-        "item": "Sweet Chili Sauce",
-        "recipe_count": 8,
-        "weighted_score": 211.6,
-        "lift": 1.17
-      },
-      {
-        "item": "Soy Glaze",
-        "recipe_count": 19,
-        "weighted_score": 564.6,
-        "lift": 0.82
+        "recipe_count": 11,
+        "weighted_score": 221.0,
+        "lift": 2.27
       }
     ],
     "top_veg": [
       {
+        "item": "Minced Red Onion",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 5.98
+      },
+      {
         "item": "Green Beans",
-        "recipe_count": 37,
-        "weighted_score": 1163.1,
-        "lift": 2.0
+        "recipe_count": 39,
+        "weighted_score": 1165.1,
+        "lift": 2.9
       },
       {
         "item": "Scallions",
-        "recipe_count": 77,
-        "weighted_score": 2293.1,
-        "lift": 1.24
+        "recipe_count": 92,
+        "weighted_score": 2308.1,
+        "lift": 2.32
       },
       {
-        "item": "Zucchini",
-        "recipe_count": 38,
-        "weighted_score": 1121.4,
-        "lift": 1.42
+        "item": "English Cucumber",
+        "recipe_count": 7,
+        "weighted_score": 32.0,
+        "lift": 4.92
+      },
+      {
+        "item": "Chopped Shallots",
+        "recipe_count": 11,
+        "weighted_score": 11.0,
+        "lift": 4.07
       },
       {
         "item": "Asparagus",
-        "recipe_count": 15,
-        "weighted_score": 420.7,
-        "lift": 1.85
-      },
-      {
-        "item": "Garlic",
-        "recipe_count": 147,
-        "weighted_score": 4691.6,
-        "lift": 1.01
-      },
-      {
-        "item": "Shallot",
-        "recipe_count": 39,
-        "weighted_score": 1299.9,
-        "lift": 1.34
+        "recipe_count": 20,
+        "weighted_score": 425.7,
+        "lift": 3.21
       },
       {
         "item": "Persian Cucumber",
         "recipe_count": 15,
         "weighted_score": 523.8,
-        "lift": 1.73
+        "lift": 3.45
       },
       {
-        "item": "Sugar Snap Peas",
-        "recipe_count": 11,
-        "weighted_score": 327.0,
-        "lift": 1.82
+        "item": "Shallot",
+        "recipe_count": 52,
+        "weighted_score": 1312.9,
+        "lift": 2.39
       },
       {
-        "item": "Carrots",
-        "recipe_count": 49,
-        "weighted_score": 1410.9,
-        "lift": 1.15
+        "item": "Finely Chopped Red Onion",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 3.9
       },
       {
         "item": "Broccoli",
-        "recipe_count": 27,
-        "weighted_score": 929.5,
-        "lift": 1.27
+        "recipe_count": 30,
+        "weighted_score": 932.5,
+        "lift": 2.49
       },
       {
-        "item": "Kale",
-        "recipe_count": 21,
-        "weighted_score": 673.0,
-        "lift": 1.3
+        "item": "Sugar Snap Peas",
+        "recipe_count": 14,
+        "weighted_score": 330.0,
+        "lift": 3.06
       },
       {
         "item": "of Corn",
         "recipe_count": 8,
         "weighted_score": 276.4,
-        "lift": 1.72
+        "lift": 3.47
       }
     ],
     "top_carbs": [
@@ -1227,73 +1227,73 @@
         "item": "Semi-Pearled Farro",
         "recipe_count": 29,
         "weighted_score": 957.9,
-        "lift": 2.34
+        "lift": 4.72
       },
       {
         "item": "Pearled Barley",
         "recipe_count": 12,
         "weighted_score": 395.7,
-        "lift": 2.86
+        "lift": 5.41
       },
       {
         "item": "Pearl Couscous",
         "recipe_count": 8,
         "weighted_score": 214.8,
-        "lift": 3.02
+        "lift": 5.41
       },
       {
         "item": "Red Quinoa",
         "recipe_count": 7,
         "weighted_score": 249.9,
-        "lift": 2.97
-      },
-      {
-        "item": "Sweet Potatoes",
-        "recipe_count": 20,
-        "weighted_score": 661.7,
-        "lift": 1.82
-      },
-      {
-        "item": "Long Grain White Rice",
-        "recipe_count": 39,
-        "weighted_score": 1059.0,
-        "lift": 1.46
+        "lift": 5.12
       },
       {
         "item": "Brown Rice",
-        "recipe_count": 16,
-        "weighted_score": 515.9,
-        "lift": 1.89
+        "recipe_count": 18,
+        "weighted_score": 517.9,
+        "lift": 3.59
       },
       {
         "item": "Rice Vinegar",
-        "recipe_count": 48,
-        "weighted_score": 1532.3,
-        "lift": 1.34
+        "recipe_count": 62,
+        "weighted_score": 1546.3,
+        "lift": 2.55
       },
       {
         "item": "Cracked Freekeh",
         "recipe_count": 6,
         "weighted_score": 228.5,
-        "lift": 2.67
+        "lift": 5.41
+      },
+      {
+        "item": "Long Grain White Rice",
+        "recipe_count": 39,
+        "weighted_score": 1059.0,
+        "lift": 2.83
       },
       {
         "item": "Panko Breadcrumbs",
         "recipe_count": 34,
         "weighted_score": 1035.5,
-        "lift": 1.32
+        "lift": 2.62
+      },
+      {
+        "item": "Jasmine Rice",
+        "recipe_count": 26,
+        "weighted_score": 888.3,
+        "lift": 2.62
       },
       {
         "item": "Orzo Pasta",
         "recipe_count": 12,
         "weighted_score": 393.6,
-        "lift": 1.67
+        "lift": 2.95
       },
       {
-        "item": "Jasmine Rice",
-        "recipe_count": 25,
-        "weighted_score": 887.3,
-        "lift": 1.3
+        "item": "Yellow Couscous",
+        "recipe_count": 5,
+        "weighted_score": 139.2,
+        "lift": 3.9
       }
     ],
     "top_cuisines": [
@@ -1329,8 +1329,8 @@
       },
       {
         "item": "French",
-        "recipe_count": 12,
-        "weighted_score": 395.9
+        "recipe_count": 14,
+        "weighted_score": 397.9
       },
       {
         "item": "Spanish",
@@ -1340,235 +1340,235 @@
     ]
   },
   "plant_based": {
-    "recipe_count": 364,
+    "recipe_count": 2363,
     "avg_rating": 4.03,
     "top_sauces": [
+      {
+        "item": "Tahini Paste",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 12.51
+      },
+      {
+        "item": "Tahini",
+        "recipe_count": 86,
+        "weighted_score": 371.5,
+        "lift": 5.46
+      },
+      {
+        "item": "Salsa",
+        "recipe_count": 55,
+        "weighted_score": 55.0,
+        "lift": 3.42
+      },
+      {
+        "item": "Miso Paste",
+        "recipe_count": 10,
+        "weighted_score": 29.0,
+        "lift": 5.68
+      },
+      {
+        "item": "Curry Paste",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 5.84
+      },
       {
         "item": "Chipotle Chile Paste",
         "recipe_count": 37,
         "weighted_score": 1086.8,
-        "lift": 3.45
+        "lift": 2.95
       },
       {
-        "item": "Guacamole",
-        "recipe_count": 15,
-        "weighted_score": 373.7,
-        "lift": 3.28
+        "item": "Enchilada Sauce",
+        "recipe_count": 11,
+        "weighted_score": 11.0,
+        "lift": 4.17
+      },
+      {
+        "item": "Green Salsa",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 4.86
+      },
+      {
+        "item": "Chunky Salsa",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 4.86
+      },
+      {
+        "item": "Green Curry Paste",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 4.47
       },
       {
         "item": "Red Harissa Paste",
         "recipe_count": 21,
         "weighted_score": 594.8,
-        "lift": 2.9
+        "lift": 2.48
       },
       {
-        "item": "Guajillo Chile Pepper Sauce",
-        "recipe_count": 16,
-        "weighted_score": 428.5,
-        "lift": 2.66
-      },
-      {
-        "item": "Vegetable Demi-Glace",
-        "recipe_count": 13,
-        "weighted_score": 286.9,
-        "lift": 2.72
-      },
-      {
-        "item": "Ancho Chile Paste",
-        "recipe_count": 10,
-        "weighted_score": 274.5,
-        "lift": 2.87
-      },
-      {
-        "item": "Soy-Miso Sauce",
-        "recipe_count": 7,
-        "weighted_score": 208.0,
-        "lift": 2.85
-      },
-      {
-        "item": "Cilantro Sauce",
-        "recipe_count": 18,
-        "weighted_score": 456.0,
-        "lift": 1.9
-      },
-      {
-        "item": "Coconut Aminos (Seasoning Sauce)",
-        "recipe_count": 5,
-        "weighted_score": 147.9,
-        "lift": 2.93
-      },
-      {
-        "item": "Tomato Sauce",
-        "recipe_count": 14,
-        "weighted_score": 323.7,
-        "lift": 1.71
-      },
-      {
-        "item": "Tahini",
-        "recipe_count": 11,
-        "weighted_score": 296.5,
-        "lift": 1.49
-      },
-      {
-        "item": "Tzatziki (Cucumber-Yogurt Sauce)",
-        "recipe_count": 10,
-        "weighted_score": 255.9,
-        "lift": 1.21
+        "item": "Guacamole",
+        "recipe_count": 17,
+        "weighted_score": 375.7,
+        "lift": 2.53
       }
     ],
     "top_veg": [
       {
-        "item": "Chinese Broccoli",
-        "recipe_count": 5,
-        "weighted_score": 88.9,
-        "lift": 8.14
+        "item": "Corn Kernels",
+        "recipe_count": 20,
+        "weighted_score": 20.0,
+        "lift": 7.15
       },
       {
-        "item": "Butternut Squash",
-        "recipe_count": 6,
-        "weighted_score": 164.6,
-        "lift": 7.33
+        "item": "Dried Red Chile Peppers",
+        "recipe_count": 25,
+        "weighted_score": 25.0,
+        "lift": 6.65
       },
       {
-        "item": "Tomato Achaar",
-        "recipe_count": 14,
-        "weighted_score": 357.6,
-        "lift": 5.0
-      },
-      {
-        "item": "Cooked Beets",
-        "recipe_count": 5,
-        "weighted_score": 147.8,
-        "lift": 7.33
-      },
-      {
-        "item": "Yellow Onion",
-        "recipe_count": 71,
-        "weighted_score": 1819.8,
-        "lift": 2.58
-      },
-      {
-        "item": "Diced Tomatoes",
+        "item": "White Corn",
         "recipe_count": 9,
-        "weighted_score": 214.3,
-        "lift": 4.4
+        "weighted_score": 9.0,
+        "lift": 9.38
       },
       {
-        "item": "Diced Butternut Squash",
-        "recipe_count": 8,
-        "weighted_score": 168.0,
-        "lift": 4.51
+        "item": "Mexican-Style Corn",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 7.96
       },
       {
-        "item": "Cauliflower",
-        "recipe_count": 15,
-        "weighted_score": 420.8,
-        "lift": 3.49
+        "item": "Ear Corn",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 8.93
       },
       {
-        "item": "Tomatillo-Poblano Sauce",
-        "recipe_count": 15,
-        "weighted_score": 396.0,
-        "lift": 3.38
-      },
-      {
-        "item": "Baby Spinach",
-        "recipe_count": 45,
-        "weighted_score": 1065.1,
-        "lift": 2.28
-      },
-      {
-        "item": "Red Bell Pepper",
-        "recipe_count": 8,
-        "weighted_score": 145.6,
+        "item": "Whole Kernel Corn",
+        "recipe_count": 65,
+        "weighted_score": 65.0,
         "lift": 3.78
       },
       {
-        "item": "Sliced Pickled Jalapeño Peppers",
+        "item": "Frozen Corn Kernels",
+        "recipe_count": 29,
+        "weighted_score": 29.0,
+        "lift": 4.37
+      },
+      {
+        "item": "Chopped Yellow Bell Pepper",
         "recipe_count": 8,
-        "weighted_score": 174.3,
-        "lift": 2.93
+        "weighted_score": 8.0,
+        "lift": 6.67
+      },
+      {
+        "item": "Jalapeno Pepper",
+        "recipe_count": 53,
+        "weighted_score": 53.0,
+        "lift": 3.64
+      },
+      {
+        "item": "Chopped Fresh Tomatoes",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 6.73
+      },
+      {
+        "item": "Yellow Split Peas",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 6.73
+      },
+      {
+        "item": "Red Bell Pepper",
+        "recipe_count": 171,
+        "weighted_score": 308.6,
+        "lift": 2.64
       }
     ],
     "top_carbs": [
       {
+        "item": "Quinoa",
+        "recipe_count": 45,
+        "weighted_score": 45.0,
+        "lift": 6.86
+      },
+      {
         "item": "Pieces Naan Bread",
         "recipe_count": 8,
         "weighted_score": 217.8,
-        "lift": 8.38
+        "lift": 7.15
+      },
+      {
+        "item": "Ditalini Pasta",
+        "recipe_count": 11,
+        "weighted_score": 107.4,
+        "lift": 6.25
+      },
+      {
+        "item": "Bulgur",
+        "recipe_count": 12,
+        "weighted_score": 12.0,
+        "lift": 5.77
+      },
+      {
+        "item": "Uncooked Brown Rice",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 5.96
+      },
+      {
+        "item": "Cooked Brown Rice",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 5.15
+      },
+      {
+        "item": "Farro",
+        "recipe_count": 7,
+        "weighted_score": 35.4,
+        "lift": 5.84
       },
       {
         "item": "Tricolor Quinoa",
         "recipe_count": 9,
         "weighted_score": 237.9,
-        "lift": 6.0
+        "lift": 5.12
       },
       {
-        "item": "Flour Tortillas",
-        "recipe_count": 65,
-        "weighted_score": 1847.5,
-        "lift": 3.24
+        "item": "Seashell Pasta",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 4.76
       },
       {
         "item": "Basmati Rice",
-        "recipe_count": 5,
-        "weighted_score": 99.7,
-        "lift": 6.66
+        "recipe_count": 13,
+        "weighted_score": 107.7,
+        "lift": 3.97
+      },
+      {
+        "item": "Flour Tortillas",
+        "recipe_count": 97,
+        "weighted_score": 1879.5,
+        "lift": 2.26
       },
       {
         "item": "Brown Rice",
-        "recipe_count": 27,
-        "weighted_score": 756.8,
-        "lift": 2.69
-      },
-      {
-        "item": "Red Quinoa",
-        "recipe_count": 10,
-        "weighted_score": 316.5,
-        "lift": 3.57
-      },
-      {
-        "item": "Corn Tortillas",
-        "recipe_count": 6,
-        "weighted_score": 124.6,
-        "lift": 2.84
-      },
-      {
-        "item": "Red Rice Blend",
-        "recipe_count": 5,
-        "weighted_score": 151.0,
-        "lift": 2.62
-      },
-      {
-        "item": "Cracked Freekeh",
-        "recipe_count": 6,
-        "weighted_score": 195.5,
-        "lift": 2.25
-      },
-      {
-        "item": "Pocketless Pitas",
-        "recipe_count": 9,
-        "weighted_score": 242.1,
-        "lift": 1.76
-      },
-      {
-        "item": "Sweet Potatoes",
-        "recipe_count": 17,
-        "weighted_score": 489.0,
-        "lift": 1.3
-      },
-      {
-        "item": "Pearled Barley",
-        "recipe_count": 8,
-        "weighted_score": 225.8,
-        "lift": 1.61
+        "recipe_count": 36,
+        "weighted_score": 765.8,
+        "lift": 2.56
       }
     ],
     "top_cuisines": [
       {
         "item": "Mexican",
-        "recipe_count": 82,
-        "weighted_score": 2388.3
+        "recipe_count": 130,
+        "weighted_score": 2436.3
       },
       {
         "item": "American",
@@ -1577,8 +1577,8 @@
       },
       {
         "item": "Indian",
-        "recipe_count": 41,
-        "weighted_score": 1058.4
+        "recipe_count": 69,
+        "weighted_score": 1086.4
       },
       {
         "item": "Asian",
@@ -1587,8 +1587,8 @@
       },
       {
         "item": "Italian",
-        "recipe_count": 32,
-        "weighted_score": 797.5
+        "recipe_count": 47,
+        "weighted_score": 812.5
       },
       {
         "item": "Middle Eastern",
@@ -1597,246 +1597,246 @@
       },
       {
         "item": "Greek",
-        "recipe_count": 17,
-        "weighted_score": 447.6
+        "recipe_count": 31,
+        "weighted_score": 461.6
       },
       {
         "item": "Chinese",
-        "recipe_count": 18,
-        "weighted_score": 378.7
+        "recipe_count": 23,
+        "weighted_score": 383.7
       }
     ]
   },
   "shrimp": {
-    "recipe_count": 312,
+    "recipe_count": 1246,
     "avg_rating": 4.2,
     "top_sauces": [
       {
-        "item": "Sweet Pickle Relish",
-        "recipe_count": 9,
-        "weighted_score": 307.9,
-        "lift": 2.75
+        "item": "Cocktail Sauce",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 10.38
+      },
+      {
+        "item": "Fish Sauce",
+        "recipe_count": 47,
+        "weighted_score": 47.0,
+        "lift": 5.72
+      },
+      {
+        "item": "Asian Fish Sauce",
+        "recipe_count": 12,
+        "weighted_score": 12.0,
+        "lift": 4.59
+      },
+      {
+        "item": "Dashes Hot Pepper Sauce",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 4.88
+      },
+      {
+        "item": "Hot Pepper Sauce",
+        "recipe_count": 33,
+        "weighted_score": 33.0,
+        "lift": 2.59
+      },
+      {
+        "item": "Red Curry Paste",
+        "recipe_count": 7,
+        "weighted_score": 80.0,
+        "lift": 4.26
       },
       {
         "item": "Verjus Blanc",
         "recipe_count": 11,
         "weighted_score": 388.0,
-        "lift": 2.38
+        "lift": 3.3
       },
       {
-        "item": "Basil Pesto",
-        "recipe_count": 16,
-        "weighted_score": 471.7,
-        "lift": 2.01
+        "item": "Prepared Horseradish",
+        "recipe_count": 15,
+        "weighted_score": 40.7,
+        "lift": 2.76
       },
       {
         "item": "Calabrian Chile Paste",
         "recipe_count": 26,
         "weighted_score": 801.0,
-        "lift": 1.64
+        "lift": 2.28
       },
       {
         "item": "Sweet Chili Sauce",
-        "recipe_count": 13,
-        "weighted_score": 416.4,
-        "lift": 1.87
+        "recipe_count": 15,
+        "weighted_score": 418.4,
+        "lift": 2.68
       },
       {
-        "item": "Guacamole",
-        "recipe_count": 8,
-        "weighted_score": 223.4,
-        "lift": 2.04
+        "item": "Basil Pesto",
+        "recipe_count": 16,
+        "weighted_score": 471.7,
+        "lift": 2.55
       },
       {
         "item": "Verjus Rouge",
         "recipe_count": 5,
         "weighted_score": 178.0,
-        "lift": 2.44
-      },
-      {
-        "item": "Cilantro Sauce",
-        "recipe_count": 13,
-        "weighted_score": 383.1,
-        "lift": 1.6
-      },
-      {
-        "item": "Yuzu Kosho",
-        "recipe_count": 5,
-        "weighted_score": 102.1,
-        "lift": 2.09
-      },
-      {
-        "item": "Mirin (Salted Cooking Wine)",
-        "recipe_count": 9,
-        "weighted_score": 220.8,
-        "lift": 1.6
-      },
-      {
-        "item": "Vegetable Demi-Glace",
-        "recipe_count": 7,
-        "weighted_score": 238.0,
-        "lift": 1.71
-      },
-      {
-        "item": "Soy Glaze",
-        "recipe_count": 22,
-        "weighted_score": 611.8,
-        "lift": 0.93
+        "lift": 3.39
       }
     ],
     "top_veg": [
       {
         "item": "Zucchini",
-        "recipe_count": 68,
-        "weighted_score": 1984.5,
-        "lift": 2.5
+        "recipe_count": 88,
+        "weighted_score": 2004.5,
+        "lift": 2.38
+      },
+      {
+        "item": "Ears Of Corn",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 5.65
       },
       {
         "item": "Garlic",
-        "recipe_count": 189,
-        "weighted_score": 5977.6,
-        "lift": 1.28
+        "recipe_count": 446,
+        "weighted_score": 6234.6,
+        "lift": 1.57
+      },
+      {
+        "item": "Bell Pepper",
+        "recipe_count": 24,
+        "weighted_score": 599.9,
+        "lift": 2.86
+      },
+      {
+        "item": "Scallions",
+        "recipe_count": 112,
+        "weighted_score": 2434.5,
+        "lift": 1.91
       },
       {
         "item": "of Corn",
         "recipe_count": 12,
         "weighted_score": 407.0,
-        "lift": 2.53
+        "lift": 3.51
       },
       {
-        "item": "Bell Pepper",
-        "recipe_count": 21,
-        "weighted_score": 596.9,
-        "lift": 2.09
+        "item": "Green Onions",
+        "recipe_count": 77,
+        "weighted_score": 77.0,
+        "lift": 1.96
+      },
+      {
+        "item": "Jalapeño Pepper",
+        "recipe_count": 10,
+        "weighted_score": 313.3,
+        "lift": 3.54
       },
       {
         "item": "Sweet Peppers",
         "recipe_count": 33,
         "weighted_score": 1170.2,
-        "lift": 1.67
+        "lift": 2.3
       },
       {
         "item": "Sliced Pickled Jalapeño Pepper",
         "recipe_count": 21,
         "weighted_score": 735.1,
-        "lift": 1.89
-      },
-      {
-        "item": "Jalapeño Pepper",
-        "recipe_count": 9,
-        "weighted_score": 312.3,
-        "lift": 2.52
-      },
-      {
-        "item": "Scallions",
-        "recipe_count": 80,
-        "weighted_score": 2402.5,
-        "lift": 1.27
-      },
-      {
-        "item": "Poblano Pepper",
-        "recipe_count": 22,
-        "weighted_score": 616.7,
-        "lift": 1.69
+        "lift": 2.62
       },
       {
         "item": "Baby Bok Choy",
-        "recipe_count": 29,
-        "weighted_score": 781.7,
-        "lift": 1.53
+        "recipe_count": 34,
+        "weighted_score": 786.7,
+        "lift": 2.23
       },
       {
-        "item": "Tomato Achaar",
-        "recipe_count": 6,
-        "weighted_score": 160.3,
-        "lift": 2.5
-      },
-      {
-        "item": "Green Bell Pepper",
-        "recipe_count": 5,
-        "weighted_score": 122.7,
-        "lift": 2.67
+        "item": "Poblano Pepper",
+        "recipe_count": 23,
+        "weighted_score": 617.7,
+        "lift": 2.36
       }
     ],
     "top_carbs": [
       {
-        "item": "Hot Dog Buns",
-        "recipe_count": 5,
-        "weighted_score": 171.1,
-        "lift": 14.25
+        "item": "Angel Hair Pasta",
+        "recipe_count": 28,
+        "weighted_score": 28.0,
+        "lift": 10.89
       },
       {
         "item": "Yellow Grits",
         "recipe_count": 5,
         "weighted_score": 168.8,
-        "lift": 10.69
+        "lift": 14.82
+      },
+      {
+        "item": "Linguini Pasta",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 7.91
+      },
+      {
+        "item": "Linguine Pasta",
+        "recipe_count": 13,
+        "weighted_score": 13.0,
+        "lift": 5.61
+      },
+      {
+        "item": "Orzo Pasta",
+        "recipe_count": 26,
+        "weighted_score": 720.6,
+        "lift": 4.31
       },
       {
         "item": "Bucatini Pasta",
         "recipe_count": 7,
         "weighted_score": 241.8,
-        "lift": 5.2
+        "lift": 6.64
       },
       {
-        "item": "Orzo Pasta",
-        "recipe_count": 22,
-        "weighted_score": 716.6,
-        "lift": 3.01
+        "item": "Dry Fettuccine Pasta",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 6.98
+      },
+      {
+        "item": "Quick-Cooking Grits",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 6.98
       },
       {
         "item": "Mafalda Pasta",
         "recipe_count": 7,
         "weighted_score": 142.3,
-        "lift": 3.99
+        "lift": 5.53
       },
       {
-        "item": "Long Grain White Rice",
-        "recipe_count": 41,
-        "weighted_score": 1189.5,
-        "lift": 1.51
+        "item": "Linguine",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 4.39
       },
       {
-        "item": "Polenta",
+        "item": "Hot Dog Buns",
         "recipe_count": 5,
-        "weighted_score": 157.9,
-        "lift": 2.95
+        "weighted_score": 171.1,
+        "lift": 5.39
       },
       {
-        "item": "Jasmine Rice",
-        "recipe_count": 27,
-        "weighted_score": 893.2,
-        "lift": 1.39
-      },
-      {
-        "item": "Brown Rice",
-        "recipe_count": 14,
-        "weighted_score": 404.0,
-        "lift": 1.63
-      },
-      {
-        "item": "Flour Tortillas",
-        "recipe_count": 22,
-        "weighted_score": 615.8,
-        "lift": 1.28
-      },
-      {
-        "item": "Gnocchi",
-        "recipe_count": 7,
-        "weighted_score": 237.1,
-        "lift": 1.6
-      },
-      {
-        "item": "Panko Breadcrumbs",
-        "recipe_count": 26,
-        "weighted_score": 824.9,
-        "lift": 1.0
+        "item": "Couscous",
+        "recipe_count": 9,
+        "weighted_score": 62.3,
+        "lift": 4.03
       }
     ],
     "top_cuisines": [
       {
         "item": "Italian",
-        "recipe_count": 86,
-        "weighted_score": 2681.9
+        "recipe_count": 87,
+        "weighted_score": 2682.9
       },
       {
         "item": "Asian",
@@ -1850,13 +1850,13 @@
       },
       {
         "item": "Mexican",
-        "recipe_count": 33,
-        "weighted_score": 923.9
+        "recipe_count": 35,
+        "weighted_score": 925.9
       },
       {
         "item": "Spanish",
-        "recipe_count": 25,
-        "weighted_score": 787.5
+        "recipe_count": 26,
+        "weighted_score": 788.5
       },
       {
         "item": "Southern",
@@ -1865,8 +1865,8 @@
       },
       {
         "item": "Thai",
-        "recipe_count": 12,
-        "weighted_score": 396.7
+        "recipe_count": 43,
+        "weighted_score": 427.7
       },
       {
         "item": "Cajun Creole",
@@ -1876,228 +1876,228 @@
     ]
   },
   "white_fish": {
-    "recipe_count": 378,
+    "recipe_count": 1231,
     "avg_rating": 4.02,
     "top_sauces": [
-      {
-        "item": "Sweet Pickle Relish",
-        "recipe_count": 12,
-        "weighted_score": 372.3,
-        "lift": 3.02
-      },
       {
         "item": "Vegetarian Ponzu Sauce",
         "recipe_count": 24,
         "weighted_score": 681.6,
-        "lift": 2.3
+        "lift": 3.92
       },
       {
         "item": "Yellow Curry Paste",
         "recipe_count": 18,
         "weighted_score": 528.2,
-        "lift": 2.37
-      },
-      {
-        "item": "Mirin",
-        "recipe_count": 15,
-        "weighted_score": 474.7,
-        "lift": 2.35
+        "lift": 4.0
       },
       {
         "item": "Ponzu Sauce",
-        "recipe_count": 8,
-        "weighted_score": 276.7,
-        "lift": 2.75
+        "recipe_count": 9,
+        "weighted_score": 277.7,
+        "lift": 4.91
       },
       {
         "item": "Yuzu Kosho",
         "recipe_count": 8,
         "weighted_score": 253.0,
-        "lift": 2.75
+        "lift": 4.68
+      },
+      {
+        "item": "Mirin",
+        "recipe_count": 22,
+        "weighted_score": 481.7,
+        "lift": 3.11
       },
       {
         "item": "Vegetable Demi-Glace",
         "recipe_count": 10,
         "weighted_score": 288.5,
-        "lift": 2.02
+        "lift": 3.43
       },
       {
-        "item": "Salsa Verde",
-        "recipe_count": 8,
-        "weighted_score": 224.8,
-        "lift": 1.69
+        "item": "Sweet Pickle Relish",
+        "recipe_count": 13,
+        "weighted_score": 373.3,
+        "lift": 2.44
       },
       {
         "item": "Verjus Blanc",
         "recipe_count": 9,
         "weighted_score": 300.1,
-        "lift": 1.61
+        "lift": 2.74
+      },
+      {
+        "item": "Salsa Verde",
+        "recipe_count": 9,
+        "weighted_score": 225.8,
+        "lift": 2.6
       },
       {
         "item": "Sweet White Miso Paste",
         "recipe_count": 12,
         "weighted_score": 343.3,
-        "lift": 1.34
+        "lift": 2.29
       },
       {
-        "item": "Sambal Oelek",
-        "recipe_count": 22,
-        "weighted_score": 702.3,
-        "lift": 0.98
+        "item": "Tamarind Paste",
+        "recipe_count": 5,
+        "weighted_score": 57.4,
+        "lift": 2.93
       },
       {
         "item": "Mirin (Salted Cooking Wine)",
         "recipe_count": 9,
         "weighted_score": 247.3,
-        "lift": 1.32
+        "lift": 2.25
       }
     ],
     "top_veg": [
       {
+        "item": "Fresh Red Chile Pepper",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 6.55
+      },
+      {
         "item": "Collard Greens",
-        "recipe_count": 16,
-        "weighted_score": 534.9,
-        "lift": 2.79
+        "recipe_count": 17,
+        "weighted_score": 535.9,
+        "lift": 3.64
       },
       {
-        "item": "Garlic",
-        "recipe_count": 207,
-        "weighted_score": 6426.0,
-        "lift": 1.15
+        "item": "Romaine Heart",
+        "recipe_count": 6,
+        "weighted_score": 164.6,
+        "lift": 5.14
       },
       {
-        "item": "Green Cabbage",
-        "recipe_count": 11,
-        "weighted_score": 354.5,
-        "lift": 2.46
+        "item": "Roma Tomato",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 4.97
+      },
+      {
+        "item": "English Peas",
+        "recipe_count": 5,
+        "weighted_score": 120.8,
+        "lift": 5.22
+      },
+      {
+        "item": "Minced Red Onion",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 4.09
+      },
+      {
+        "item": "Artichokes",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 5.0
       },
       {
         "item": "Sweety Drop Peppers",
         "recipe_count": 11,
         "weighted_score": 328.3,
-        "lift": 2.1
+        "lift": 3.57
       },
       {
-        "item": "Romaine Heart",
-        "recipe_count": 5,
-        "weighted_score": 163.6,
-        "lift": 2.82
-      },
-      {
-        "item": "Scallions",
-        "recipe_count": 86,
-        "weighted_score": 2653.5,
-        "lift": 1.13
-      },
-      {
-        "item": "Green Beans",
-        "recipe_count": 32,
-        "weighted_score": 1026.1,
+        "item": "Garlic",
+        "recipe_count": 393,
+        "weighted_score": 6612.0,
         "lift": 1.4
       },
       {
-        "item": "Zucchini",
-        "recipe_count": 42,
-        "weighted_score": 1335.8,
-        "lift": 1.27
+        "item": "Garlic Clove",
+        "recipe_count": 50,
+        "weighted_score": 50.0,
+        "lift": 2.08
       },
       {
-        "item": "Sweet Peppers",
-        "recipe_count": 32,
-        "weighted_score": 993.4,
-        "lift": 1.34
+        "item": "Garlic Cloves",
+        "recipe_count": 127,
+        "weighted_score": 127.0,
+        "lift": 1.67
       },
       {
-        "item": "Sliced Pickled Jalapeño Pepper",
-        "recipe_count": 20,
-        "weighted_score": 639.0,
-        "lift": 1.49
-      },
-      {
-        "item": "Baby Bok Choy",
-        "recipe_count": 29,
-        "weighted_score": 865.0,
-        "lift": 1.26
-      },
-      {
-        "item": "Diced Tomatoes",
-        "recipe_count": 5,
-        "weighted_score": 136.9,
-        "lift": 2.35
+        "item": "Green Cabbage",
+        "recipe_count": 11,
+        "weighted_score": 354.5,
+        "lift": 3.22
       }
     ],
     "top_carbs": [
       {
-        "item": "Cornmeal",
-        "recipe_count": 5,
-        "weighted_score": 148.6,
-        "lift": 10.08
-      },
-      {
         "item": "White Basmati Rice",
         "recipe_count": 5,
         "weighted_score": 169.2,
-        "lift": 6.42
+        "lift": 10.0
       },
       {
         "item": "Orzo Pasta",
         "recipe_count": 23,
         "weighted_score": 722.4,
-        "lift": 2.6
+        "lift": 3.86
       },
       {
         "item": "Pearled Barley",
         "recipe_count": 13,
         "weighted_score": 401.1,
-        "lift": 2.51
+        "lift": 4.0
       },
       {
         "item": "Fresh Udon Noodles",
         "recipe_count": 5,
         "weighted_score": 184.8,
-        "lift": 3.53
+        "lift": 5.72
       },
       {
         "item": "Panko Breadcrumbs",
         "recipe_count": 49,
         "weighted_score": 1348.7,
-        "lift": 1.55
+        "lift": 2.58
       },
       {
         "item": "Long Grain White Rice",
-        "recipe_count": 48,
-        "weighted_score": 1380.2,
-        "lift": 1.46
-      },
-      {
-        "item": "Brown Rice",
-        "recipe_count": 19,
-        "weighted_score": 591.8,
-        "lift": 1.82
+        "recipe_count": 49,
+        "weighted_score": 1381.2,
+        "lift": 2.43
       },
       {
         "item": "Fregola Sarda Pasta",
         "recipe_count": 7,
         "weighted_score": 202.6,
-        "lift": 2.35
+        "lift": 4.0
+      },
+      {
+        "item": "Brown Rice",
+        "recipe_count": 19,
+        "weighted_score": 591.8,
+        "lift": 2.59
       },
       {
         "item": "Cracked Freekeh",
         "recipe_count": 6,
         "weighted_score": 208.3,
-        "lift": 2.17
+        "lift": 3.69
       },
       {
         "item": "Semi-Pearled Farro",
         "recipe_count": 20,
         "weighted_score": 584.0,
-        "lift": 1.31
+        "lift": 2.22
+      },
+      {
+        "item": "Sushi Rice",
+        "recipe_count": 9,
+        "weighted_score": 235.0,
+        "lift": 2.88
       },
       {
         "item": "Rice Vinegar",
-        "recipe_count": 45,
-        "weighted_score": 1403.7,
-        "lift": 1.02
+        "recipe_count": 51,
+        "weighted_score": 1409.7,
+        "lift": 1.43
       }
     ],
     "top_cuisines": [
@@ -2113,18 +2113,18 @@
       },
       {
         "item": "Italian",
-        "recipe_count": 47,
-        "weighted_score": 1439.7
+        "recipe_count": 51,
+        "weighted_score": 1443.7
       },
       {
         "item": "Mexican",
-        "recipe_count": 36,
-        "weighted_score": 1052.7
+        "recipe_count": 42,
+        "weighted_score": 1058.7
       },
       {
         "item": "Japanese",
-        "recipe_count": 25,
-        "weighted_score": 831.4
+        "recipe_count": 27,
+        "weighted_score": 833.4
       },
       {
         "item": "Southern",
@@ -2133,65 +2133,179 @@
       },
       {
         "item": "French",
-        "recipe_count": 24,
-        "weighted_score": 740.6
+        "recipe_count": 25,
+        "weighted_score": 741.6
       },
       {
         "item": "Indian",
-        "recipe_count": 15,
-        "weighted_score": 451.6
+        "recipe_count": 18,
+        "weighted_score": 454.6
       }
     ]
   },
   "lamb": {
-    "recipe_count": 18,
+    "recipe_count": 599,
     "avg_rating": 4.37,
     "top_sauces": [
       {
         "item": "Tzatziki (Cucumber-Yogurt Sauce)",
         "recipe_count": 10,
         "weighted_score": 288.5,
-        "lift": 24.49
+        "lift": 4.08
+      },
+      {
+        "item": "Tomato Sauce",
+        "recipe_count": 18,
+        "weighted_score": 18.0,
+        "lift": 1.32
+      },
+      {
+        "item": "Soy Sauce",
+        "recipe_count": 36,
+        "weighted_score": 36.0,
+        "lift": 0.96
+      },
+      {
+        "item": "Hot Pepper Sauce",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 0.98
       },
       {
         "item": "Calabrian Chile Paste",
         "recipe_count": 5,
         "weighted_score": 144.6,
-        "lift": 5.47
+        "lift": 0.91
+      },
+      {
+        "item": "Hoisin Sauce",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 0.75
       }
     ],
     "top_veg": [
       {
-        "item": "Persian Cucumbers",
-        "recipe_count": 5,
-        "weighted_score": 141.5,
-        "lift": 8.14
+        "item": "Garlic Cloves",
+        "recipe_count": 156,
+        "weighted_score": 156.0,
+        "lift": 4.22
       },
       {
-        "item": "Shallot",
-        "recipe_count": 7,
-        "weighted_score": 216.8,
-        "lift": 4.1
+        "item": "Onions",
+        "recipe_count": 65,
+        "weighted_score": 65.0,
+        "lift": 4.02
       },
       {
-        "item": "Red Onion",
+        "item": "Fennel Bulbs",
         "recipe_count": 5,
-        "weighted_score": 146.9,
-        "lift": 2.71
+        "weighted_score": 5.0,
+        "lift": 7.48
       },
       {
-        "item": "Garlic",
+        "item": "Pepper",
+        "recipe_count": 19,
+        "weighted_score": 19.0,
+        "lift": 4.36
+      },
+      {
+        "item": "Fennel Seeds",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 4.73
+      },
+      {
+        "item": "Turnips",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 6.44
+      },
+      {
+        "item": "Pearl Onions",
         "recipe_count": 5,
-        "weighted_score": 151.6,
-        "lift": 0.58
+        "weighted_score": 5.0,
+        "lift": 6.85
+      },
+      {
+        "item": "Tomato Puree",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 6.04
+      },
+      {
+        "item": "Garlic Clove",
+        "recipe_count": 34,
+        "weighted_score": 34.0,
+        "lift": 2.91
+      },
+      {
+        "item": "Eggplant",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 3.95
+      },
+      {
+        "item": "Red Onions",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 4.24
+      },
+      {
+        "item": "Minced Garlic",
+        "recipe_count": 41,
+        "weighted_score": 41.0,
+        "lift": 2.07
       }
     ],
     "top_carbs": [
       {
-        "item": "Long Grain White Rice",
+        "item": "Pita Bread Rounds",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 14.1
+      },
+      {
+        "item": "Boiling Potatoes",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 7.22
+      },
+      {
+        "item": "Basmati Rice",
         "recipe_count": 5,
-        "weighted_score": 141.1,
-        "lift": 3.2
+        "weighted_score": 5.0,
+        "lift": 6.02
+      },
+      {
+        "item": "Hamburger Buns",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 2.62
+      },
+      {
+        "item": "Russet Potatoes",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 1.9
+      },
+      {
+        "item": "Potatoes",
+        "recipe_count": 27,
+        "weighted_score": 27.0,
+        "lift": 1.15
+      },
+      {
+        "item": "Rice Vinegar",
+        "recipe_count": 12,
+        "weighted_score": 12.0,
+        "lift": 0.69
+      },
+      {
+        "item": "Long Grain White Rice",
+        "recipe_count": 6,
+        "weighted_score": 142.1,
+        "lift": 0.61
       }
     ],
     "top_cuisines": [
@@ -2201,24 +2315,29 @@
         "weighted_score": 187.7
       },
       {
+        "item": "Greek",
+        "recipe_count": 20,
+        "weighted_score": 100.2
+      },
+      {
+        "item": "Italian",
+        "recipe_count": 4,
+        "weighted_score": 92.0
+      },
+      {
         "item": "Middle Eastern",
         "recipe_count": 3,
         "weighted_score": 91.6
       },
       {
-        "item": "Italian",
-        "recipe_count": 3,
-        "weighted_score": 91.0
-      },
-      {
-        "item": "Greek",
-        "recipe_count": 3,
-        "weighted_score": 83.2
+        "item": "Moroccan",
+        "recipe_count": 12,
+        "weighted_score": 37.2
       },
       {
         "item": "Indian",
-        "recipe_count": 1,
-        "weighted_score": 32.2
+        "recipe_count": 5,
+        "weighted_score": 36.2
       },
       {
         "item": "Spanish",
@@ -2226,211 +2345,235 @@
         "weighted_score": 31.7
       },
       {
-        "item": "Moroccan",
-        "recipe_count": 1,
-        "weighted_score": 26.2
+        "item": "Mediterranean",
+        "recipe_count": 6,
+        "weighted_score": 6.0
       }
     ]
   },
   "turkey": {
-    "recipe_count": 113,
+    "recipe_count": 842,
     "avg_rating": 4.19,
     "top_sauces": [
+      {
+        "item": "Turkey Gravy",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 30.71
+      },
+      {
+        "item": "Cranberry Sauce",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 13.37
+      },
+      {
+        "item": "Mango Chutney",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 5.14
+      },
       {
         "item": "Garlic & Herb Spreadable Butter",
         "recipe_count": 6,
         "weighted_score": 159.7,
-        "lift": 5.9
+        "lift": 4.39
       },
       {
         "item": "Tomato Sauce",
+        "recipe_count": 35,
+        "weighted_score": 307.3,
+        "lift": 1.82
+      },
+      {
+        "item": "Spaghetti Sauce",
+        "recipe_count": 9,
+        "weighted_score": 9.0,
+        "lift": 2.75
+      },
+      {
+        "item": "Salsa",
         "recipe_count": 11,
-        "weighted_score": 283.3,
-        "lift": 4.33
+        "weighted_score": 11.0,
+        "lift": 1.92
       },
       {
         "item": "Sambal Oelek",
         "recipe_count": 15,
         "weighted_score": 478.1,
-        "lift": 2.24
+        "lift": 1.62
+      },
+      {
+        "item": "Soy Sauce",
+        "recipe_count": 44,
+        "weighted_score": 379.4,
+        "lift": 0.83
       },
       {
         "item": "Romesco Sauce (Contains Almonds)",
         "recipe_count": 5,
         "weighted_score": 148.4,
-        "lift": 2.34
+        "lift": 1.74
       },
       {
-        "item": "Soy Sauce",
-        "recipe_count": 13,
-        "weighted_score": 348.4,
-        "lift": 1.49
+        "item": "Hoisin Sauce",
+        "recipe_count": 10,
+        "weighted_score": 127.7,
+        "lift": 1.06
       },
       {
         "item": "Vegetarian Ponzu Sauce",
         "recipe_count": 5,
         "weighted_score": 112.8,
-        "lift": 1.61
-      },
-      {
-        "item": "Hoisin Sauce",
-        "recipe_count": 6,
-        "weighted_score": 123.7,
-        "lift": 1.31
-      },
-      {
-        "item": "Soy Glaze",
-        "recipe_count": 8,
-        "weighted_score": 243.7,
-        "lift": 0.94
-      },
-      {
-        "item": "Calabrian Chile Paste",
-        "recipe_count": 5,
-        "weighted_score": 140.5,
-        "lift": 0.87
+        "lift": 1.19
       }
     ],
     "top_veg": [
       {
-        "item": "Brussels Sprouts",
-        "recipe_count": 15,
-        "weighted_score": 355.6,
-        "lift": 3.4
-      },
-      {
-        "item": "Persian Cucumber",
-        "recipe_count": 9,
-        "weighted_score": 203.2,
-        "lift": 2.81
-      },
-      {
-        "item": "Mushrooms",
-        "recipe_count": 11,
-        "weighted_score": 350.0,
-        "lift": 2.09
-      },
-      {
-        "item": "Garlic",
-        "recipe_count": 66,
-        "weighted_score": 1982.6,
-        "lift": 1.23
-      },
-      {
-        "item": "Yellow Onion",
-        "recipe_count": 15,
-        "weighted_score": 429.3,
-        "lift": 1.75
-      },
-      {
-        "item": "Red Onion",
-        "recipe_count": 17,
-        "weighted_score": 525.7,
-        "lift": 1.47
-      },
-      {
-        "item": "East Asian-Style Sautéed Aromatics",
+        "item": "Romaine Lettuce Leaves",
         "recipe_count": 5,
-        "weighted_score": 133.1,
-        "lift": 2.21
+        "weighted_score": 5.0,
+        "lift": 8.36
+      },
+      {
+        "item": "Celery Stalks",
+        "recipe_count": 17,
+        "weighted_score": 17.0,
+        "lift": 5.1
+      },
+      {
+        "item": "Celery Rib",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 5.57
+      },
+      {
+        "item": "Celery",
+        "recipe_count": 67,
+        "weighted_score": 117.1,
+        "lift": 2.68
+      },
+      {
+        "item": "Salt And Pepper",
+        "recipe_count": 16,
+        "weighted_score": 16.0,
+        "lift": 3.74
+      },
+      {
+        "item": "Carrot",
+        "recipe_count": 41,
+        "weighted_score": 41.0,
+        "lift": 2.67
+      },
+      {
+        "item": "Ribs Celery",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 4.9
+      },
+      {
+        "item": "Shredded Lettuce",
+        "recipe_count": 9,
+        "weighted_score": 9.0,
+        "lift": 3.85
+      },
+      {
+        "item": "Onion",
+        "recipe_count": 191,
+        "weighted_score": 191.0,
+        "lift": 1.6
+      },
+      {
+        "item": "Onions",
+        "recipe_count": 44,
+        "weighted_score": 44.0,
+        "lift": 1.94
       },
       {
         "item": "Carrots",
-        "recipe_count": 18,
-        "weighted_score": 570.5,
-        "lift": 1.15
+        "recipe_count": 85,
+        "weighted_score": 637.5,
+        "lift": 1.64
       },
       {
-        "item": "Shallot",
-        "recipe_count": 13,
-        "weighted_score": 411.5,
-        "lift": 1.21
-      },
-      {
-        "item": "Poblano Pepper",
-        "recipe_count": 7,
-        "weighted_score": 230.6,
-        "lift": 1.49
-      },
-      {
-        "item": "Sliced Pickled Jalapeño Pepper",
+        "item": "Celery Stalk",
         "recipe_count": 6,
-        "weighted_score": 187.3,
-        "lift": 1.49
-      },
-      {
-        "item": "Zucchini",
-        "recipe_count": 11,
-        "weighted_score": 338.3,
-        "lift": 1.11
+        "weighted_score": 6.0,
+        "lift": 3.69
       }
     ],
     "top_carbs": [
       {
+        "item": "Panko Breadcrumbs",
+        "recipe_count": 48,
+        "weighted_score": 1394.4,
+        "lift": 3.69
+      },
+      {
         "item": "Pie Crust",
         "recipe_count": 12,
         "weighted_score": 260.7,
-        "lift": 10.9
+        "lift": 3.48
       },
       {
-        "item": "Panko Breadcrumbs",
-        "recipe_count": 47,
-        "weighted_score": 1393.4,
-        "lift": 4.98
+        "item": "Hamburger Buns",
+        "recipe_count": 12,
+        "weighted_score": 68.5,
+        "lift": 3.19
+      },
+      {
+        "item": "Brown Rice",
+        "recipe_count": 12,
+        "weighted_score": 282.2,
+        "lift": 2.39
+      },
+      {
+        "item": "Tortilla Chips",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 3.03
       },
       {
         "item": "Potato Buns",
         "recipe_count": 8,
         "weighted_score": 260.4,
-        "lift": 2.86
+        "lift": 2.1
       },
       {
-        "item": "Brown Rice",
-        "recipe_count": 8,
-        "weighted_score": 278.2,
-        "lift": 2.57
+        "item": "White Bread",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 2.54
       },
       {
         "item": "Rice Vinegar",
-        "recipe_count": 23,
-        "weighted_score": 683.3,
-        "lift": 1.74
+        "recipe_count": 26,
+        "weighted_score": 686.3,
+        "lift": 1.07
       },
       {
         "item": "Potatoes",
-        "recipe_count": 16,
-        "weighted_score": 378.2,
-        "lift": 1.62
+        "recipe_count": 32,
+        "weighted_score": 394.2,
+        "lift": 0.97
       },
       {
-        "item": "Sweet Potatoes",
+        "item": "Corn Tortillas",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 1.52
+      },
+      {
+        "item": "Spaghetti",
         "recipe_count": 7,
-        "weighted_score": 228.8,
-        "lift": 1.73
+        "weighted_score": 7.0,
+        "lift": 1.57
       },
       {
-        "item": "Orzo Pasta",
-        "recipe_count": 5,
-        "weighted_score": 163.3,
-        "lift": 1.89
-      },
-      {
-        "item": "Golden Potatoes",
-        "recipe_count": 5,
-        "weighted_score": 157.1,
-        "lift": 1.83
-      },
-      {
-        "item": "Semi-Pearled Farro",
-        "recipe_count": 5,
-        "weighted_score": 167.5,
-        "lift": 1.1
-      },
-      {
-        "item": "Long Grain White Rice",
-        "recipe_count": 7,
-        "weighted_score": 203.6,
-        "lift": 0.71
+        "item": "Flour Tortillas",
+        "recipe_count": 17,
+        "weighted_score": 34.2,
+        "lift": 1.11
       }
     ],
     "top_cuisines": [
@@ -2446,8 +2589,8 @@
       },
       {
         "item": "Mexican",
-        "recipe_count": 8,
-        "weighted_score": 250.7
+        "recipe_count": 16,
+        "weighted_score": 258.7
       },
       {
         "item": "Middle Eastern",
@@ -2456,18 +2599,18 @@
       },
       {
         "item": "Chinese",
-        "recipe_count": 7,
-        "weighted_score": 172.5
+        "recipe_count": 8,
+        "weighted_score": 173.5
       },
       {
         "item": "Italian",
-        "recipe_count": 6,
-        "weighted_score": 150.2
+        "recipe_count": 13,
+        "weighted_score": 157.2
       },
       {
         "item": "Greek",
-        "recipe_count": 2,
-        "weighted_score": 68.9
+        "recipe_count": 3,
+        "weighted_score": 69.9
       },
       {
         "item": "Moroccan",
@@ -2477,32 +2620,80 @@
     ]
   },
   "shellfish": {
-    "recipe_count": 49,
+    "recipe_count": 892,
     "avg_rating": 4.37,
     "top_sauces": [
+      {
+        "item": "Cocktail Sauce",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 14.5
+      },
+      {
+        "item": "Drops Hot Pepper Sauce",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 9.47
+      },
+      {
+        "item": "Dash Hot Pepper Sauce",
+        "recipe_count": 11,
+        "weighted_score": 11.0,
+        "lift": 4.56
+      },
       {
         "item": "Garlic & Herb Spreadable Butter",
         "recipe_count": 7,
         "weighted_score": 210.9,
-        "lift": 15.88
+        "lift": 4.83
+      },
+      {
+        "item": "Prepared Horseradish",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 3.6
+      },
+      {
+        "item": "Asian Fish Sauce",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 3.74
       },
       {
         "item": "Verjus Blanc",
         "recipe_count": 8,
         "weighted_score": 230.8,
-        "lift": 11.03
+        "lift": 3.36
+      },
+      {
+        "item": "Creamy Salad Dressing",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 3.13
       },
       {
         "item": "Vegetable Demi-Glace",
         "recipe_count": 6,
         "weighted_score": 180.7,
-        "lift": 9.33
+        "lift": 2.84
       },
       {
-        "item": "Calabrian Chile Paste",
-        "recipe_count": 5,
-        "weighted_score": 131.0,
-        "lift": 2.01
+        "item": "Hot Pepper Sauce",
+        "recipe_count": 15,
+        "weighted_score": 15.0,
+        "lift": 1.65
+      },
+      {
+        "item": "Fish Sauce",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 1.36
+      },
+      {
+        "item": "Mirin",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 1.36
       }
     ],
     "top_veg": [
@@ -2510,73 +2701,73 @@
         "item": "Pickled Goathorn Peppers",
         "recipe_count": 6,
         "weighted_score": 182.5,
-        "lift": 29.69
+        "lift": 9.04
       },
       {
-        "item": "Crispy Onions",
-        "recipe_count": 12,
-        "weighted_score": 332.2,
-        "lift": 9.4
-      },
-      {
-        "item": "Baby Spinach",
-        "recipe_count": 17,
-        "weighted_score": 475.5,
-        "lift": 6.4
-      },
-      {
-        "item": "Sugar Snap Peas",
-        "recipe_count": 8,
-        "weighted_score": 199.6,
-        "lift": 8.3
-      },
-      {
-        "item": "Balsamic-Marinated Cipolline Onions",
-        "recipe_count": 5,
-        "weighted_score": 144.9,
-        "lift": 9.72
-      },
-      {
-        "item": "Of Corn",
-        "recipe_count": 6,
-        "weighted_score": 164.6,
-        "lift": 7.02
-      },
-      {
-        "item": "Pickled Peppadew Peppers",
-        "recipe_count": 8,
-        "weighted_score": 205.2,
-        "lift": 5.55
-      },
-      {
-        "item": "Shallot",
-        "recipe_count": 18,
-        "weighted_score": 488.8,
-        "lift": 3.87
-      },
-      {
-        "item": "Asparagus",
-        "recipe_count": 7,
-        "weighted_score": 202.9,
-        "lift": 5.41
-      },
-      {
-        "item": "Scallions",
+        "item": "Minced Shallot",
         "recipe_count": 16,
-        "weighted_score": 427.3,
-        "lift": 1.62
+        "weighted_score": 16.0,
+        "lift": 5.47
       },
       {
-        "item": "Mushrooms",
-        "recipe_count": 5,
-        "weighted_score": 144.7,
-        "lift": 2.2
+        "item": "Fennel Bulb",
+        "recipe_count": 15,
+        "weighted_score": 131.2,
+        "lift": 4.4
       },
       {
-        "item": "Radishes",
+        "item": "Chopped Shallots",
+        "recipe_count": 13,
+        "weighted_score": 13.0,
+        "lift": 4.53
+      },
+      {
+        "item": "Minced Celery",
         "recipe_count": 5,
-        "weighted_score": 128.4,
-        "lift": 1.87
+        "weighted_score": 5.0,
+        "lift": 6.63
+      },
+      {
+        "item": "Chopped Shallot",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 6.02
+      },
+      {
+        "item": "Shallots",
+        "recipe_count": 34,
+        "weighted_score": 34.0,
+        "lift": 3.16
+      },
+      {
+        "item": "Thinly Sliced Green Onion",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 6.14
+      },
+      {
+        "item": "Finely Chopped Celery",
+        "recipe_count": 9,
+        "weighted_score": 9.0,
+        "lift": 4.26
+      },
+      {
+        "item": "Minced Onion",
+        "recipe_count": 19,
+        "weighted_score": 19.0,
+        "lift": 3.2
+      },
+      {
+        "item": "Garlic Cloves",
+        "recipe_count": 111,
+        "weighted_score": 111.0,
+        "lift": 2.02
+      },
+      {
+        "item": "Cucumbers",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 5.02
       }
     ],
     "top_carbs": [
@@ -2584,19 +2775,73 @@
         "item": "Red Rice Blend",
         "recipe_count": 10,
         "weighted_score": 287.6,
-        "lift": 38.88
+        "lift": 11.83
+      },
+      {
+        "item": "Linguini Pasta",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 12.88
       },
       {
         "item": "Carnaroli Rice",
         "recipe_count": 5,
         "weighted_score": 151.8,
-        "lift": 45.37
+        "lift": 13.81
       },
       {
-        "item": "Panko Breadcrumbs",
-        "recipe_count": 6,
-        "weighted_score": 140.5,
-        "lift": 1.46
+        "item": "Condensed Cream Of Potato Soup",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 13.81
+      },
+      {
+        "item": "Linguine",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 8.59
+      },
+      {
+        "item": "Linguine Pasta",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 6.02
+      },
+      {
+        "item": "English Muffins",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 7.89
+      },
+      {
+        "item": "Polenta",
+        "recipe_count": 5,
+        "weighted_score": 112.8,
+        "lift": 4.48
+      },
+      {
+        "item": "Buttery Round Crackers",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 4.36
+      },
+      {
+        "item": "Arborio Rice",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 3.52
+      },
+      {
+        "item": "Spaghetti",
+        "recipe_count": 9,
+        "weighted_score": 9.0,
+        "lift": 1.91
+      },
+      {
+        "item": "Bread Crumbs",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 1.9
       }
     ],
     "top_cuisines": [
@@ -2616,19 +2861,19 @@
         "weighted_score": 111.1
       },
       {
+        "item": "Mexican",
+        "recipe_count": 4,
+        "weighted_score": 55.6
+      },
+      {
         "item": "Southern",
         "recipe_count": 2,
         "weighted_score": 54.8
       },
       {
-        "item": "Mexican",
-        "recipe_count": 2,
-        "weighted_score": 53.6
-      },
-      {
         "item": "Japanese",
-        "recipe_count": 1,
-        "weighted_score": 31.6
+        "recipe_count": 4,
+        "weighted_score": 34.6
       },
       {
         "item": "French",
@@ -2643,20 +2888,26 @@
     ]
   },
   "duck": {
-    "recipe_count": 36,
+    "recipe_count": 142,
     "avg_rating": 4.56,
     "top_sauces": [
       {
         "item": "Soy Sauce",
-        "recipe_count": 8,
-        "weighted_score": 241.7,
-        "lift": 2.87
+        "recipe_count": 24,
+        "weighted_score": 257.7,
+        "lift": 2.69
       },
       {
         "item": "Soy Glaze",
         "recipe_count": 6,
         "weighted_score": 182.8,
-        "lift": 2.21
+        "lift": 3.1
+      },
+      {
+        "item": "Hoisin Sauce",
+        "recipe_count": 5,
+        "weighted_score": 64.7,
+        "lift": 3.15
       }
     ],
     "top_veg": [
@@ -2664,55 +2915,73 @@
         "item": "Of Corn",
         "recipe_count": 5,
         "weighted_score": 134.8,
-        "lift": 7.97
+        "lift": 11.19
       },
       {
         "item": "Pickled Peppadew Peppers",
         "recipe_count": 7,
         "weighted_score": 196.2,
-        "lift": 6.61
+        "lift": 9.28
       },
       {
         "item": "Arugula",
-        "recipe_count": 10,
-        "weighted_score": 259.0,
-        "lift": 5.39
+        "recipe_count": 12,
+        "weighted_score": 261.0,
+        "lift": 6.84
       },
       {
         "item": "Brussels Sprouts",
-        "recipe_count": 8,
-        "weighted_score": 238.3,
-        "lift": 5.7
+        "recipe_count": 9,
+        "weighted_score": 239.3,
+        "lift": 7.02
+      },
+      {
+        "item": "Shallot",
+        "recipe_count": 18,
+        "weighted_score": 342.4,
+        "lift": 4.9
       },
       {
         "item": "Asparagus",
         "recipe_count": 6,
         "weighted_score": 168.7,
-        "lift": 6.31
+        "lift": 5.7
       },
       {
-        "item": "Shallot",
-        "recipe_count": 12,
-        "weighted_score": 336.4,
-        "lift": 3.51
+        "item": "Shallots",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 4.68
       },
       {
-        "item": "Red Onion",
-        "recipe_count": 5,
-        "weighted_score": 143.4,
-        "lift": 1.35
+        "item": "Pinch Cayenne Pepper",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 4.98
+      },
+      {
+        "item": "Garlic Cloves",
+        "recipe_count": 19,
+        "weighted_score": 19.0,
+        "lift": 2.17
+      },
+      {
+        "item": "Carrot",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 2.7
+      },
+      {
+        "item": "Garlic Clove",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 2.16
       },
       {
         "item": "Scallions",
-        "recipe_count": 5,
-        "weighted_score": 142.0,
-        "lift": 0.69
-      },
-      {
-        "item": "Garlic",
-        "recipe_count": 5,
-        "weighted_score": 120.1,
-        "lift": 0.29
+        "recipe_count": 10,
+        "weighted_score": 147.0,
+        "lift": 1.5
       }
     ],
     "top_carbs": [
@@ -2720,25 +2989,25 @@
         "item": "Fingerling Potatoes",
         "recipe_count": 8,
         "weighted_score": 207.1,
-        "lift": 15.01
-      },
-      {
-        "item": "Potatoes",
-        "recipe_count": 8,
-        "weighted_score": 209.2,
-        "lift": 2.54
+        "lift": 18.92
       },
       {
         "item": "Long Grain White Rice",
         "recipe_count": 6,
         "weighted_score": 178.1,
-        "lift": 1.92
+        "lift": 2.58
+      },
+      {
+        "item": "Potatoes",
+        "recipe_count": 10,
+        "weighted_score": 211.2,
+        "lift": 1.79
       },
       {
         "item": "Rice Vinegar",
         "recipe_count": 5,
         "weighted_score": 155.8,
-        "lift": 1.19
+        "lift": 1.22
       }
     ],
     "top_cuisines": [
@@ -2749,8 +3018,8 @@
       },
       {
         "item": "French",
-        "recipe_count": 9,
-        "weighted_score": 246.2
+        "recipe_count": 10,
+        "weighted_score": 247.2
       },
       {
         "item": "Asian",
@@ -2759,8 +3028,8 @@
       },
       {
         "item": "Chinese",
-        "recipe_count": 1,
-        "weighted_score": 31.2
+        "recipe_count": 2,
+        "weighted_score": 32.2
       },
       {
         "item": "Thai",
@@ -2776,15 +3045,155 @@
         "item": "Latin American",
         "recipe_count": 1,
         "weighted_score": 26.4
+      },
+      {
+        "item": "Moroccan",
+        "recipe_count": 1,
+        "weighted_score": 1.0
       }
     ]
   },
   "tuna": {
-    "recipe_count": 2,
+    "recipe_count": 269,
     "avg_rating": 3.94,
-    "top_sauces": [],
-    "top_veg": [],
-    "top_carbs": [],
+    "top_sauces": [
+      {
+        "item": "Sweet Pickle Relish",
+        "recipe_count": 14,
+        "weighted_score": 14.0,
+        "lift": 12.02
+      },
+      {
+        "item": "Creamy Salad Dressing",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 10.39
+      },
+      {
+        "item": "Soy Sauce",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 0.41
+      }
+    ],
+    "top_veg": [
+      {
+        "item": "Minced Green Onion",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 25.35
+      },
+      {
+        "item": "Peas",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 14.51
+      },
+      {
+        "item": "Finely Chopped Celery",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 10.99
+      },
+      {
+        "item": "Finely Chopped Red Onion",
+        "recipe_count": 7,
+        "weighted_score": 7.0,
+        "lift": 10.68
+      },
+      {
+        "item": "Frozen Green Peas",
+        "recipe_count": 8,
+        "weighted_score": 8.0,
+        "lift": 9.99
+      },
+      {
+        "item": "Frozen Peas",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 7.58
+      },
+      {
+        "item": "Cucumber",
+        "recipe_count": 10,
+        "weighted_score": 10.0,
+        "lift": 5.91
+      },
+      {
+        "item": "Diced Celery",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 5.45
+      },
+      {
+        "item": "Tomato",
+        "recipe_count": 15,
+        "weighted_score": 15.0,
+        "lift": 3.65
+      },
+      {
+        "item": "Green Onion",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 5.07
+      },
+      {
+        "item": "Chopped Celery",
+        "recipe_count": 12,
+        "weighted_score": 12.0,
+        "lift": 3.49
+      },
+      {
+        "item": "Chopped Red Onion",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 4.1
+      }
+    ],
+    "top_carbs": [
+      {
+        "item": "Crushed Potato Chips",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 21.97
+      },
+      {
+        "item": "Egg Noodles",
+        "recipe_count": 13,
+        "weighted_score": 13.0,
+        "lift": 13.47
+      },
+      {
+        "item": "Elbow Macaroni",
+        "recipe_count": 9,
+        "weighted_score": 9.0,
+        "lift": 8.67
+      },
+      {
+        "item": "Bread",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 7.67
+      },
+      {
+        "item": "Dry Bread Crumbs",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 4.37
+      },
+      {
+        "item": "Bread Crumbs",
+        "recipe_count": 5,
+        "weighted_score": 5.0,
+        "lift": 4.5
+      },
+      {
+        "item": "Flour Tortillas",
+        "recipe_count": 6,
+        "weighted_score": 6.0,
+        "lift": 1.23
+      }
+    ],
     "top_cuisines": [
       {
         "item": "French",
@@ -2795,6 +3204,36 @@
         "item": "American",
         "recipe_count": 1,
         "weighted_score": 5.1
+      },
+      {
+        "item": "Mediterranean",
+        "recipe_count": 4,
+        "weighted_score": 4.0
+      },
+      {
+        "item": "Greek",
+        "recipe_count": 3,
+        "weighted_score": 3.0
+      },
+      {
+        "item": "Italian",
+        "recipe_count": 2,
+        "weighted_score": 2.0
+      },
+      {
+        "item": "Mexican",
+        "recipe_count": 2,
+        "weighted_score": 2.0
+      },
+      {
+        "item": "Korean",
+        "recipe_count": 1,
+        "weighted_score": 1.0
+      },
+      {
+        "item": "Thai",
+        "recipe_count": 1,
+        "weighted_score": 1.0
       }
     ]
   }
