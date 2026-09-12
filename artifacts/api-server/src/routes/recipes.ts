@@ -128,6 +128,12 @@ router.get("/recipes/shortcuts", requireAuth, async (req, res): Promise<void> =>
   const dessertFilter =
     isDessertParam === "true" ? sql`AND r.is_dessert = true` : isDessertParam === "false" ? sql`AND r.is_dessert = false` : sql``;
 
+  // Raw db.execute() rows come back with the literal column names
+  // (is_dessert), not drizzle's camelCased field names (isDessert) --
+  // that mapping only happens for its typed query builder methods.
+  const denormalize = (rows: Record<string, unknown>[]): RecipeRecord[] =>
+    rows.map((r) => ({ ...r, isDessert: r.is_dessert }) as unknown as RecipeRecord);
+
   const recentRows = await db.execute(sql`
     SELECT r.* FROM ${recipesTable} r
     JOIN (
@@ -141,7 +147,7 @@ router.get("/recipes/shortcuts", requireAuth, async (req, res): Promise<void> =>
     WHERE true ${dessertFilter}
     ORDER BY latest.last_searched DESC
   `);
-  const recent = recentRows.rows as unknown as RecipeRecord[];
+  const recent = denormalize(recentRows.rows as unknown as Record<string, unknown>[]);
 
   const randomRows = await db.execute(sql`
     SELECT * FROM ${recipesTable} r
@@ -149,7 +155,7 @@ router.get("/recipes/shortcuts", requireAuth, async (req, res): Promise<void> =>
     ORDER BY random()
     LIMIT 5
   `);
-  const random = randomRows.rows as unknown as RecipeRecord[];
+  const random = denormalize(randomRows.rows as unknown as Record<string, unknown>[]);
 
   const favorited = await favoritedRecipeIds(userId, [...recent, ...random].map((r) => r.id));
 
