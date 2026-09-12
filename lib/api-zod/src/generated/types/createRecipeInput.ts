@@ -9,4 +9,5 @@ import type { RecipeDraft } from './recipeDraft';
 
 export type CreateRecipeInput = RecipeDraft & {
   utensils?: string[];
+  isDessert?: boolean;
 };

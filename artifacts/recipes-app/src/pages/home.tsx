@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { useQueryClient } from '@tanstack/react-query';
 import { Search as SearchIcon, Star, Clock, Sparkles } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 import {
   useListCategories,
   useGetSearchShortcuts,
@@ -72,15 +73,56 @@ function ShortcutChip({ recipe }: { recipe: RecipeSummary }) {
   );
 }
 
+function MealTypeToggle({ value, onChange }: { value: 'meal' | 'dessert'; onChange: (v: 'meal' | 'dessert') => void }) {
+  return (
+    <div className="relative flex rounded-full border border-border bg-card p-1">
+      <div
+        aria-hidden
+        className={cn(
+          'absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-primary transition-transform duration-200 ease-out',
+          value === 'dessert' && 'translate-x-[calc(100%+4px)]',
+        )}
+      />
+      <button
+        type="button"
+        onClick={() => onChange('meal')}
+        aria-pressed={value === 'meal'}
+        className={cn(
+          'relative z-10 flex-1 rounded-full py-2 text-sm font-semibold transition-colors',
+          value === 'meal' ? 'text-primary-foreground' : 'text-muted-foreground',
+        )}
+      >
+        Meals
+      </button>
+      <button
+        type="button"
+        onClick={() => onChange('dessert')}
+        aria-pressed={value === 'dessert'}
+        className={cn(
+          'relative z-10 flex-1 rounded-full py-2 text-sm font-semibold transition-colors',
+          value === 'dessert' ? 'text-primary-foreground' : 'text-muted-foreground',
+        )}
+      >
+        Dessert
+      </button>
+    </div>
+  );
+}
+
 export default function Home() {
   const [, navigate] = useLocation();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
+  const [mealType, setMealType] = useState<'meal' | 'dessert'>('meal');
+  const isDessert = mealType === 'dessert';
 
   const categoriesQuery = useListCategories();
-  const shortcutsQuery = useGetSearchShortcuts();
+  const shortcutsParams = { isDessert };
+  const shortcutsQuery = useGetSearchShortcuts(shortcutsParams, {
+    query: { queryKey: getGetSearchShortcutsQueryKey(shortcutsParams) },
+  });
   const isSearching = query.trim().length > 0 || category !== null;
-  const searchParams = { q: query.trim() || undefined, category: category ?? undefined };
+  const searchParams = { q: query.trim() || undefined, category: category ?? undefined, isDessert };
   const searchQuery = useSearchRecipes(searchParams, {
     query: { enabled: isSearching, queryKey: getSearchRecipesQueryKey(searchParams) },
   });
@@ -97,6 +139,8 @@ export default function Home() {
       </header>
 
       <div className="mx-auto max-w-[640px] space-y-4 px-4 py-4">
+        <MealTypeToggle value={mealType} onChange={setMealType} />
+
         <div className="relative">
           <SearchIcon className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           <Input

@@ -135,3 +135,66 @@ export async function generatePlannerRecipe(input: {
   }
   return parsed;
 }
+
+// Turns a bare title + raw ingredient list (no directions -- those are never
+// passed in, and the source's is never seen or stored) into a complete,
+// original recipe: normalized ingredient amounts/units, and brand-new
+// step-by-step directions written from scratch based on general cooking
+// knowledge for this type of dish. Used to bulk-import third-party
+// ingredient-list datasets as real recipes without reproducing any
+// scraped instructional text -- the model has no source wording to copy
+// even if it wanted to.
+const UNIT_RULES =
+  "Unit selection is an absolute rule, not a preference: 'ml' and 'l' may ONLY be used for something " +
+  "that is actually poured as a liquid in real quantity -- stock, milk, wine, water, oil, vinegar, " +
+  "cream, juice. Every solid, powdered, or granular ingredient gets a weight or count unit instead, " +
+  "with NO exceptions for small quantities: kosher salt, table salt, brown sugar, granulated sugar, " +
+  "cornstarch, flour, baking soda, baking powder, and spices are never 'ml' or 'l', full stop -- prefer " +
+  "'g' for these (e.g. '3 g kosher salt', '15 g brown sugar', '6 g cornstarch'), or 'tsp'/'tbsp' only " +
+  "when a measuring spoon is genuinely the more natural real-world measure (a pinch of cinnamon, a " +
+  "capful of extract). Butter and other solid fats get 'tbsp', 'g', or 'oz' -- never 'ml'. Ingredients " +
+  "normally weighed (meat, cheese, produce) get 'g', 'kg', 'oz', or 'lb'; discrete items get 'each' " +
+  "(eggs, garlic cloves, chiles). Before writing any ingredient's unit, ask: 'would this ever actually " +
+  "be poured from a liquid measuring cup?' -- if the honest answer is no, the unit cannot be 'ml' or 'l', " +
+  "regardless of how small the amount is.";
+
+const INGREDIENT_TO_RECIPE_SYSTEM_PROMPT =
+  "You are a home-cooking recipe developer. You will be given a dish's title and its ingredient list " +
+  "(amounts and products only) -- you have NOT been given and will never see this dish's original " +
+  "directions, so there is nothing to copy or paraphrase from; write completely original, from-scratch " +
+  "step-by-step directions based on standard cooking technique and knowledge for a dish like this. Name " +
+  "the actual technique and timing for each component (how things are seared/roasted/simmered/baked and " +
+  "for how long and at what heat), not vague restatements. " +
+  "Also normalize the given ingredient list into clean structured amount/unit/product/notes fields: keep " +
+  "every ingredient and its real quantity (do not drop or invent ingredients), but clean up the product " +
+  "name (strip package sizes, brand names, and prep instructions like 'cut into slices' out of the name " +
+  "itself -- prep notes belong in the notes field, e.g. product 'chicken thighs', notes 'cut into 1-inch " +
+  "pieces'). If no serving count is given, estimate a reasonable one from the ingredient quantities.\n\n" +
+  UNIT_RULES;
+
+export async function generateRecipeFromIngredients(input: {
+  title: string;
+  rawIngredients: string[];
+}): Promise<{ recipe: RecipeDraft; usage: Anthropic.Usage }> {
+  const response = await getClient().messages.parse({
+    model: PLANNER_MODEL,
+    max_tokens: 4096,
+    output_config: { effort: "medium", format: zodOutputFormat(RecipeDraftSchema) },
+    system: [{ type: "text", text: INGREDIENT_TO_RECIPE_SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
+    messages: [
+      {
+        role: "user",
+        content:
+          `Dish title: ${input.title}\n\nIngredients as listed by the source (need normalizing):\n` +
+          input.rawIngredients.map((i) => `- ${i}`).join("\n"),
+      },
+    ],
+  });
+
+  const parsed = response.parsed_output;
+  if (!parsed) {
+    throw new Error("Claude did not return a parseable recipe.");
+  }
+  return { recipe: parsed, usage: response.usage };
+}
+

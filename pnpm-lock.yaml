@@ -390,6 +390,12 @@ importers:
 
   scripts:
     dependencies:
+      '@anthropic-ai/sdk':
+        specifier: ^0.121.0
+        version: 0.121.0(zod@3.25.76)
+      '@workspace/ai':
+        specifier: workspace:*
+        version: link:../lib/ai
       '@workspace/db':
         specifier: workspace:*
         version: link:../lib/db
@@ -402,6 +408,9 @@ importers:
       xlsx:
         specifier: ^0.18.5
         version: 0.18.5
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.76
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

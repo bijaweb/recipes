@@ -1,0 +1,1 @@
+ALTER TABLE "recipes_recipes" ADD COLUMN "is_dessert" boolean DEFAULT false NOT NULL;

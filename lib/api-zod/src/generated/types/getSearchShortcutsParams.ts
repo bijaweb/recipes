@@ -6,9 +6,7 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export type SearchRecipesParams = {
-q?: string;
-category?: string;
+export type GetSearchShortcutsParams = {
 /**
  * Filter to just dessert recipes (true) or just non-dessert meal recipes (false); omit for both.
  */

@@ -82,6 +82,12 @@ paths:
       operationId: getSearchShortcuts
       tags: [recipes]
       summary: The signed-in user's last 3 searched recipes, plus 5 random recipes for discovery
+      parameters:
+        - name: isDessert
+          in: query
+          description: Filter to just dessert recipes (true) or just non-dessert meal recipes (false); omit for both.
+          schema:
+            type: boolean
       responses:
         "200":
           description: Shortcuts
@@ -103,6 +109,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: isDessert
+          in: query
+          description: Filter to just dessert recipes (true) or just non-dessert meal recipes (false); omit for both.
+          schema:
+            type: boolean
       responses:
         "200":
           description: Matching recipes
@@ -579,7 +590,7 @@ components:
             type: string
     RecipeSummary:
       type: object
-      required: [id, slug, name, category]
+      required: [id, slug, name, category, isDessert]
       properties:
         id:
           type: string
@@ -589,6 +600,8 @@ components:
           type: string
         category:
           type: string
+        isDessert:
+          type: boolean
         favorited:
           type: boolean
     RecipeSummaryListResponse:
@@ -722,6 +735,8 @@ components:
               type: array
               items:
                 type: string
+            isDessert:
+              type: boolean
     SuccessResponse:
       type: object
       required: [success]

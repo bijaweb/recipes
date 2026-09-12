@@ -68,12 +68,17 @@ export const ListCategoriesResponse = zod.object({
 /**
  * @summary The signed-in user's last 3 searched recipes, plus 5 random recipes for discovery
  */
+export const GetSearchShortcutsQueryParams = zod.object({
+  "isDessert": zod.coerce.boolean().optional().describe('Filter to just dessert recipes (true) or just non-dessert meal recipes (false); omit for both.')
+})
+
 export const GetSearchShortcutsResponse = zod.object({
   "recent": zod.array(zod.object({
   "id": zod.string(),
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 })),
   "random": zod.array(zod.object({
@@ -81,6 +86,7 @@ export const GetSearchShortcutsResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 }))
 })
@@ -91,7 +97,8 @@ export const GetSearchShortcutsResponse = zod.object({
  */
 export const SearchRecipesQueryParams = zod.object({
   "q": zod.coerce.string().optional(),
-  "category": zod.coerce.string().optional()
+  "category": zod.coerce.string().optional(),
+  "isDessert": zod.coerce.boolean().optional().describe('Filter to just dessert recipes (true) or just non-dessert meal recipes (false); omit for both.')
 })
 
 export const SearchRecipesResponse = zod.object({
@@ -100,6 +107,7 @@ export const SearchRecipesResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 }))
 })
@@ -122,7 +130,8 @@ export const CreateRecipeBody = zod.object({
 })),
   "steps": zod.array(zod.string())
 }).and(zod.object({
-  "utensils": zod.array(zod.string()).optional()
+  "utensils": zod.array(zod.string()).optional(),
+  "isDessert": zod.boolean().optional()
 }))
 
 export const CreateRecipeResponse = zod.object({
@@ -131,6 +140,7 @@ export const CreateRecipeResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 }).and(zod.object({
   "yieldText": zod.string(),
@@ -189,6 +199,7 @@ export const GetRecipeResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 }).and(zod.object({
   "yieldText": zod.string(),
@@ -230,7 +241,8 @@ export const UpdateRecipeBody = zod.object({
 })),
   "steps": zod.array(zod.string())
 }).and(zod.object({
-  "utensils": zod.array(zod.string()).optional()
+  "utensils": zod.array(zod.string()).optional(),
+  "isDessert": zod.boolean().optional()
 }))
 
 export const UpdateRecipeResponse = zod.object({
@@ -239,6 +251,7 @@ export const UpdateRecipeResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 }).and(zod.object({
   "yieldText": zod.string(),
@@ -329,6 +342,7 @@ export const ListFavoritesResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 }))
 })
@@ -424,6 +438,7 @@ export const BuildPlannerRecipeResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 }).and(zod.object({
   "yieldText": zod.string(),
@@ -462,6 +477,7 @@ export const ListMealPlanResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 })
 }))
@@ -486,6 +502,7 @@ export const AddMealPlanEntryResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 })
 })
@@ -514,6 +531,7 @@ export const MoveMealPlanEntryResponse = zod.object({
   "slug": zod.string(),
   "name": zod.string(),
   "category": zod.string(),
+  "isDessert": zod.boolean(),
   "favorited": zod.boolean().optional()
 })
 })

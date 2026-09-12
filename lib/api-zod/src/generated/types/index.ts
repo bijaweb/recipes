@@ -15,6 +15,7 @@ export * from './categoryRenameInput';
 export * from './createRecipeInput';
 export * from './errorResponse';
 export * from './getPlannerPairingsParams';
+export * from './getSearchShortcutsParams';
 export * from './googleSignInRequest';
 export * from './healthStatus';
 export * from './ingredient';

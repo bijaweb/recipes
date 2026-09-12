@@ -128,6 +128,7 @@ export default function RecipeDetail() {
 
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
+  const [isDessert, setIsDessert] = useState(false);
   const [yieldText, setYieldText] = useState('');
   const [ingredients, setIngredients] = useState<IngredientDraft[]>([]);
   const [steps, setSteps] = useState<string[]>([]);
@@ -173,6 +174,7 @@ export default function RecipeDetail() {
     if (!recipe) return;
     setName(recipe.name);
     setCategory(recipe.category);
+    setIsDessert(recipe.isDessert);
     setYieldText(recipe.yieldText);
     setIngredients(
       recipe.ingredients.length
@@ -212,6 +214,7 @@ export default function RecipeDetail() {
         data: {
           name: name.trim(),
           category: category.trim(),
+          isDessert,
           yieldText: yieldText.trim(),
           yieldServings: recipe.yieldServings,
           ingredients: cleanIngredients,
@@ -289,6 +292,31 @@ export default function RecipeDetail() {
                 <div className="flex-1 space-y-1">
                   <label className="text-xs font-semibold text-muted-foreground">Yield</label>
                   <Input value={yieldText} onChange={(e) => setYieldText(e.target.value)} placeholder="e.g. 4 servings" />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-muted-foreground">Type</label>
+                <div className="flex gap-2">
+                  {(
+                    [
+                      ['Meal', false],
+                      ['Dessert', true],
+                    ] as const
+                  ).map(([label, val]) => (
+                    <button
+                      key={label}
+                      type="button"
+                      onClick={() => setIsDessert(val)}
+                      className={cn(
+                        'rounded-full border px-3 py-1.5 text-sm transition-colors',
+                        isDessert === val
+                          ? 'border-primary bg-primary text-primary-foreground'
+                          : 'border-border bg-card text-foreground hover:bg-muted/50',
+                      )}
+                    >
+                      {label}
+                    </button>
+                  ))}
                 </div>
               </div>
             </Card>

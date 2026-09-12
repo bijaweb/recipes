@@ -28,6 +28,7 @@ import type {
   CreateRecipeInput,
   ErrorResponse,
   GetPlannerPairingsParams,
+  GetSearchShortcutsParams,
   GoogleSignInRequest,
   HealthStatus,
   IngredientCatalogListResponse,
@@ -379,20 +380,27 @@ export function useListCategories<TData = Awaited<ReturnType<typeof listCategori
 
 
 
-export const getGetSearchShortcutsUrl = () => {
+export const getGetSearchShortcutsUrl = (params?: GetSearchShortcutsParams,) => {
+  const normalizedParams = new URLSearchParams();
 
+  Object.entries(params || {}).forEach(([key, value]) => {
 
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
 
+  const stringifiedParams = normalizedParams.toString();
 
-  return `/api/recipes/shortcuts`
+  return stringifiedParams.length > 0 ? `/api/recipes/shortcuts?${stringifiedParams}` : `/api/recipes/shortcuts`
 }
 
 /**
  * @summary The signed-in user's last 3 searched recipes, plus 5 random recipes for discovery
  */
-export const getSearchShortcuts = async ( options?: Parameters<typeof customFetch>[1]): Promise<ShortcutsResponse> => {
+export const getSearchShortcuts = async (params?: GetSearchShortcutsParams, options?: Parameters<typeof customFetch>[1]): Promise<ShortcutsResponse> => {
 
-  return customFetch<ShortcutsResponse>(getGetSearchShortcutsUrl(),
+  return customFetch<ShortcutsResponse>(getGetSearchShortcutsUrl(params),
   {
     ...options,
     method: 'GET'
@@ -405,23 +413,23 @@ export const getSearchShortcuts = async ( options?: Parameters<typeof customFetc
 
 
 
-export const getGetSearchShortcutsQueryKey = () => {
+export const getGetSearchShortcutsQueryKey = (params?: GetSearchShortcutsParams,) => {
     return [
-    `/api/recipes/shortcuts`
+    `/api/recipes/shortcuts`, ...(params ? [params] : [])
     ] as const;
     }
 
 
-export const getGetSearchShortcutsQueryOptions = <TData = Awaited<ReturnType<typeof getSearchShortcuts>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSearchShortcuts>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+export const getGetSearchShortcutsQueryOptions = <TData = Awaited<ReturnType<typeof getSearchShortcuts>>, TError = ErrorType<unknown>>(params?: GetSearchShortcutsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSearchShortcuts>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
 ) => {
 
 const {query: queryOptions, request: requestOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getGetSearchShortcutsQueryKey();
+  const queryKey =  queryOptions?.queryKey ?? getGetSearchShortcutsQueryKey(params);
 
 
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSearchShortcuts>>> = ({ signal }) => getSearchShortcuts({ signal, ...requestOptions });
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSearchShortcuts>>> = ({ signal }) => getSearchShortcuts(params, { signal, ...requestOptions });
 
 
 
@@ -439,11 +447,11 @@ export type GetSearchShortcutsQueryError = ErrorType<unknown>
  */
 
 export function useGetSearchShortcuts<TData = Awaited<ReturnType<typeof getSearchShortcuts>>, TError = ErrorType<unknown>>(
-  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSearchShortcuts>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+ params?: GetSearchShortcutsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSearchShortcuts>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
 
  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
 
-  const queryOptions = getGetSearchShortcutsQueryOptions(options)
+  const queryOptions = getGetSearchShortcutsQueryOptions(params,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

@@ -46,6 +46,7 @@ export function toSummary(r: RecipeRecord, favorited: boolean) {
     slug: r.slug,
     name: r.name,
     category: r.category,
+    isDessert: r.isDessert,
     favorited,
   };
 }
@@ -123,6 +124,9 @@ router.get("/categories", async (_req, res): Promise<void> => {
 
 router.get("/recipes/shortcuts", requireAuth, async (req, res): Promise<void> => {
   const userId = req.user!.id;
+  const isDessertParam = req.query.isDessert;
+  const dessertFilter =
+    isDessertParam === "true" ? sql`AND r.is_dessert = true` : isDessertParam === "false" ? sql`AND r.is_dessert = false` : sql``;
 
   const recentRows = await db.execute(sql`
     SELECT r.* FROM ${recipesTable} r
@@ -134,12 +138,14 @@ router.get("/recipes/shortcuts", requireAuth, async (req, res): Promise<void> =>
       ORDER BY last_searched DESC
       LIMIT 3
     ) latest ON latest.recipe_id = r.id
+    WHERE true ${dessertFilter}
     ORDER BY latest.last_searched DESC
   `);
   const recent = recentRows.rows as unknown as RecipeRecord[];
 
   const randomRows = await db.execute(sql`
     SELECT * FROM ${recipesTable}
+    WHERE true ${dessertFilter}
     ORDER BY random()
     LIMIT 5
   `);
@@ -158,6 +164,7 @@ router.get("/recipes/shortcuts", requireAuth, async (req, res): Promise<void> =>
 router.get("/recipes", requireAuth, async (req, res): Promise<void> => {
   const q = typeof req.query.q === "string" ? req.query.q.trim() : "";
   const category = typeof req.query.category === "string" ? req.query.category.trim() : "";
+  const isDessertParam = req.query.isDessert;
 
   const conditions = [];
   if (q) {
@@ -174,6 +181,8 @@ router.get("/recipes", requireAuth, async (req, res): Promise<void> => {
     );
   }
   if (category) conditions.push(eq(recipesTable.category, category));
+  if (isDessertParam === "true") conditions.push(eq(recipesTable.isDessert, true));
+  else if (isDessertParam === "false") conditions.push(eq(recipesTable.isDessert, false));
 
   const rows = await db
     .select()
@@ -242,6 +251,7 @@ router.post("/recipes", requireAuth, async (req, res): Promise<void> => {
       category: data.category.trim(),
       yieldText: data.yieldText.trim(),
       yieldServings: data.yieldServings ?? null,
+      isDessert: data.isDessert ?? false,
       sourceSheet: "manual",
     })
     .returning();
@@ -297,6 +307,7 @@ router.put("/recipes/:recipeId", requireAuth, requireAdmin, async (req, res): Pr
       category: data.category.trim(),
       yieldText: data.yieldText.trim(),
       yieldServings: data.yieldServings ?? null,
+      isDessert: data.isDessert ?? existing.isDessert,
       updatedAt: new Date(),
     })
     .where(eq(recipesTable.id, recipeId))

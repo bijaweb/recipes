@@ -54,6 +54,7 @@ export interface RecipeSummary {
   slug: string;
   name: string;
   category: string;
+  isDessert: boolean;
   favorited?: boolean;
 }
 
@@ -122,6 +123,7 @@ export interface ParseRecipeResponse {
 
 export type CreateRecipeInput = RecipeDraft & {
   utensils?: string[];
+  isDessert?: boolean;
 };
 
 export interface SuccessResponse {
@@ -193,9 +195,20 @@ export interface MoveMealPlanEntryInput {
   sortOrder?: number;
 }
 
+export type GetSearchShortcutsParams = {
+/**
+ * Filter to just dessert recipes (true) or just non-dessert meal recipes (false); omit for both.
+ */
+isDessert?: boolean;
+};
+
 export type SearchRecipesParams = {
 q?: string;
 category?: string;
+/**
+ * Filter to just dessert recipes (true) or just non-dessert meal recipes (false); omit for both.
+ */
+isDessert?: boolean;
 };
 
 export type ListIngredientCatalogParams = {

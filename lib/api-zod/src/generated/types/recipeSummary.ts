@@ -11,5 +11,6 @@ export interface RecipeSummary {
   slug: string;
   name: string;
   category: string;
+  isDessert: boolean;
   favorited?: boolean;
 }
