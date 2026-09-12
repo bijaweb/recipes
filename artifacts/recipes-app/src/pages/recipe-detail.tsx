@@ -30,6 +30,7 @@ import { highlightIngredients } from '@/lib/highlight-ingredients';
 import { cn } from '@/lib/utils';
 
 const SCALES = [0.5, 1, 2, 3, 4];
+const PERSON_OPTIONS = [2, 4, 6];
 const PLANNER_DAYS = 10;
 const emptyIngredient: IngredientDraft = { amountText: '', product: '', notes: '' };
 
@@ -352,7 +353,9 @@ export default function RecipeDetail() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{recipe.category}</p>
               <h1 className="font-serif text-3xl">{recipe.name}</h1>
-              {recipe.yieldText && <p className="mt-1 text-sm text-muted-foreground">Yield: {recipe.yieldText}</p>}
+              {recipe.sourceSheet !== 'planner' && recipe.yieldText && (
+                <p className="mt-1 text-sm text-muted-foreground">Yield: {recipe.yieldText}</p>
+              )}
             </div>
 
             <Card className="space-y-3 p-4">
@@ -372,18 +375,39 @@ export default function RecipeDetail() {
                   ))}
                 </div>
                 <div className="flex items-center gap-1.5">
-                  {SCALES.map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => setScale(s)}
-                      className={`rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
-                        scale === s ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
-                      }`}
-                    >
-                      {s}×
-                    </button>
-                  ))}
+                  {recipe.sourceSheet === 'planner' ? (
+                    (() => {
+                      const base = recipe.yieldServings ?? 4;
+                      return PERSON_OPTIONS.map((persons) => {
+                        const active = Math.round(base * scale) === persons;
+                        return (
+                          <button
+                            key={persons}
+                            type="button"
+                            onClick={() => setScale(persons / base)}
+                            className={`rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
+                              active ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
+                            }`}
+                          >
+                            {persons}
+                          </button>
+                        );
+                      });
+                    })()
+                  ) : (
+                    SCALES.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => setScale(s)}
+                        className={`rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
+                          scale === s ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
+                        }`}
+                      >
+                        {s}×
+                      </button>
+                    ))
+                  )}
                 </div>
               </div>
               {currentEggs !== undefined && (

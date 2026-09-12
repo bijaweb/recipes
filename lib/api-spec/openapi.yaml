@@ -634,12 +634,15 @@ components:
       allOf:
         - $ref: "#/components/schemas/RecipeSummary"
         - type: object
-          required: [yieldText, ingredients, steps, utensils]
+          required: [yieldText, ingredients, steps, utensils, sourceSheet]
           properties:
             yieldText:
               type: string
             yieldServings:
               type: number
+            sourceSheet:
+              type: string
+              description: "'planner' for AI-generated recipes; otherwise the import source or 'manual'."
             ingredients:
               type: array
               items:

@@ -98,15 +98,18 @@ export async function generatePlannerRecipe(input: {
     "ingredients (oil, aromatics, salt, pepper, acid, herbs) that a real recipe for this dish would need, but " +
     "the given protein/sauce/veg/carb must remain the centerpiece of their respective role. Write this recipe " +
     "from scratch -- never reproduce another company's or publication's exact recipe text.\n\n" +
-    "Unit selection matters -- pick the unit a home cook would actually use, never a raw conversion: " +
-    "small amounts of dry spices, salt, pepper, extracts, baking powder/soda, and other measuring-spoon " +
-    "ingredients get 'tsp' or 'tbsp', never 'ml' or 'l' (salt is not a liquid; '10 ml salt' is wrong, " +
-    "'2 tsp salt' is right). Butter and other solid fats get 'tbsp', 'cup', 'g', or 'oz' -- never 'ml'. " +
-    "Ingredients normally weighed (meat, flour, sugar, cheese, produce) get 'g', 'kg', 'oz', or 'lb', or " +
-    "'each' when it's naturally a count (eggs, cloves of garlic, chiles). Reserve 'ml', 'l', 'fl_oz', " +
-    "'qt', and 'gal' for things actually poured by volume in real quantity: stock, milk, wine, water, oil. " +
-    "When in doubt, ask what unit would appear on the ingredient's own label or on a measuring spoon/cup " +
-    "in a home kitchen, not what's mathematically convertible.";
+    "Unit selection is an absolute rule, not a preference: 'ml' and 'l' may ONLY be used for something " +
+    "that is actually poured as a liquid in real quantity -- stock, milk, wine, water, oil, vinegar, " +
+    "cream, juice. Every solid, powdered, or granular ingredient gets a weight or count unit instead, " +
+    "with NO exceptions for small quantities: kosher salt, table salt, brown sugar, granulated sugar, " +
+    "cornstarch, flour, baking soda, baking powder, and spices are never 'ml' or 'l', full stop -- prefer " +
+    "'g' for these (e.g. '3 g kosher salt', '15 g brown sugar', '6 g cornstarch'), or 'tsp'/'tbsp' only " +
+    "when a measuring spoon is genuinely the more natural real-world measure (a pinch of cinnamon, a " +
+    "capful of extract). Butter and other solid fats get 'tbsp', 'g', or 'oz' -- never 'ml'. Ingredients " +
+    "normally weighed (meat, cheese, produce) get 'g', 'kg', 'oz', or 'lb'; discrete items get 'each' " +
+    "(eggs, garlic cloves, chiles). Before writing any ingredient's unit, ask: 'would this ever actually " +
+    "be poured from a liquid measuring cup?' -- if the honest answer is no, the unit cannot be 'ml' or 'l', " +
+    "regardless of how small the amount is.";
 
   const response = await getClient().messages.parse({
     model: PLANNER_MODEL,

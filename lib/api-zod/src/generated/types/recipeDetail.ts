@@ -11,6 +11,8 @@ import type { RecipeSummary } from './recipeSummary';
 export type RecipeDetail = RecipeSummary & {
   yieldText: string;
   yieldServings?: number;
+  /** 'planner' for AI-generated recipes; otherwise the import source or 'manual'. */
+  sourceSheet: string;
   ingredients: Ingredient[];
   steps: string[];
   utensils: string[];

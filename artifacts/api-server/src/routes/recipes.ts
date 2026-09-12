@@ -75,6 +75,7 @@ export async function buildRecipeDetail(recipe: RecipeRecord, userId: number) {
     ...toSummary(recipe, favorited.has(recipe.id)),
     yieldText: recipe.yieldText,
     yieldServings: recipe.yieldServings ?? undefined,
+    sourceSheet: recipe.sourceSheet,
     ingredients: ingredients.map((i) => ({
       id: String(i.id),
       amountText: i.amountText,

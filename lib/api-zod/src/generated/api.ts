@@ -135,6 +135,7 @@ export const CreateRecipeResponse = zod.object({
 }).and(zod.object({
   "yieldText": zod.string(),
   "yieldServings": zod.number().optional(),
+  "sourceSheet": zod.string().describe('\'planner\' for AI-generated recipes; otherwise the import source or \'manual\'.'),
   "ingredients": zod.array(zod.object({
   "id": zod.string(),
   "amountText": zod.string(),
@@ -192,6 +193,7 @@ export const GetRecipeResponse = zod.object({
 }).and(zod.object({
   "yieldText": zod.string(),
   "yieldServings": zod.number().optional(),
+  "sourceSheet": zod.string().describe('\'planner\' for AI-generated recipes; otherwise the import source or \'manual\'.'),
   "ingredients": zod.array(zod.object({
   "id": zod.string(),
   "amountText": zod.string(),
@@ -241,6 +243,7 @@ export const UpdateRecipeResponse = zod.object({
 }).and(zod.object({
   "yieldText": zod.string(),
   "yieldServings": zod.number().optional(),
+  "sourceSheet": zod.string().describe('\'planner\' for AI-generated recipes; otherwise the import source or \'manual\'.'),
   "ingredients": zod.array(zod.object({
   "id": zod.string(),
   "amountText": zod.string(),
@@ -425,6 +428,7 @@ export const BuildPlannerRecipeResponse = zod.object({
 }).and(zod.object({
   "yieldText": zod.string(),
   "yieldServings": zod.number().optional(),
+  "sourceSheet": zod.string().describe('\'planner\' for AI-generated recipes; otherwise the import source or \'manual\'.'),
   "ingredients": zod.array(zod.object({
   "id": zod.string(),
   "amountText": zod.string(),
