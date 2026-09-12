@@ -60,13 +60,24 @@ OVERRIDES = [
     ("black pepper", "seasoning"), ("white pepper", "seasoning"), ("pepper corn", "seasoning"),
 ]
 
+# Real prepared/cooking sauces -- things a recipe actively makes or reduces,
+# not condiments squeezed from a bottle at the table. "vinegar" and "ranch"
+# were dropped from here (see CONDIMENT_KW / PANTRY_KW) after user feedback
+# that plain condiments and pantry acids were crowding out real sauces like
+# chimichurri in the planner's suggestions.
 SAUCE_KW = ["sauce","glaze","dressing","vinaigrette","aioli","marinade","pesto","chutney",
-            "salsa","relish","sofrito","gremolata","tzatziki","hoisin","ranch","gravy",
-            "mayonnaise","mustard","ketchup","teriyaki","chimichurri","tapenade","vinegar",
+            "salsa","relish","sofrito","gremolata","tzatziki","hoisin","gravy",
+            "teriyaki","chimichurri","tapenade",
             "compound butter","chile paste","chili paste","curry paste","harissa","tahini",
             "romesco","béchamel","bechamel","demi-glace","sambal","gochujang","miso",
-            "guacamole","dijonnaise","mirin","yuzu kosho","furikake","verjus","tabasco",
-            "sriracha","XO sauce","fry sauce","cocktail sauce","remoulade","au jus"]
+            "guacamole","mirin","yuzu kosho","furikake","verjus",
+            "XO sauce","fry sauce","cocktail sauce","remoulade","au jus"]
+
+# Bottled/table condiments -- checked as an override before SAUCE_KW so e.g.
+# "mayonnaise" never gets picked up by the generic "sauce" substring match.
+CONDIMENT_KW = ["mayonnaise","mustard","ketchup","ranch","dijonnaise","tabasco","sriracha",
+                "hot sauce","worcestershire","horseradish sauce","steak sauce","bbq sauce",
+                "barbecue sauce"]
 
 PROTEIN_KW = ["chicken","beef","steak","pork","shrimp","salmon","fish","turkey","tofu",
               "sausage","bacon","cod","tilapia","tuna","lamb","duck","scallop","clam",
@@ -115,7 +126,7 @@ NUT_KW = ["almond","walnut","pecan","cashew","peanut","pistachio","hazelnut","pi
 PANTRY_KW = ["oil","sugar","honey","flour","stock","broth","wine","beer","baking powder",
              "baking soda","gelatin","cocoa","chocolate","vanilla","water","maple syrup",
              "molasses","yeast","cornstarch","stock concentrate","demi glace","bouillon",
-             "capers","olive","pickle","chickpea","bean","lentil","legume"]
+             "capers","olive","pickle","chickpea","bean","lentil","legume","vinegar"]
              # note: beans/lentils/chickpeas placed in pantry as a pragmatic default;
              # reviewed & re-tagged to protein below via LEGUME override since they can
              # act as a protein component in a plated meal.
@@ -133,6 +144,10 @@ def classify_item(raw_item):
     if any(k in text for k in LEGUME_KW):
         hit = next(k for k in LEGUME_KW if k in text)
         return "protein", hit  # legumes tagged as protein-alternative
+
+    if any(k in text for k in CONDIMENT_KW):
+        hit = next(k for k in CONDIMENT_KW if k in text)
+        return "condiment", hit
 
     hit = word_in(text, SAUCE_KW) or next((k for k in SAUCE_KW if k in text and " " in k), None)
     if hit:

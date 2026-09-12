@@ -59,3 +59,54 @@ export async function parseRecipeText(text: string): Promise<RecipeDraft> {
   }
   return parsed;
 }
+
+// Generates a brand-new, complete recipe centered on a protein/sauce/
+// vegetable/carb combo the planner suggested -- with real ingredient
+// quantities scaled to servings, and numbered steps that name the actual
+// technique and timing for each component. Never reuses another source's
+// recipe text; this is written from scratch by the model, which is also
+// why it's the planner's answer to "just a title, not a full recipe."
+export async function generatePlannerRecipe(input: {
+  proteinLabel: string;
+  sauce: string;
+  veg: string;
+  carb: string;
+  cuisine?: string;
+  servings?: number;
+}): Promise<RecipeDraft> {
+  const servings = input.servings ?? 4;
+  const cuisineNote = input.cuisine ? ` with a ${input.cuisine} flair` : "";
+
+  const response = await getClient().messages.parse({
+    model: MODEL,
+    max_tokens: 4096,
+    output_config: { effort: "medium", format: zodOutputFormat(RecipeDraftSchema) },
+    system:
+      "You are a home-cooking recipe developer. Write one complete, realistic recipe built around the given " +
+      "protein, sauce, vegetable, and carb components. Include real, specific ingredient quantities scaled to " +
+      "the requested serving count (round to sensible kitchen amounts), and detailed numbered steps that name " +
+      "the actual cooking technique and timing for each component -- how the protein is seared/roasted/braised " +
+      "and for how long and at what heat, how the sauce is made, how the vegetable is cooked, how the carb is " +
+      "prepared -- not just a restatement of the four component names. You may add reasonable supporting " +
+      "ingredients (oil, aromatics, salt, pepper, acid, herbs) that a real recipe for this dish would need, but " +
+      "the given protein/sauce/veg/carb must remain the centerpiece of their respective role. Write this recipe " +
+      "from scratch -- never reproduce another company's or publication's exact recipe text.",
+    messages: [
+      {
+        role: "user",
+        content:
+          `Build a recipe for ${servings} servings${cuisineNote}, centered on:\n` +
+          `- Protein: ${input.proteinLabel}\n` +
+          `- Sauce: ${input.sauce}\n` +
+          `- Vegetable: ${input.veg}\n` +
+          `- Carb: ${input.carb}`,
+      },
+    ],
+  });
+
+  const parsed = response.parsed_output;
+  if (!parsed) {
+    throw new Error("Claude did not return a parseable recipe.");
+  }
+  return parsed;
+}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useLocation } from 'wouter';
 import { useQueryClient, useQueries } from '@tanstack/react-query';
 import { format, addDays, startOfWeek } from 'date-fns';
 import { ChevronLeft, ChevronRight, Loader2, Plus, Save, X } from 'lucide-react';
@@ -83,6 +84,7 @@ function PickerSection({
 function BuildTab() {
   const proteinsQuery = useListPlannerProteins();
   const qc = useQueryClient();
+  const [, navigate] = useLocation();
   const [search, setSearch] = useState('');
   const [familyKey, setFamilyKey] = useState<string | null>(null);
   const [cuisine, setCuisine] = useState<string | null>(null);
@@ -118,11 +120,24 @@ function BuildTab() {
   const handleSave = () => {
     if (!selectedProtein || !sauce || !veg || !carb) return;
     build.mutate(
-      { data: { familyKey: selectedProtein.familyKey, proteinLabel: selectedProtein.label, sauce, veg, carb } },
+      {
+        data: {
+          familyKey: selectedProtein.familyKey,
+          proteinLabel: selectedProtein.label,
+          sauce,
+          veg,
+          carb,
+          cuisine: cuisine ?? undefined,
+        },
+      },
       {
         onSuccess: (res) => {
-          toast({ description: `Saved "${res.recipe.name}" to your recipes` });
+          toast({ description: `Saved "${res.recipe.name}"` });
           void qc.invalidateQueries({ queryKey: getSearchRecipesQueryKey() });
+          navigate(`/recipe/${res.recipe.slug}`);
+        },
+        onError: () => {
+          toast({ description: 'Could not write a recipe for that combo -- try again.', variant: 'destructive' });
         },
       },
     );
@@ -205,7 +220,7 @@ function BuildTab() {
                 </p>
                 <Button className="mt-3 w-full" onClick={handleSave} disabled={build.isPending || !sauce || !veg || !carb}>
                   {build.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-                  Save to Recipes
+                  {build.isPending ? 'Writing your recipe...' : 'Build Full Recipe'}
                 </Button>
               </Card>
             </>

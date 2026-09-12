@@ -8,8 +8,10 @@ import {
   recipesTable,
   ingredientsTable,
   ingredientCatalogTable,
+  stepsTable,
   type PlannerPairingRecord,
 } from "@workspace/db";
+import { generatePlannerRecipe } from "@workspace/ai";
 import {
   ListPlannerProteinsResponse,
   GetPlannerPairingsResponse,
@@ -134,35 +136,52 @@ router.post("/planner/build", requireAuth, async (req, res): Promise<void> => {
     res.status(400).json({ error: parsed.error.message });
     return;
   }
-  const { proteinLabel, sauce, veg, carb } = parsed.data;
+  const { proteinLabel, sauce, veg, carb, cuisine, servings } = parsed.data;
 
-  const name = `${proteinLabel} with ${sauce}, ${veg} & ${carb}`;
+  let draft;
+  try {
+    draft = await generatePlannerRecipe({ proteinLabel, sauce, veg, carb, cuisine, servings });
+  } catch (err) {
+    res.status(502).json({ error: err instanceof Error ? err.message : "Failed to generate a recipe." });
+    return;
+  }
+
+  const name = draft.name?.trim() || `${proteinLabel} with ${sauce}, ${veg} & ${carb}`;
   const slug = await uniqueSlug(name);
+  const category = draft.category?.trim() || cuisine || "Planner";
 
   const [recipe] = await db
     .insert(recipesTable)
     .values({
       name,
       slug,
-      category: "Planner",
-      yieldText: "",
+      category,
+      yieldText: draft.yieldText ?? "",
+      yieldServings: draft.yieldServings ?? servings ?? null,
       sourceSheet: "planner",
     })
     .returning();
 
-  const components = [proteinLabel, sauce, veg, carb];
-  const matches = await Promise.all(components.map(findCatalogMatch));
+  const matches = await Promise.all(draft.ingredients.map((ing) => findCatalogMatch(ing.product)));
 
-  await db.insert(ingredientsTable).values(
-    components.map((product, position) => ({
-      recipeId: recipe.id,
-      position,
-      amountText: "",
-      product,
-      notes: "",
-      ingredientCatalogId: matches[position],
-    })),
-  );
+  if (draft.ingredients.length > 0) {
+    await db.insert(ingredientsTable).values(
+      draft.ingredients.map((ing, position) => ({
+        recipeId: recipe.id,
+        position,
+        amountText: ing.amountText,
+        amountValue: ing.amountValue ?? null,
+        unit: ing.unit ?? null,
+        product: ing.product,
+        notes: ing.notes,
+        ingredientCatalogId: matches[position],
+      })),
+    );
+  }
+
+  if (draft.steps.length > 0) {
+    await db.insert(stepsTable).values(draft.steps.map((instruction, position) => ({ recipeId: recipe.id, position, instruction })));
+  }
 
   const detail = await buildRecipeDetail(recipe, req.user!.id);
   res.json(BuildPlannerRecipeResponse.parse({ recipe: detail }));

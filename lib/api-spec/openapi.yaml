@@ -387,7 +387,7 @@ paths:
     post:
       operationId: buildPlannerRecipe
       tags: [planner]
-      summary: Save a protein/sauce/veg/carb combo as a new recipe in the catalog
+      summary: Generate and save a full recipe (AI-written, with real quantities and technique) for a protein/sauce/veg/carb combo
       requestBody:
         required: true
         content:
@@ -401,6 +401,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RecipeDetailResponse"
+        "502":
+          description: The AI recipe generator failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /planner/calendar:
     get:
       operationId: listMealPlan
@@ -795,6 +801,10 @@ components:
           type: string
         carb:
           type: string
+        cuisine:
+          type: string
+        servings:
+          type: number
     MealPlanEntry:
       type: object
       required: [id, date, sortOrder, recipe]

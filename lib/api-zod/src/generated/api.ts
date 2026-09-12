@@ -403,14 +403,16 @@ export const GetPlannerPairingsResponse = zod.object({
 
 
 /**
- * @summary Save a protein/sauce/veg/carb combo as a new recipe in the catalog
+ * @summary Generate and save a full recipe (AI-written, with real quantities and technique) for a protein/sauce/veg/carb combo
  */
 export const BuildPlannerRecipeBody = zod.object({
   "familyKey": zod.string(),
   "proteinLabel": zod.string(),
   "sauce": zod.string(),
   "veg": zod.string(),
-  "carb": zod.string()
+  "carb": zod.string(),
+  "cuisine": zod.string().optional(),
+  "servings": zod.number().optional()
 })
 
 export const BuildPlannerRecipeResponse = zod.object({

@@ -162,6 +162,8 @@ export interface BuildPlannerRecipeInput {
   sauce: string;
   veg: string;
   carb: string;
+  cuisine?: string;
+  servings?: number;
 }
 
 export interface MealPlanEntry {

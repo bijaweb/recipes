@@ -1518,7 +1518,7 @@ export const getBuildPlannerRecipeUrl = () => {
 }
 
 /**
- * @summary Save a protein/sauce/veg/carb combo as a new recipe in the catalog
+ * @summary Generate and save a full recipe (AI-written, with real quantities and technique) for a protein/sauce/veg/carb combo
  */
 export const buildPlannerRecipe = async (buildPlannerRecipeInput: BuildPlannerRecipeInput, options?: Parameters<typeof customFetch>[1]): Promise<RecipeDetailResponse> => {
 
@@ -1535,7 +1535,7 @@ export const buildPlannerRecipe = async (buildPlannerRecipeInput: BuildPlannerRe
 
 
 
-export const getBuildPlannerRecipeMutationOptions = <TError = ErrorType<unknown>,
+export const getBuildPlannerRecipeMutationOptions = <TError = ErrorType<ErrorResponse>,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof buildPlannerRecipe>>, TError,{data: BodyType<BuildPlannerRecipeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
 ): UseMutationOptions<Awaited<ReturnType<typeof buildPlannerRecipe>>, TError,{data: BodyType<BuildPlannerRecipeInput>}, TContext> => {
 
@@ -1564,12 +1564,12 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
 
     export type BuildPlannerRecipeMutationResult = NonNullable<Awaited<ReturnType<typeof buildPlannerRecipe>>>
     export type BuildPlannerRecipeMutationBody = BodyType<BuildPlannerRecipeInput>
-    export type BuildPlannerRecipeMutationError = ErrorType<unknown>
+    export type BuildPlannerRecipeMutationError = ErrorType<ErrorResponse>
 
     /**
- * @summary Save a protein/sauce/veg/carb combo as a new recipe in the catalog
+ * @summary Generate and save a full recipe (AI-written, with real quantities and technique) for a protein/sauce/veg/carb combo
  */
-export const useBuildPlannerRecipe = <TError = ErrorType<unknown>,
+export const useBuildPlannerRecipe = <TError = ErrorType<ErrorResponse>,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof buildPlannerRecipe>>, TError,{data: BodyType<BuildPlannerRecipeInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
  ): UseMutationResult<
         Awaited<ReturnType<typeof buildPlannerRecipe>>,
