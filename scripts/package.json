@@ -10,7 +10,9 @@
     "backfill-ingredient-links": "tsx ./src/backfill-ingredient-links.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "import-github-recipes": "tsx ./src/import-github-recipes.ts",
-    "classify-dessert": "tsx ./src/classify-dessert.ts"
+    "classify-dessert": "tsx ./src/classify-dessert.ts",
+    "import-blue-apron-recipes": "tsx ./src/import-blue-apron-recipes.ts",
+    "import-blue-apron-simple": "tsx ./src/import-blue-apron-simple.ts"
   },
   "dependencies": {
     "@workspace/db": "workspace:*",

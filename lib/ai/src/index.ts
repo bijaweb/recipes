@@ -175,7 +175,12 @@ const INGREDIENT_TO_RECIPE_SYSTEM_PROMPT =
 export async function generateRecipeFromIngredients(input: {
   title: string;
   rawIngredients: string[];
+  servingsHint?: string;
+  cuisineHint?: string;
 }): Promise<{ recipe: RecipeDraft; usage: Anthropic.Usage }> {
+  const hints =
+    (input.servingsHint ? `\nStated serving size: ${input.servingsHint}` : "") +
+    (input.cuisineHint ? `\nCuisine: ${input.cuisineHint}` : "");
   const response = await getClient().messages.parse({
     model: PLANNER_MODEL,
     max_tokens: 4096,
@@ -185,7 +190,7 @@ export async function generateRecipeFromIngredients(input: {
       {
         role: "user",
         content:
-          `Dish title: ${input.title}\n\nIngredients as listed by the source (need normalizing):\n` +
+          `Dish title: ${input.title}${hints}\n\nIngredients as listed by the source (need normalizing):\n` +
           input.rawIngredients.map((i) => `- ${i}`).join("\n"),
       },
     ],
