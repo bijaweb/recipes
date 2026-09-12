@@ -121,7 +121,7 @@
         "item": "Biscuit Mix",
         "recipe_count": 27,
         "weighted_score": 611.6,
-        "lift": 8.93
+        "lift": 8.78
       },
       {
         "item": "Pie Crust",
@@ -1325,16 +1325,16 @@
         "lift": 4.61
       },
       {
-        "item": "15-Ounce Can Tomato Sauce",
-        "recipe_count": 3,
-        "weighted_score": 106.8,
-        "lift": 5.92
-      },
-      {
         "item": "Blueberry Bourbon Spread",
         "recipe_count": 6,
         "weighted_score": 126.1,
         "lift": 3.77
+      },
+      {
+        "item": "Soy Glaze",
+        "recipe_count": 43,
+        "weighted_score": 1198.7,
+        "lift": 1.47
       }
     ],
     "top_veg": [
@@ -1428,7 +1428,7 @@
         "item": "Biscuit Mix",
         "recipe_count": 17,
         "weighted_score": 462.2,
-        "lift": 4.05
+        "lift": 3.98
       },
       {
         "item": "Pretzel Buns",
@@ -1469,10 +1469,10 @@
         "lift": 4.35
       },
       {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 5,
-        "weighted_score": 148.4,
-        "lift": 4.03
+        "item": "Tomato Sauce",
+        "recipe_count": 6,
+        "weighted_score": 187.6,
+        "lift": 3.1
       },
       {
         "item": "Pepper Sofrito",
@@ -1496,8 +1496,8 @@
     "top_veg": [
       {
         "item": "Hominy",
-        "recipe_count": 2,
-        "weighted_score": 68.4,
+        "recipe_count": 3,
+        "weighted_score": 94.0,
         "lift": 62.03
       },
       {
@@ -1519,12 +1519,6 @@
         "lift": 17.72
       },
       {
-        "item": "28-Ounce Can Whole Peeled Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 59.4,
-        "lift": 17.72
-      },
-      {
         "item": "Sliced Pickled Jalapeño Peppers",
         "recipe_count": 5,
         "weighted_score": 99.9,
@@ -1541,6 +1535,12 @@
         "recipe_count": 2,
         "weighted_score": 67.1,
         "lift": 8.86
+      },
+      {
+        "item": "Shredded Cabbage & Carrots",
+        "recipe_count": 2,
+        "weighted_score": 4.5,
+        "lift": 7.3
       }
     ],
     "top_carbs": [
@@ -1619,10 +1619,10 @@
         "lift": 3.33
       },
       {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 12,
-        "weighted_score": 362.7,
-        "lift": 4.4
+        "item": "Tomato Sauce",
+        "recipe_count": 17,
+        "weighted_score": 538.1,
+        "lift": 4.0
       },
       {
         "item": "Roasted Garlic Pesto",
@@ -1637,25 +1637,19 @@
         "lift": 3.57
       },
       {
-        "item": "8-Ounce Can Tomato Sauce",
-        "recipe_count": 4,
-        "weighted_score": 144.3,
-        "lift": 4.03
-      },
-      {
         "item": "Salsa Verde",
         "recipe_count": 5,
         "weighted_score": 151.6,
         "lift": 2.11
+      },
+      {
+        "item": "Romesco Sauce (Contains Almonds)",
+        "recipe_count": 3,
+        "weighted_score": 82.2,
+        "lift": 0.84
       }
     ],
     "top_veg": [
-      {
-        "item": "14-Ounce Can Whole Peeled Tomatoes",
-        "recipe_count": 6,
-        "weighted_score": 192.4,
-        "lift": 8.47
-      },
       {
         "item": "Sliced Roasted Red Peppers",
         "recipe_count": 28,
@@ -1675,10 +1669,16 @@
         "lift": 5.04
       },
       {
-        "item": "15-Ounce Can Crushed Tomatoes",
-        "recipe_count": 8,
-        "weighted_score": 263.3,
-        "lift": 5.25
+        "item": "Whole Peeled Tomatoes",
+        "recipe_count": 7,
+        "weighted_score": 226.2,
+        "lift": 5.2
+      },
+      {
+        "item": "Crushed Tomatoes",
+        "recipe_count": 10,
+        "weighted_score": 325.5,
+        "lift": 3.87
       },
       {
         "item": "Garlic",
@@ -1687,7 +1687,7 @@
         "lift": 1.55
       },
       {
-        "item": "14-Ounce Can Whole Peeled San Marzano Tomatoes",
+        "item": "Whole Peeled San Marzano Tomatoes",
         "recipe_count": 2,
         "weighted_score": 63.0,
         "lift": 5.65
@@ -2597,12 +2597,6 @@
         "lift": 4.03
       },
       {
-        "item": "8-Ounce Can Tomato Sauce",
-        "recipe_count": 2,
-        "weighted_score": 71.5,
-        "lift": 7.06
-      },
-      {
         "item": "Sweet Chili Sauce",
         "recipe_count": 4,
         "weighted_score": 149.6,
@@ -2613,6 +2607,12 @@
         "recipe_count": 3,
         "weighted_score": 92.0,
         "lift": 2.13
+      },
+      {
+        "item": "Yellow Curry Paste",
+        "recipe_count": 2,
+        "weighted_score": 56.0,
+        "lift": 1.85
       }
     ],
     "top_veg": [
@@ -2729,12 +2729,6 @@
         "lift": 22.05
       },
       {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 23,
-        "weighted_score": 597.8,
-        "lift": 6.59
-      },
-      {
         "item": "Béchamel Sauce",
         "recipe_count": 14,
         "weighted_score": 281.0,
@@ -2745,6 +2739,12 @@
         "recipe_count": 3,
         "weighted_score": 3.0,
         "lift": 13.23
+      },
+      {
+        "item": "Tomato Sauce",
+        "recipe_count": 28,
+        "weighted_score": 674.1,
+        "lift": 5.14
       },
       {
         "item": "Basil Pesto",
@@ -2759,24 +2759,24 @@
         "lift": 3.99
       },
       {
-        "item": "8-oz can Tomato Sauce",
-        "recipe_count": 3,
-        "weighted_score": 3.0,
-        "lift": 9.45
-      },
-      {
         "item": "Romesco Sauce (Contains Almonds)",
         "recipe_count": 17,
         "weighted_score": 459.9,
         "lift": 3.71
+      },
+      {
+        "item": "Pepper Sofrito",
+        "recipe_count": 6,
+        "weighted_score": 130.0,
+        "lift": 4.9
       }
     ],
     "top_veg": [
       {
-        "item": "14-Oz Can Whole Peeled Yellow Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 40.0,
-        "lift": 14.7
+        "item": "Whole Peeled Yellow Tomatoes",
+        "recipe_count": 4,
+        "weighted_score": 108.9,
+        "lift": 9.8
       },
       {
         "item": "Baby Spinach",
@@ -2791,22 +2791,10 @@
         "lift": 6.78
       },
       {
-        "item": "14.5-Oz Can Crushed Tomatoes",
-        "recipe_count": 5,
-        "weighted_score": 132.2,
-        "lift": 5.51
-      },
-      {
         "item": "Sliced Roasted Red Peppers",
         "recipe_count": 23,
         "weighted_score": 587.5,
         "lift": 2.74
-      },
-      {
-        "item": "14-Ounce Can Whole Peeled Yellow Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 69.0,
-        "lift": 7.35
       },
       {
         "item": "Mushrooms",
@@ -2815,10 +2803,22 @@
         "lift": 2.22
       },
       {
-        "item": "28-Ounce Can Whole Peeled Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 57.7,
-        "lift": 6.3
+        "item": "Whole Peeled Tomatoes",
+        "recipe_count": 6,
+        "weighted_score": 176.6,
+        "lift": 3.48
+      },
+      {
+        "item": "Marinated Artichoke Hearts",
+        "recipe_count": 5,
+        "weighted_score": 71.3,
+        "lift": 3.67
+      },
+      {
+        "item": "Baby Kale",
+        "recipe_count": 3,
+        "weighted_score": 78.7,
+        "lift": 4.72
       }
     ],
     "top_carbs": [
@@ -2832,7 +2832,7 @@
         "item": "Gnocchi",
         "recipe_count": 39,
         "weighted_score": 890.5,
-        "lift": 11.94
+        "lift": 11.46
       },
       {
         "item": "Cooked Rigatoni Pasta",
@@ -2885,10 +2885,10 @@
         "lift": 6.56
       },
       {
-        "item": "8-Ounce Can Tomato Sauce",
-        "recipe_count": 6,
-        "weighted_score": 199.0,
-        "lift": 9.77
+        "item": "Tomato Sauce",
+        "recipe_count": 11,
+        "weighted_score": 295.5,
+        "lift": 4.18
       },
       {
         "item": "Garlic & Herb Spreadable Butter",
@@ -2907,20 +2907,14 @@
         "recipe_count": 2,
         "weighted_score": 58.6,
         "lift": 4.56
-      },
-      {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 4,
-        "weighted_score": 95.5,
-        "lift": 2.37
       }
     ],
     "top_veg": [
       {
-        "item": "15-Ounce Can Crushed Tomatoes",
-        "recipe_count": 11,
-        "weighted_score": 352.5,
-        "lift": 11.66
+        "item": "Crushed Tomatoes",
+        "recipe_count": 17,
+        "weighted_score": 501.9,
+        "lift": 10.62
       },
       {
         "item": "Delicata Or Honeynut Squash",
@@ -2929,28 +2923,16 @@
         "lift": 18.24
       },
       {
-        "item": "14-Oz Can Whole Peeled Tomatoes",
-        "recipe_count": 3,
-        "weighted_score": 58.3,
-        "lift": 12.44
-      },
-      {
-        "item": "14.5-Oz Can Crushed Tomatoes",
-        "recipe_count": 4,
-        "weighted_score": 96.2,
-        "lift": 9.12
-      },
-      {
         "item": "Romaine Lettuce",
         "recipe_count": 2,
         "weighted_score": 50.5,
         "lift": 13.03
       },
       {
-        "item": "28-Ounce Can Crushed Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 53.2,
-        "lift": 11.4
+        "item": "Whole Peeled Tomatoes",
+        "recipe_count": 6,
+        "weighted_score": 155.1,
+        "lift": 7.2
       },
       {
         "item": "Yellow Onion",
@@ -2963,6 +2945,18 @@
         "recipe_count": 5,
         "weighted_score": 161.6,
         "lift": 4.85
+      },
+      {
+        "item": "Arugula",
+        "recipe_count": 15,
+        "weighted_score": 409.7,
+        "lift": 2.49
+      },
+      {
+        "item": "Mirepoix",
+        "recipe_count": 3,
+        "weighted_score": 88.6,
+        "lift": 4.72
       }
     ],
     "top_carbs": [
@@ -2976,7 +2970,7 @@
         "item": "Gnocchi",
         "recipe_count": 13,
         "weighted_score": 462.5,
-        "lift": 8.23
+        "lift": 7.9
       },
       {
         "item": "Sub Rolls",
@@ -3131,16 +3125,16 @@
     "avg_rating": 4.16,
     "top_sauces": [
       {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 5,
-        "weighted_score": 111.6,
-        "lift": 5.87
-      },
-      {
         "item": "Tahini",
         "recipe_count": 6,
         "weighted_score": 151.8,
         "lift": 5.02
+      },
+      {
+        "item": "Tomato Sauce",
+        "recipe_count": 5,
+        "weighted_score": 111.6,
+        "lift": 3.77
       },
       {
         "item": "Guacamole",
@@ -3467,16 +3461,16 @@
         "lift": 7.3
       },
       {
-        "item": "8-Ounce Can Tomato Sauce",
-        "recipe_count": 2,
-        "weighted_score": 73.1,
-        "lift": 4.43
-      },
-      {
         "item": "Salsa Verde",
         "recipe_count": 3,
         "weighted_score": 93.9,
         "lift": 2.78
+      },
+      {
+        "item": "Tomato Sauce",
+        "recipe_count": 3,
+        "weighted_score": 103.3,
+        "lift": 1.55
       }
     ],
     "top_veg": [
@@ -3499,10 +3493,16 @@
         "lift": 3.65
       },
       {
-        "item": "15-Ounce Can Crushed Tomatoes",
+        "item": "Whole Peeled Tomatoes",
         "recipe_count": 2,
-        "weighted_score": 62.1,
-        "lift": 2.89
+        "weighted_score": 65.1,
+        "lift": 3.26
+      },
+      {
+        "item": "Crushed Tomatoes",
+        "recipe_count": 3,
+        "weighted_score": 86.5,
+        "lift": 2.55
       },
       {
         "item": "Sliced Roasted Red Peppers",
@@ -3521,12 +3521,6 @@
         "recipe_count": 6,
         "weighted_score": 219.5,
         "lift": 1.32
-      },
-      {
-        "item": "Green Cabbage",
-        "recipe_count": 2,
-        "weighted_score": 70.9,
-        "lift": 1.97
       }
     ],
     "top_carbs": [
@@ -3541,12 +3535,6 @@
         "recipe_count": 3,
         "weighted_score": 91.7,
         "lift": 37.22
-      },
-      {
-        "item": "17.6-Ounce Package Gnocchi",
-        "recipe_count": 2,
-        "weighted_score": 69.7,
-        "lift": 41.36
       },
       {
         "item": "Bucatini Pasta",
@@ -3577,6 +3565,12 @@
         "recipe_count": 2,
         "weighted_score": 31.7,
         "lift": 17.72
+      },
+      {
+        "item": "Cascatelli Pasta",
+        "recipe_count": 3,
+        "weighted_score": 84.7,
+        "lift": 13.29
       }
     ]
   },
@@ -4217,12 +4211,6 @@
         "lift": 8.34
       },
       {
-        "item": "15-Ounce Can Crushed Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 58.1,
-        "lift": 6.2
-      },
-      {
         "item": "Scallions",
         "recipe_count": 15,
         "weighted_score": 435.1,
@@ -4239,6 +4227,12 @@
         "recipe_count": 4,
         "weighted_score": 108.3,
         "lift": 3.1
+      },
+      {
+        "item": "Crushed Tomatoes",
+        "recipe_count": 2,
+        "weighted_score": 58.1,
+        "lift": 3.65
       },
       {
         "item": "Poblano Pepper",
@@ -4721,13 +4715,7 @@
     ],
     "top_veg": [
       {
-        "item": "28-Ounce Can Diced Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 47.9,
-        "lift": 59.28
-      },
-      {
-        "item": "14-Ounce Can Whole Peeled San Marzano Tomatoes",
+        "item": "Whole Peeled San Marzano Tomatoes",
         "recipe_count": 2,
         "weighted_score": 55.9,
         "lift": 11.86
@@ -4767,6 +4755,12 @@
         "recipe_count": 7,
         "weighted_score": 207.0,
         "lift": 2.18
+      },
+      {
+        "item": "Garlic",
+        "recipe_count": 49,
+        "weighted_score": 1583.4,
+        "lift": 1.15
       }
     ],
     "top_carbs": [
@@ -4839,10 +4833,10 @@
         "lift": 14.87
       },
       {
-        "item": "8-Oz Can Tomato Sauce",
+        "item": "Tomato Sauce",
         "recipe_count": 5,
         "weighted_score": 147.9,
-        "lift": 8.45
+        "lift": 5.42
       },
       {
         "item": "Vegetable Demi-Glace",
@@ -5229,13 +5223,19 @@
         "item": "Biscuit Mix",
         "recipe_count": 3,
         "weighted_score": 89.3,
-        "lift": 5.63
+        "lift": 5.54
       },
       {
         "item": "Russet Potato",
         "recipe_count": 2,
         "weighted_score": 73.3,
         "lift": 6.8
+      },
+      {
+        "item": "Gnocchi",
+        "recipe_count": 3,
+        "weighted_score": 102.1,
+        "lift": 4.36
       },
       {
         "item": "Sweet Potato",
@@ -5254,12 +5254,6 @@
         "recipe_count": 2,
         "weighted_score": 76.0,
         "lift": 3.07
-      },
-      {
-        "item": "Gnocchi",
-        "recipe_count": 2,
-        "weighted_score": 67.7,
-        "lift": 3.02
       },
       {
         "item": "Potatoes",
@@ -5797,10 +5791,10 @@
         "lift": 83.36
       },
       {
-        "item": "15-Ounce Can Diced Tomatoes",
+        "item": "Diced Tomatoes",
         "recipe_count": 2,
         "weighted_score": 50.6,
-        "lift": 80.83
+        "lift": 59.28
       },
       {
         "item": "Celery",
@@ -5993,10 +5987,10 @@
         "lift": 13.08
       },
       {
-        "item": "8-Oz Can Tomato Sauce",
+        "item": "Tomato Sauce",
         "recipe_count": 4,
         "weighted_score": 128.8,
-        "lift": 5.43
+        "lift": 3.49
       },
       {
         "item": "Romesco Sauce (Contains Almonds)",
@@ -6145,16 +6139,16 @@
     ],
     "top_veg": [
       {
-        "item": "28-Ounce Can Whole Peeled Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 48.2,
-        "lift": 56.46
-      },
-      {
         "item": "Lacinato Kale",
         "recipe_count": 4,
         "weighted_score": 111.5,
         "lift": 26.35
+      },
+      {
+        "item": "Whole Peeled Tomatoes",
+        "recipe_count": 3,
+        "weighted_score": 84.3,
+        "lift": 15.6
       },
       {
         "item": "Spinach",
@@ -6167,6 +6161,12 @@
         "recipe_count": 2,
         "weighted_score": 57.5,
         "lift": 8.59
+      },
+      {
+        "item": "Crushed Tomatoes",
+        "recipe_count": 2,
+        "weighted_score": 52.1,
+        "lift": 5.41
       },
       {
         "item": "Garlic",
@@ -6185,12 +6185,6 @@
         "recipe_count": 2,
         "weighted_score": 63.3,
         "lift": 3.63
-      },
-      {
-        "item": "Zucchini",
-        "recipe_count": 5,
-        "weighted_score": 142.3,
-        "lift": 2.12
       }
     ],
     "top_carbs": [
@@ -6769,16 +6763,16 @@
     ],
     "top_veg": [
       {
-        "item": "15-Ounce Can Crushed Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 56.5,
-        "lift": 15.51
-      },
-      {
         "item": "Sliced Pickled Jalapeño Pepper",
         "recipe_count": 4,
         "weighted_score": 137.7,
         "lift": 7.02
+      },
+      {
+        "item": "Crushed Tomatoes",
+        "recipe_count": 2,
+        "weighted_score": 56.5,
+        "lift": 9.14
       },
       {
         "item": "Radishes",
@@ -6855,6 +6849,12 @@
         "recipe_count": 11,
         "weighted_score": 329.9,
         "lift": 27.67
+      },
+      {
+        "item": "Tomato Sauce",
+        "recipe_count": 2,
+        "weighted_score": 67.6,
+        "lift": 4.23
       }
     ],
     "top_veg": [
@@ -7195,12 +7195,6 @@
     ],
     "top_veg": [
       {
-        "item": "28-Ounce Can Crushed Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 43.9,
-        "lift": 28.38
-      },
-      {
         "item": "Tomato",
         "recipe_count": 3,
         "weighted_score": 79.5,
@@ -7241,6 +7235,12 @@
         "recipe_count": 8,
         "weighted_score": 240.1,
         "lift": 1.66
+      },
+      {
+        "item": "Crushed Tomatoes",
+        "recipe_count": 2,
+        "weighted_score": 43.9,
+        "lift": 3.11
       }
     ],
     "top_carbs": [
@@ -8044,16 +8044,16 @@
         "lift": 7.15
       },
       {
+        "item": "Tomato Sauce",
+        "recipe_count": 4,
+        "weighted_score": 64.3,
+        "lift": 5.56
+      },
+      {
         "item": "Basil Pesto",
         "recipe_count": 4,
         "weighted_score": 108.0,
         "lift": 4.9
-      },
-      {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 2,
-        "weighted_score": 46.9,
-        "lift": 4.33
       },
       {
         "item": "Calabrian Chile Paste",
@@ -8100,16 +8100,16 @@
         "lift": 5.78
       },
       {
+        "item": "Diced Tomatoes",
+        "recipe_count": 2,
+        "weighted_score": 50.5,
+        "lift": 11.11
+      },
+      {
         "item": "Garlic",
         "recipe_count": 28,
         "weighted_score": 712.0,
         "lift": 1.84
-      },
-      {
-        "item": "Kale",
-        "recipe_count": 5,
-        "weighted_score": 146.8,
-        "lift": 2.97
       }
     ],
     "top_carbs": [
@@ -8157,6 +8157,12 @@
         "recipe_count": 3,
         "weighted_score": 50.2,
         "lift": 36.88
+      },
+      {
+        "item": "Diced Tomatoes",
+        "recipe_count": 2,
+        "weighted_score": 45.3,
+        "lift": 25.4
       },
       {
         "item": "Celery",
@@ -12226,10 +12232,10 @@
     ],
     "top_veg": [
       {
-        "item": "14-Ounce Can Whole Peeled Tomatoes",
+        "item": "Whole Peeled Tomatoes",
         "recipe_count": 2,
         "weighted_score": 67.0,
-        "lift": 48.5
+        "lift": 25.53
       },
       {
         "item": "Carrots",
@@ -12526,12 +12532,6 @@
         "lift": 31.73
       },
       {
-        "item": "15-Ounce Can Crushed Tomatoes",
-        "recipe_count": 2,
-        "weighted_score": 48.4,
-        "lift": 22.56
-      },
-      {
         "item": "Baby Spinach",
         "recipe_count": 7,
         "weighted_score": 155.6,
@@ -12542,6 +12542,12 @@
         "recipe_count": 3,
         "weighted_score": 51.9,
         "lift": 13.86
+      },
+      {
+        "item": "Crushed Tomatoes",
+        "recipe_count": 2,
+        "weighted_score": 48.4,
+        "lift": 13.29
       },
       {
         "item": "Snow Peas",
@@ -12954,10 +12960,10 @@
     "avg_rating": 4.22,
     "top_sauces": [
       {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 3,
-        "weighted_score": 55.9,
-        "lift": 34.64
+        "item": "Tomato Sauce",
+        "recipe_count": 4,
+        "weighted_score": 90.8,
+        "lift": 29.64
       },
       {
         "item": "Calabrian Chile Paste",

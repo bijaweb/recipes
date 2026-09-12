@@ -173,7 +173,7 @@
         "item": "Biscuit Mix",
         "recipe_count": 27,
         "weighted_score": 611.6,
-        "lift": 4.9
+        "lift": 4.82
       },
       {
         "item": "Cornbread Mix",
@@ -284,10 +284,10 @@
         "lift": 4.47
       },
       {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 35,
-        "weighted_score": 896.1,
-        "lift": 2.79
+        "item": "Tomato Sauce",
+        "recipe_count": 42,
+        "weighted_score": 1012.5,
+        "lift": 2.15
       },
       {
         "item": "Fig Spread",
@@ -420,16 +420,16 @@
     ],
     "top_carbs": [
       {
-        "item": "Gnocchi",
-        "recipe_count": 44,
-        "weighted_score": 977.5,
-        "lift": 3.76
-      },
-      {
         "item": "Cavatappi Pasta",
         "recipe_count": 23,
         "weighted_score": 533.5,
         "lift": 4.42
+      },
+      {
+        "item": "Gnocchi",
+        "recipe_count": 44,
+        "weighted_score": 977.5,
+        "lift": 3.61
       },
       {
         "item": "Five Cheese Ravioli",
@@ -820,12 +820,6 @@
         "lift": 1.79
       },
       {
-        "item": "8-Ounce Can Tomato Sauce",
-        "recipe_count": 12,
-        "weighted_score": 388.2,
-        "lift": 2.33
-      },
-      {
         "item": "Garlic & Herb Spreadable Butter",
         "recipe_count": 17,
         "weighted_score": 483.8,
@@ -878,6 +872,12 @@
         "recipe_count": 70,
         "weighted_score": 2068.1,
         "lift": 0.92
+      },
+      {
+        "item": "Chipotle Chile Paste",
+        "recipe_count": 32,
+        "weighted_score": 998.9,
+        "lift": 1.11
       }
     ],
     "top_veg": [
@@ -1001,7 +1001,7 @@
         "item": "Biscuit Mix",
         "recipe_count": 21,
         "weighted_score": 539.2,
-        "lift": 1.97
+        "lift": 1.93
       },
       {
         "item": "Small Baguette",
@@ -1386,12 +1386,6 @@
         "lift": 2.85
       },
       {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 12,
-        "weighted_score": 306.3,
-        "lift": 2.28
-      },
-      {
         "item": "Cilantro Sauce",
         "recipe_count": 18,
         "weighted_score": 456.0,
@@ -1402,6 +1396,12 @@
         "recipe_count": 5,
         "weighted_score": 147.9,
         "lift": 2.93
+      },
+      {
+        "item": "Tomato Sauce",
+        "recipe_count": 14,
+        "weighted_score": 323.7,
+        "lift": 1.71
       },
       {
         "item": "Tahini",
@@ -1448,6 +1448,12 @@
         "lift": 2.58
       },
       {
+        "item": "Diced Tomatoes",
+        "recipe_count": 9,
+        "weighted_score": 214.3,
+        "lift": 4.4
+      },
+      {
         "item": "Diced Butternut Squash",
         "recipe_count": 8,
         "weighted_score": 168.0,
@@ -1476,12 +1482,6 @@
         "recipe_count": 8,
         "weighted_score": 145.6,
         "lift": 3.78
-      },
-      {
-        "item": "15-Ounce Can Diced Tomatoes",
-        "recipe_count": 6,
-        "weighted_score": 150.6,
-        "lift": 4.0
       },
       {
         "item": "Sliced Pickled Jalapeño Peppers",
@@ -1820,16 +1820,16 @@
         "lift": 1.28
       },
       {
+        "item": "Gnocchi",
+        "recipe_count": 7,
+        "weighted_score": 237.1,
+        "lift": 1.6
+      },
+      {
         "item": "Panko Breadcrumbs",
         "recipe_count": 26,
         "weighted_score": 824.9,
         "lift": 1.0
-      },
-      {
-        "item": "Rice Vinegar",
-        "recipe_count": 33,
-        "weighted_score": 1037.7,
-        "lift": 0.9
       }
     ],
     "top_cuisines": [
@@ -2020,10 +2020,10 @@
         "lift": 1.26
       },
       {
-        "item": "Spinach",
-        "recipe_count": 10,
-        "weighted_score": 318.6,
-        "lift": 1.66
+        "item": "Diced Tomatoes",
+        "recipe_count": 5,
+        "weighted_score": 136.9,
+        "lift": 2.35
       }
     ],
     "top_carbs": [
@@ -2237,16 +2237,16 @@
     "avg_rating": 4.19,
     "top_sauces": [
       {
-        "item": "8-Oz Can Tomato Sauce",
-        "recipe_count": 9,
-        "weighted_score": 244.9,
-        "lift": 5.52
-      },
-      {
         "item": "Garlic & Herb Spreadable Butter",
         "recipe_count": 6,
         "weighted_score": 159.7,
         "lift": 5.9
+      },
+      {
+        "item": "Tomato Sauce",
+        "recipe_count": 11,
+        "weighted_score": 283.3,
+        "lift": 4.33
       },
       {
         "item": "Sambal Oelek",

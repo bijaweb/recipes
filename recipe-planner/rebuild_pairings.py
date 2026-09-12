@@ -1,4 +1,4 @@
-import json, math, sys
+import json, math, re, sys
 from collections import Counter, defaultdict
 from classify import classify_item
 
@@ -29,18 +29,40 @@ def load_tagged():
     return rows
 
 
+# Strips package-size/container prefixes Blue Apron bakes into ingredient
+# names -- "14-Oz Can Whole Peeled Yellow Tomatoes" and "14-Ounce Can Whole
+# Peeled Yellow Tomatoes" are the same ingredient (whole peeled tomatoes),
+# just two spellings of the same can size; a user picking a pairing chip
+# wants "Whole Peeled Yellow Tomatoes", not a can-size label. Stripping
+# this also merges what would otherwise be duplicate pairing entries.
+PACKAGE_PREFIX_RE = re.compile(
+    r"^\d[\d./]*\s*-?\s*(fl\.?\s*)?"
+    r"(oz\.?|ounces?|lbs?\.?|pounds?|g\.?|grams?|kg\.?|ml\.?|l\.?|liters?)\s*"
+    r"(can|jar|bag|box|package|pkg\.?|bottle|container|bunch|head|clove|cloves|pack)?\s*(of\s+)?",
+    re.IGNORECASE,
+)
+
+
+def clean_pairing_name(name: str) -> str:
+    cleaned = PACKAGE_PREFIX_RE.sub("", name).strip()
+    cleaned = re.sub(r"\s+", " ", cleaned)
+    return cleaned if cleaned else name
+
+
 def reclassify(row):
     """Pool every item this recipe was ever bucketed under, then re-run the
-    (now condiment/sauce/pantry-corrected) classifier over each one. Returns
-    new sauce/veg/carb/condiment lists; other buckets are left as originally
-    tagged since nothing about their classification changed."""
+    (now condiment/sauce/pantry-corrected) classifier over each one, and
+    strip package-size prefixes. Returns new sauce/veg/carb/condiment
+    lists; other buckets are left as originally tagged since nothing about
+    their classification changed."""
     pool = []
     for key in ITEM_BUCKET_KEYS:
         pool.extend(row.get(key) or [])
 
     sauce, veg, carb, condiment = [], [], [], []
-    for item in pool:
-        role, _hit = classify_item(item)
+    for raw_item in pool:
+        role, _hit = classify_item(raw_item)
+        item = clean_pairing_name(raw_item)
         if role == "sauce":
             sauce.append(item)
         elif role == "veg":
