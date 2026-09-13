@@ -36,7 +36,6 @@ function Router() {
     <RoutedErrorBoundary>
       <AppSwitcher
         onOpenSettings={() => setLocation('/settings')}
-        onOpenWeek={() => setLocation('/planner?tab=week')}
         leftSlot={
           <Link
             href="/add"

@@ -607,60 +607,8 @@ function ShoppingTab({ from, to }: { from: string; to: string }) {
   );
 }
 
-// Single-day preview pinned above the tabs, so "what's coming" is visible
-// no matter which tab is open -- paging through days is quicker here than
-// switching to This Week just to check tomorrow.
-function DayNav() {
-  const [, navigate] = useLocation();
-  const [day, setDay] = useState<Date>(() => new Date());
-  const dateStr = format(day, 'yyyy-MM-dd');
-  const params = { from: dateStr, to: dateStr };
-  const planQuery = useListMealPlan(params, { query: { queryKey: getListMealPlanQueryKey(params) } });
-  const entries = (planQuery.data?.entries ?? []).slice().sort((a, b) => a.sortOrder - b.sortOrder);
-
-  const todayStr = format(new Date(), 'yyyy-MM-dd');
-  const tomorrowStr = format(addDays(new Date(), 1), 'yyyy-MM-dd');
-  const label =
-    dateStr === todayStr ? 'Today' : dateStr === tomorrowStr ? 'Tomorrow' : format(day, 'EEEE, MMM d');
-
-  return (
-    <div className="mb-4 flex items-center gap-2 rounded-2xl border border-border bg-card p-3">
-      <Button variant="ghost" size="icon" onClick={() => setDay((d) => addDays(d, -1))} aria-label="Previous day">
-        <ChevronLeft className="h-4 w-4" />
-      </Button>
-      <div className="min-w-0 flex-1 text-center">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</p>
-        {planQuery.isLoading ? (
-          <p className="text-sm text-muted-foreground">Loading&hellip;</p>
-        ) : entries.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Nothing planned</p>
-        ) : (
-          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5">
-            {entries.map((e) => (
-              <button
-                key={e.id}
-                type="button"
-                onClick={() => navigate(`/recipe/${e.recipe.slug}`)}
-                className="max-w-full truncate text-sm font-medium text-foreground underline-offset-2 hover:underline"
-              >
-                {e.recipe.name}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-      <Button variant="ghost" size="icon" onClick={() => setDay((d) => addDays(d, 1))} aria-label="Next day">
-        <ChevronRight className="h-4 w-4" />
-      </Button>
-    </div>
-  );
-}
-
 export default function Planner() {
-  const [tab, setTab] = useState<'build' | 'week' | 'shopping'>(() => {
-    const initial = new URLSearchParams(window.location.search).get('tab');
-    return initial === 'week' || initial === 'shopping' ? initial : 'build';
-  });
+  const [tab, setTab] = useState<'build' | 'week' | 'shopping'>('build');
   // Rolling 7-day window anchored on today, not the Mon-Sun calendar week --
   // this keeps "This Week" in sync with the recipe page's own day-picker,
   // which also counts forward from today rather than snapping to Monday.
@@ -675,8 +623,6 @@ export default function Planner() {
       </header>
 
       <div className="mx-auto max-w-[640px] px-4 py-4">
-        <DayNav />
-
         <Tabs value={tab} onValueChange={(v) => setTab(v as typeof tab)}>
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="build">Build</TabsTrigger>

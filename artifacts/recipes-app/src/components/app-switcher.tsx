@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { CalendarDays, LogOut, Menu, Settings } from 'lucide-react';
+import { LogOut, Menu, Settings } from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
 import {
   DropdownMenu,
@@ -11,11 +11,7 @@ import {
 
 const PLATFORM_URL = 'https://bijacorp.com';
 
-export function AppSwitcher({
-  onOpenSettings,
-  onOpenWeek,
-  leftSlot,
-}: { onOpenSettings?: () => void; onOpenWeek?: () => void; leftSlot?: ReactNode } = {}) {
+export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () => void; leftSlot?: ReactNode } = {}) {
   const { user, signOut } = useAuth();
   if (!user) return null;
 
@@ -55,12 +51,6 @@ export function AppSwitcher({
             </>
           )}
           {(otherApps.length > 0 || user.isAdmin) && <DropdownMenuSeparator />}
-          {onOpenWeek && (
-            <DropdownMenuItem onSelect={onOpenWeek}>
-              <CalendarDays className="mr-2 h-4 w-4" />
-              This Week
-            </DropdownMenuItem>
-          )}
           {onOpenSettings && (
             <DropdownMenuItem onSelect={onOpenSettings}>
               <Settings className="mr-2 h-4 w-4" />
