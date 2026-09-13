@@ -3,6 +3,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import { db, favoritesTable, recipesTable } from "@workspace/db";
 import { ListFavoritesResponse, AddFavoriteResponse, RemoveFavoriteResponse } from "@workspace/api-zod";
 import { requireAuth } from "../middlewares/require-auth";
+import { toSummary } from "./recipes";
 
 const router: IRouter = Router();
 
@@ -19,13 +20,7 @@ router.get("/favorites", requireAuth, async (req, res): Promise<void> => {
 
   res.json(
     ListFavoritesResponse.parse({
-      recipes: recipes.map((r) => ({
-        id: String(r.id),
-        slug: r.slug,
-        name: r.name,
-        category: r.category,
-        favorited: true,
-      })),
+      recipes: recipes.map((r) => toSummary(r, true)),
     }),
   );
 });

@@ -403,7 +403,7 @@ export default function RecipeDetail() {
 
         {recipe && !isEditing && (
           <>
-            <DayStrip recipeId={recipe.id} />
+            {!recipe.isDessert && <DayStrip recipeId={recipe.id} />}
 
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{recipe.category}</p>
