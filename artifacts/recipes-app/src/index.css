@@ -167,3 +167,11 @@ html.dark body,
     display: none;
   }
 }
+
+/* In a Safari tab the browser toolbar already covers the home indicator, so the bar
+   only needs the safe-area padding when running as a home-screen app. */
+@media (display-mode: standalone) {
+  .bottom-tab-bar {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+}
