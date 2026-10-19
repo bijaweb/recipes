@@ -12,7 +12,7 @@ export function BottomTabBar() {
   const [location] = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-20 bg-card border-t border-border pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-2px_10px_rgba(0,0,0,.06)] after:pointer-events-none after:absolute after:inset-x-0 after:top-full after:h-[50vh] after:bg-card">
+    <nav className="bottom-tab-bar fixed bottom-0 left-0 right-0 z-20 bg-card border-t border-border pb-[max(0.5rem,calc(env(safe-area-inset-bottom)-0.75rem))] shadow-[0_-2px_10px_rgba(0,0,0,.06)] after:pointer-events-none after:absolute after:inset-x-0 after:top-full after:h-[50vh] after:bg-card">
       <div className="flex">
         {TABS.map(({ path, label, Icon }) => {
           const active = location === path;
@@ -21,7 +21,7 @@ export function BottomTabBar() {
               key={path}
               href={path}
               className={cn(
-                'flex flex-1 flex-col items-center justify-center gap-1 py-3 text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors',
+                'flex flex-1 flex-col items-center justify-center gap-1 py-2.5 text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors',
                 active ? 'text-primary' : 'text-muted-foreground',
               )}
             >

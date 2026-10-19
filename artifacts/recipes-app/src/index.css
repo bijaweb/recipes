@@ -159,3 +159,11 @@ html.dark body,
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Bottom tab bar: hide while typing on touch devices. The iOS keyboard shifts the
+   viewport and leaves the fixed bar floating with page content around it. */
+@media (hover: none) and (pointer: coarse) {
+  body:has(:is(input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"], [type="range"], [type="color"], [type="file"]), textarea, [contenteditable="true"]):focus) .bottom-tab-bar {
+    display: none;
+  }
+}
