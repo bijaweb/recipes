@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useLocation } from 'wouter';
 import { useQueryClient } from '@tanstack/react-query';
-import { Search as SearchIcon, Star, Clock, Sparkles } from 'lucide-react';
+import { Search as SearchIcon, Star, Clock, Sparkles, ChefHat } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import {
@@ -132,9 +132,15 @@ export default function Home() {
 
   return (
     <div className="min-h-[100dvh] bg-background pb-28">
-      <header className="sticky top-0 z-10 border-b border-border bg-card px-4 py-4">
-        <div className="mx-auto max-w-[640px]">
-          <p className="font-serif text-2xl">Recipes</p>
+      <header className="sticky top-0 z-10 border-b border-border bg-card px-4 py-3">
+        <div className="mx-auto flex max-w-[640px] items-center gap-2.5 pr-24">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+            <ChefHat className="h-4 w-4" strokeWidth={2.2} />
+          </div>
+          <div>
+            <p className="font-serif text-base leading-none text-foreground">Recipes</p>
+            <p className="mt-0.5 text-[10px] tracking-wide text-muted-foreground">Family cookbook</p>
+          </div>
         </div>
       </header>
 
