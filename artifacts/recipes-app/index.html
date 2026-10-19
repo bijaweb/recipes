@@ -2,6 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var mode = localStorage.getItem("theme-mode") || "auto";
+          var dark;
+          if (mode === "dark") {
+            dark = true;
+          } else if (mode === "light") {
+            dark = false;
+          } else {
+            var autoStored = localStorage.getItem("theme-auto-enabled");
+            var autoEnabled = autoStored === null ? true : autoStored === "true";
+            if (autoEnabled) {
+              var hour = new Date().getHours();
+              dark = hour >= 19 || hour < 7;
+            } else {
+              dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            }
+          }
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover" />
     <title>Recipes</title>
     <meta name="description" content="A shared family recipe box: search, favorites, and metric/imperial conversion." />

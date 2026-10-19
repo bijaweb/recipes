@@ -37,6 +37,7 @@ import type {
   MealPlanEntryResponse,
   MealPlanListResponse,
   MoveMealPlanEntryInput,
+  NightModeSettings,
   ParseRecipeInput,
   ParseRecipeResponse,
   PlannerPairingsResponse,
@@ -142,6 +143,84 @@ export function useHealthCheck<TData = Awaited<ReturnType<typeof healthCheck>>, 
  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
 
   const queryOptions = getHealthCheckQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetNightModeSettingsUrl = () => {
+
+
+
+
+  return `/api/settings/night-mode`
+}
+
+/**
+ * Whether an admin has enabled automatic night mode (dark theme 7pm-7am local time), set on the BijaCorp platform and shared by every app.
+ * @summary Get automatic night mode setting
+ */
+export const getNightModeSettings = async ( options?: Parameters<typeof customFetch>[1]): Promise<NightModeSettings> => {
+
+  return customFetch<NightModeSettings>(getGetNightModeSettingsUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetNightModeSettingsQueryKey = () => {
+    return [
+    `/api/settings/night-mode`
+    ] as const;
+    }
+
+
+export const getGetNightModeSettingsQueryOptions = <TData = Awaited<ReturnType<typeof getNightModeSettings>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getNightModeSettings>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetNightModeSettingsQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getNightModeSettings>>> = ({ signal }) => getNightModeSettings({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getNightModeSettings>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetNightModeSettingsQueryResult = NonNullable<Awaited<ReturnType<typeof getNightModeSettings>>>
+export type GetNightModeSettingsQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary Get automatic night mode setting
+ */
+
+export function useGetNightModeSettings<TData = Awaited<ReturnType<typeof getNightModeSettings>>, TError = ErrorType<unknown>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getNightModeSettings>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetNightModeSettingsQueryOptions(options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

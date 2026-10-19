@@ -28,6 +28,7 @@ export * from './mealPlanEntry';
 export * from './mealPlanEntryResponse';
 export * from './mealPlanListResponse';
 export * from './moveMealPlanEntryInput';
+export * from './nightModeSettings';
 export * from './parseRecipeInput';
 export * from './parseRecipeResponse';
 export * from './plannerPairingItem';

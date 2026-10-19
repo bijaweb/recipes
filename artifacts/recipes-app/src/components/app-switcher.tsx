@@ -1,10 +1,14 @@
-import { type ReactNode } from 'react';
-import { LogOut, Menu, Settings } from 'lucide-react';
+import { type ReactNode, useEffect } from 'react';
+import { Clock, LogOut, Menu, Moon, Settings, Sun } from 'lucide-react';
+import { useGetNightModeSettings } from '@workspace/api-client-react';
 import { useAuth } from '@/hooks/use-auth';
+import { type ThemeMode, setThemeMode, syncAutoNightModeEnabled, useNightMode } from '@/hooks/use-night-mode';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
@@ -13,6 +17,13 @@ const PLATFORM_URL = 'https://bijacorp.com';
 
 export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () => void; leftSlot?: ReactNode } = {}) {
   const { user, signOut } = useAuth();
+  const { mode } = useNightMode();
+  const { data: nightModeSettings } = useGetNightModeSettings();
+
+  useEffect(() => {
+    if (nightModeSettings) syncAutoNightModeEnabled(nightModeSettings.autoNightModeEnabled);
+  }, [nightModeSettings]);
+
   if (!user) return null;
 
   const otherApps = (user.apps ?? []).filter((a) => {
@@ -57,6 +68,22 @@ export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () 
               Settings
             </DropdownMenuItem>
           )}
+          <DropdownMenuSeparator />
+          <DropdownMenuRadioGroup value={mode} onValueChange={(value) => setThemeMode(value as ThemeMode)}>
+            <DropdownMenuRadioItem value="auto">
+              <Clock className="mr-2 inline h-4 w-4" />
+              Automatic (night 7pm-7am)
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="light">
+              <Sun className="mr-2 inline h-4 w-4" />
+              Day mode
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="dark">
+              <Moon className="mr-2 inline h-4 w-4" />
+              Night mode
+            </DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+          <DropdownMenuSeparator />
           <DropdownMenuItem onSelect={signOut}>
             <LogOut className="mr-2 h-4 w-4" />
             Sign out

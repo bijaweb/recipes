@@ -101,22 +101,51 @@
   --radius: 0.75rem;
 }
 
-/* Force light mode regardless of system or app settings */
 html,
 body,
 #root {
   min-height: 100%;
-  color-scheme: light !important;
-  background-color: hsl(var(--background)) !important;
+  background-color: hsl(var(--background));
 }
 
-html.dark,
-html.dark body,
-.dark,
-.dark body {
-  color-scheme: light !important;
-  background-color: hsl(var(--background)) !important;
-  color: hsl(var(--foreground)) !important;
+.dark {
+  color-scheme: dark;
+
+  --background: 222 22% 10%;
+  --foreground: 210 25% 96%;
+
+  --border: 222 16% 22%;
+  --input: 222 16% 26%;
+  --ring: 25 85% 40%;
+
+  --card: 222 18% 14%;
+  --card-foreground: 210 25% 96%;
+  --card-border: 222 16% 22%;
+
+  --popover: 222 18% 14%;
+  --popover-foreground: 210 25% 96%;
+  --popover-border: 222 16% 22%;
+
+  --primary: 25 85% 40%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 160 32% 38%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 222 16% 20%;
+  --muted-foreground: 215 12% 65%;
+
+  --accent: 40 85% 60%;
+  --accent-foreground: 20 20% 18%;
+
+  --destructive: 348 60% 55%;
+  --destructive-foreground: 210 25% 96%;
+
+  --chart-1: 25 85% 40%;
+  --chart-2: 160 32% 38%;
+  --chart-3: 40 85% 60%;
+  --chart-4: 195 35% 55%;
+  --chart-5: 348 60% 55%;
 }
 
 @layer base {

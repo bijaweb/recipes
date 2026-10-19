@@ -18,6 +18,15 @@ export const HealthCheckResponse = zod.object({
 
 
 /**
+ * Whether an admin has enabled automatic night mode (dark theme 7pm-7am local time), set on the BijaCorp platform and shared by every app.
+ * @summary Get automatic night mode setting
+ */
+export const GetNightModeSettingsResponse = zod.object({
+  "autoNightModeEnabled": zod.boolean()
+})
+
+
+/**
  * Verifies a Google ID token and returns an app session token
  * @summary Sign in with Google
  */

@@ -195,6 +195,10 @@ export interface MoveMealPlanEntryInput {
   sortOrder?: number;
 }
 
+export interface NightModeSettings {
+  autoNightModeEnabled: boolean;
+}
+
 export type GetSearchShortcutsParams = {
 /**
  * Filter to just dessert recipes (true) or just non-dessert meal recipes (false); omit for both.

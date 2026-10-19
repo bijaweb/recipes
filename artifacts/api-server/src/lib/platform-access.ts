@@ -80,3 +80,12 @@ export async function getPlatformPreferredName(email: string): Promise<string | 
   const preferredName = (result.rows[0] as { preferred_name?: string | null } | undefined)?.preferred_name;
   return typeof preferredName === "string" && preferredName.trim() ? preferredName : null;
 }
+
+// Platform-wide automatic night mode (dark 7pm-7am), set by an admin on BijaCorp.
+export async function getAutoNightModeEnabled(): Promise<boolean> {
+  const result = await db.execute(sql`
+    SELECT auto_night_mode_enabled FROM platform_settings WHERE id = 1 LIMIT 1
+  `);
+  const value = (result.rows[0] as { auto_night_mode_enabled?: boolean } | undefined)?.auto_night_mode_enabled;
+  return value ?? true;
+}

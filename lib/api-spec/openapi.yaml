@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: settings
+    description: Platform-wide display settings
   - name: auth
     description: Authentication operations
   - name: recipes
@@ -34,6 +36,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /settings/night-mode:
+    get:
+      operationId: getNightModeSettings
+      tags: [settings]
+      summary: Get automatic night mode setting
+      description: Whether an admin has enabled automatic night mode (dark theme 7pm-7am local time), set on the BijaCorp platform and shared by every app.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NightModeSettings"
   /auth/google:
     post:
       operationId: signInWithGoogle
@@ -865,3 +880,10 @@ components:
           type: string
         sortOrder:
           type: number
+    NightModeSettings:
+      type: object
+      properties:
+        autoNightModeEnabled:
+          type: boolean
+      required:
+        - autoNightModeEnabled
