@@ -46,7 +46,7 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
       type="button"
       onClick={onClick}
       className={cn(
-        'rounded-full border px-3 py-1.5 text-sm transition-colors',
+        'rounded-lg border px-3 py-1.5 text-sm transition-colors',
         active ? 'border-primary bg-primary text-primary-foreground' : 'border-border bg-card text-foreground hover:bg-muted/50',
       )}
     >
@@ -114,7 +114,7 @@ function PickerSection({
               }
             }}
             placeholder="Type your own..."
-            className="h-[34px] w-36 rounded-full border border-dashed border-border bg-card px-3 text-sm text-foreground outline-none focus:border-primary"
+            className="h-[34px] w-36 rounded-lg border border-dashed border-border bg-card px-3 text-sm text-foreground outline-none focus:border-primary"
           />
         ) : (
           <Chip active={false} onClick={() => setCustomOpen(true)}>
@@ -225,7 +225,7 @@ function BuildTab() {
                   selectFamily(p.familyKey);
                   setSearch('');
                 }}
-                className="rounded-full border border-border bg-card px-3 py-1.5 text-sm hover:bg-muted/50"
+                className="rounded-lg border border-border bg-card px-3 py-1.5 text-sm hover:bg-muted/50"
               >
                 {p.icon} {p.label}
               </button>

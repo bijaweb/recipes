@@ -308,7 +308,7 @@ export default function RecipeDetail() {
                       type="button"
                       onClick={() => setIsDessert(val)}
                       className={cn(
-                        'rounded-full border px-3 py-1.5 text-sm transition-colors',
+                        'rounded-lg border px-3 py-1.5 text-sm transition-colors',
                         isDessert === val
                           ? 'border-primary bg-primary text-primary-foreground'
                           : 'border-border bg-card text-foreground hover:bg-muted/50',
@@ -421,7 +421,7 @@ export default function RecipeDetail() {
                       key={s}
                       type="button"
                       onClick={() => setSystem(s)}
-                      className={`rounded-full border px-3 py-1 text-xs font-semibold capitalize transition-colors ${
+                      className={`rounded-lg border px-3 py-1 text-xs font-semibold capitalize transition-colors ${
                         system === s ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
                       }`}
                     >
@@ -440,7 +440,7 @@ export default function RecipeDetail() {
                             key={persons}
                             type="button"
                             onClick={() => setScale(persons / base)}
-                            className={`rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
+                            className={`rounded-lg border px-2.5 py-1 text-xs font-semibold transition-colors ${
                               active ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
                             }`}
                           >
@@ -455,7 +455,7 @@ export default function RecipeDetail() {
                         key={s}
                         type="button"
                         onClick={() => setScale(s)}
-                        className={`rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
+                        className={`rounded-lg border px-2.5 py-1 text-xs font-semibold transition-colors ${
                           scale === s ? 'border-primary bg-primary text-primary-foreground' : 'border-border text-muted-foreground'
                         }`}
                       >
@@ -523,7 +523,7 @@ export default function RecipeDetail() {
                 <h2 className="mb-3 font-serif text-lg">Utensils</h2>
                 <div className="flex flex-wrap gap-1.5">
                   {recipe.utensils.map((u, i) => (
-                    <span key={i} className="rounded-full bg-secondary/40 px-3 py-1 text-xs font-semibold">
+                    <span key={i} className="rounded-lg bg-secondary/40 px-3 py-1 text-xs font-semibold">
                       {u}
                     </span>
                   ))}

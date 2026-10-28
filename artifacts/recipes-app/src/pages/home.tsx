@@ -75,11 +75,11 @@ function ShortcutChip({ recipe }: { recipe: RecipeSummary }) {
 
 function MealTypeToggle({ value, onChange }: { value: 'meal' | 'dessert'; onChange: (v: 'meal' | 'dessert') => void }) {
   return (
-    <div className="relative flex rounded-full border border-border bg-card p-1">
+    <div className="relative flex rounded-lg border border-border bg-card p-1">
       <div
         aria-hidden
         className={cn(
-          'absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-primary transition-transform duration-200 ease-out',
+          'absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-md bg-primary transition-transform duration-200 ease-out',
           value === 'dessert' && 'translate-x-[calc(100%+4px)]',
         )}
       />
@@ -88,7 +88,7 @@ function MealTypeToggle({ value, onChange }: { value: 'meal' | 'dessert'; onChan
         onClick={() => onChange('meal')}
         aria-pressed={value === 'meal'}
         className={cn(
-          'relative z-10 flex-1 rounded-full py-2 text-sm font-semibold transition-colors',
+          'relative z-10 flex-1 rounded-md py-2 text-sm font-semibold transition-colors',
           value === 'meal' ? 'text-primary-foreground' : 'text-muted-foreground',
         )}
       >
@@ -99,7 +99,7 @@ function MealTypeToggle({ value, onChange }: { value: 'meal' | 'dessert'; onChan
         onClick={() => onChange('dessert')}
         aria-pressed={value === 'dessert'}
         className={cn(
-          'relative z-10 flex-1 rounded-full py-2 text-sm font-semibold transition-colors',
+          'relative z-10 flex-1 rounded-md py-2 text-sm font-semibold transition-colors',
           value === 'dessert' ? 'text-primary-foreground' : 'text-muted-foreground',
         )}
       >
@@ -164,7 +164,7 @@ export default function Home() {
                 key={c}
                 type="button"
                 onClick={() => setCategory((prev) => (prev === c ? null : c))}
-                className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+                className={`shrink-0 whitespace-nowrap rounded-lg border px-4 py-2 text-sm font-semibold transition-colors ${
                   category === c
                     ? 'border-primary bg-primary text-primary-foreground'
                     : 'border-border bg-background text-muted-foreground hover:text-foreground'
