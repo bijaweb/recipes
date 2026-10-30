@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { db, usersTable } from "@workspace/db";
 import { SignInWithGoogleBody, SignInWithGoogleResponse, GetCurrentUserResponse } from "@workspace/api-zod";
 import { signAppToken, verifyGoogleCredential } from "../lib/auth";
-import { hasPlatformAccess } from "../lib/platform-access";
+import { hasPlatformAccess, applyPendingDataLink } from "../lib/platform-access";
 import { buildUserPayload } from "../lib/user-response";
 import { requireAuth } from "../middlewares/require-auth";
 
@@ -48,6 +48,8 @@ router.post("/auth/google", async (req, res): Promise<void> => {
       },
     })
     .returning();
+
+  await applyPendingDataLink(user.id, user.email);
 
   const token = signAppToken({ id: user.id, email: user.email });
 

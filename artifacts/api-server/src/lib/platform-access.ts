@@ -36,6 +36,35 @@ export async function isPlatformAdmin(email: string): Promise<boolean> {
   return (result.rows[0] as { is_admin?: boolean } | undefined)?.is_admin === true;
 }
 
+// Applies a "Recipes: view data as" link the admin set on the platform
+// before this person first signed into Recipes (users.pending_app_links),
+// then clears it. Runs at every sign-in; a no-op once applied.
+export async function applyPendingDataLink(userId: number, email: string): Promise<void> {
+  try {
+    const pending = await db.execute(sql`
+      SELECT pending_app_links->>'recipes' AS linked_email
+      FROM users
+      WHERE email = ${email}
+      LIMIT 1
+    `);
+    const linkedEmail = (pending.rows[0] as { linked_email?: string | null } | undefined)?.linked_email;
+    if (!linkedEmail) return;
+
+    await db.execute(sql`
+      UPDATE recipes_users t
+      SET linked_user_id = l.id
+      FROM recipes_users l
+      WHERE t.id = ${userId} AND t.linked_user_id IS NULL
+        AND l.email = ${linkedEmail} AND l.id <> t.id
+    `);
+    await db.execute(sql`
+      UPDATE users SET pending_app_links = pending_app_links - 'recipes' WHERE email = ${email}
+    `);
+  } catch {
+    // A missing link just means they see their own plan; an admin can set it later.
+  }
+}
+
 export interface AppMenuItem {
   name: string;
   url: string;

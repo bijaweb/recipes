@@ -1,12 +1,17 @@
 import { pgTable, serial, integer, date, timestamp } from "drizzle-orm/pg-core";
 import { recipesTable } from "./recipes";
+import { usersTable } from "./users";
 
-// The shared household weekly calendar: which recipes are planned for which
-// calendar date. Shared (no userId) like the recipe catalog itself -- one
-// plan for the household, not one per person. A day can hold any number of
-// recipes (e.g. multiple meals), ordered by sortOrder.
+// Each person's weekly calendar: which recipes are planned for which
+// calendar date. Per user since 2026-10-30; people share one plan when an
+// admin links them (usersTable.linkedUserId, resolved by resolveDataOwner).
+// A day can hold any number of recipes (e.g. multiple meals), ordered by
+// sortOrder.
 export const mealPlanTable = pgTable("recipes_meal_plan", {
   id: serial("id").primaryKey(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => usersTable.id, { onDelete: "cascade" }),
   date: date("date", { mode: "string" }).notNull(),
   recipeId: integer("recipe_id")
     .notNull()

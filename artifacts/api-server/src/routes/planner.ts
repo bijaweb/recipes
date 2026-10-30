@@ -25,6 +25,7 @@ import {
   RemoveMealPlanEntryResponse,
 } from "@workspace/api-zod";
 import { requireAuth } from "../middlewares/require-auth";
+import { resolveDataOwner } from "../middlewares/resolve-data-owner";
 import { favoritedRecipeIds, toSummary, buildRecipeDetail, uniqueSlug } from "./recipes";
 
 const router: IRouter = Router();
@@ -187,7 +188,7 @@ router.post("/planner/build", requireAuth, async (req, res): Promise<void> => {
   res.json(BuildPlannerRecipeResponse.parse({ recipe: detail }));
 });
 
-router.get("/planner/calendar", requireAuth, async (req, res): Promise<void> => {
+router.get("/planner/calendar", requireAuth, resolveDataOwner, async (req, res): Promise<void> => {
   const from = typeof req.query.from === "string" ? req.query.from : "";
   const to = typeof req.query.to === "string" ? req.query.to : "";
   if (!from || !to) {
@@ -204,7 +205,7 @@ router.get("/planner/calendar", requireAuth, async (req, res): Promise<void> => 
     })
     .from(mealPlanTable)
     .innerJoin(recipesTable, eq(recipesTable.id, mealPlanTable.recipeId))
-    .where(and(gte(mealPlanTable.date, from), lte(mealPlanTable.date, to)))
+    .where(and(eq(mealPlanTable.userId, req.dataOwnerId!), gte(mealPlanTable.date, from), lte(mealPlanTable.date, to)))
     .orderBy(asc(mealPlanTable.date), asc(mealPlanTable.sortOrder));
 
   const favorited = await favoritedRecipeIds(req.user!.id, rows.map((r) => r.recipe.id));
@@ -221,7 +222,7 @@ router.get("/planner/calendar", requireAuth, async (req, res): Promise<void> => 
   );
 });
 
-router.post("/planner/calendar", requireAuth, async (req, res): Promise<void> => {
+router.post("/planner/calendar", requireAuth, resolveDataOwner, async (req, res): Promise<void> => {
   const parsed = AddMealPlanEntryBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: parsed.error.message });
@@ -242,11 +243,11 @@ router.post("/planner/calendar", requireAuth, async (req, res): Promise<void> =>
   const [{ maxOrder }] = await db
     .select({ maxOrder: sql<number>`coalesce(max(${mealPlanTable.sortOrder}), -1)` })
     .from(mealPlanTable)
-    .where(eq(mealPlanTable.date, parsed.data.date));
+    .where(and(eq(mealPlanTable.userId, req.dataOwnerId!), eq(mealPlanTable.date, parsed.data.date)));
 
   const [entry] = await db
     .insert(mealPlanTable)
-    .values({ date: parsed.data.date, recipeId, sortOrder: maxOrder + 1 })
+    .values({ userId: req.dataOwnerId!, date: parsed.data.date, recipeId, sortOrder: maxOrder + 1 })
     .returning();
 
   const favorited = await favoritedRecipeIds(req.user!.id, [recipe.id]);
@@ -263,7 +264,7 @@ router.post("/planner/calendar", requireAuth, async (req, res): Promise<void> =>
   );
 });
 
-router.patch("/planner/calendar/:id", requireAuth, async (req, res): Promise<void> => {
+router.patch("/planner/calendar/:id", requireAuth, resolveDataOwner, async (req, res): Promise<void> => {
   const id = Number(req.params.id);
   const parsed = MoveMealPlanEntryBody.safeParse(req.body);
   if (!Number.isInteger(id) || !parsed.success) {
@@ -274,7 +275,11 @@ router.patch("/planner/calendar/:id", requireAuth, async (req, res): Promise<voi
   const updates: Partial<typeof mealPlanTable.$inferInsert> = { date: parsed.data.date };
   if (parsed.data.sortOrder !== undefined) updates.sortOrder = parsed.data.sortOrder;
 
-  const [entry] = await db.update(mealPlanTable).set(updates).where(eq(mealPlanTable.id, id)).returning();
+  const [entry] = await db
+    .update(mealPlanTable)
+    .set(updates)
+    .where(and(eq(mealPlanTable.id, id), eq(mealPlanTable.userId, req.dataOwnerId!)))
+    .returning();
   if (!entry) {
     res.status(404).json({ error: "Not found" });
     return;
@@ -295,13 +300,13 @@ router.patch("/planner/calendar/:id", requireAuth, async (req, res): Promise<voi
   );
 });
 
-router.delete("/planner/calendar/:id", requireAuth, async (req, res): Promise<void> => {
+router.delete("/planner/calendar/:id", requireAuth, resolveDataOwner, async (req, res): Promise<void> => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id)) {
     res.status(400).json({ error: "Invalid id" });
     return;
   }
-  await db.delete(mealPlanTable).where(eq(mealPlanTable.id, id));
+  await db.delete(mealPlanTable).where(and(eq(mealPlanTable.id, id), eq(mealPlanTable.userId, req.dataOwnerId!)));
   res.json(RemoveMealPlanEntryResponse.parse({ success: true }));
 });
 
