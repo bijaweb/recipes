@@ -80,20 +80,9 @@ function MealTypeToggle({ value, onChange }: { value: 'meal' | 'dessert'; onChan
         aria-hidden
         className={cn(
           'absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-md bg-primary transition-transform duration-200 ease-out',
-          value === 'dessert' && 'translate-x-[calc(100%+4px)]',
+          value === 'meal' && 'translate-x-[calc(100%+4px)]',
         )}
       />
-      <button
-        type="button"
-        onClick={() => onChange('meal')}
-        aria-pressed={value === 'meal'}
-        className={cn(
-          'relative z-10 flex-1 rounded-md py-2 text-sm font-semibold transition-colors',
-          value === 'meal' ? 'text-primary-foreground' : 'text-muted-foreground',
-        )}
-      >
-        Meals
-      </button>
       <button
         type="button"
         onClick={() => onChange('dessert')}
@@ -105,6 +94,17 @@ function MealTypeToggle({ value, onChange }: { value: 'meal' | 'dessert'; onChan
       >
         Dessert
       </button>
+      <button
+        type="button"
+        onClick={() => onChange('meal')}
+        aria-pressed={value === 'meal'}
+        className={cn(
+          'relative z-10 flex-1 rounded-md py-2 text-sm font-semibold transition-colors',
+          value === 'meal' ? 'text-primary-foreground' : 'text-muted-foreground',
+        )}
+      >
+        Meals
+      </button>
     </div>
   );
 }
@@ -113,7 +113,7 @@ export default function Home() {
   const [, navigate] = useLocation();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
-  const [mealType, setMealType] = useState<'meal' | 'dessert'>('meal');
+  const [mealType, setMealType] = useState<'meal' | 'dessert'>('dessert');
   const isDessert = mealType === 'dessert';
 
   const categoriesQuery = useListCategories();
