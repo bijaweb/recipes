@@ -1,5 +1,5 @@
-import { type ReactNode, useEffect } from 'react';
-import { Clock, LogOut, Menu, Moon, Settings, Sun } from 'lucide-react';
+import { type ReactNode, useEffect, useState } from 'react';
+import { Clock, LogOut, Menu, Moon, Settings, Sun, ChevronDown, LayoutGrid } from 'lucide-react';
 import { useGetNightModeSettings } from '@workspace/api-client-react';
 import { useAuth } from '@/hooks/use-auth';
 import { type ThemeMode, setThemeMode, syncAutoNightModeEnabled, useNightMode } from '@/hooks/use-night-mode';
@@ -14,6 +14,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 const PLATFORM_URL = 'https://bijacorp.com';
+const APPS_COLLAPSE_AT = 5;
+const APPS_OPEN_KEY = 'bijacorp-menu-apps-open';
 
 export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () => void; leftSlot?: ReactNode } = {}) {
   const { user, signOut } = useAuth();
@@ -24,6 +26,25 @@ export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () 
     if (nightModeSettings) syncAutoNightModeEnabled(nightModeSettings.autoNightModeEnabled);
   }, [nightModeSettings]);
 
+  // More than APPS_COLLAPSE_AT other apps: they fold under one "Apps" row
+  // (open/closed remembered on this device, shared key across the apps).
+  const [appsOpen, setAppsOpen] = useState(() => {
+    try {
+      return localStorage.getItem(APPS_OPEN_KEY) === '1';
+    } catch {
+      return false;
+    }
+  });
+  const toggleApps = () =>
+    setAppsOpen((open) => {
+      try {
+        localStorage.setItem(APPS_OPEN_KEY, open ? '0' : '1');
+      } catch {
+        // private mode: just don't remember it
+      }
+      return !open;
+    });
+
   if (!user) return null;
 
   const otherApps = (user.apps ?? []).filter((a) => {
@@ -33,6 +54,7 @@ export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () 
       return true;
     }
   });
+  const collapsible = otherApps.length > APPS_COLLAPSE_AT;
 
   return (
     <div className="fixed right-4 top-3 z-40 flex items-center gap-2">
@@ -48,11 +70,28 @@ export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () 
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          {otherApps.map((app) => (
-            <DropdownMenuItem key={app.url} asChild>
-              <a href={app.url}>{app.name}</a>
+          {collapsible && (
+            <DropdownMenuItem
+              onSelect={(e) => {
+                e.preventDefault();
+                toggleApps();
+              }}
+              aria-expanded={appsOpen}
+            >
+              <LayoutGrid className="mr-2 h-4 w-4" />
+              Apps
+              <span className="ml-auto pl-4 text-xs tabular-nums text-muted-foreground">{otherApps.length}</span>
+              <ChevronDown className={`ml-1 h-4 w-4 text-muted-foreground transition-transform ${appsOpen ? 'rotate-180' : ''}`} />
             </DropdownMenuItem>
-          ))}
+          )}
+          {(!collapsible || appsOpen) &&
+            otherApps.map((app) => (
+              <DropdownMenuItem key={app.url} asChild>
+                <a href={app.url} className={collapsible ? 'pl-8' : undefined}>
+                  {app.name}
+                </a>
+              </DropdownMenuItem>
+            ))}
           {user.isAdmin && (
             <>
               {otherApps.length > 0 && <DropdownMenuSeparator />}
