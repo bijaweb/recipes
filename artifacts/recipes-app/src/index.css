@@ -204,3 +204,10 @@ body,
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
   }
 }
+/* Icons installed from a configuration profile (Web Clips) don't match
+   display-mode: standalone; navigator.standalone does (html.ios-standalone,
+   set in index.html). */
+html.ios-standalone .bottom-tab-bar {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
