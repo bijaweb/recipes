@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 const PLATFORM_URL = 'https://bijacorp.com';
-const MESSENGER_URL = 'https://messages.bijacorp.com';
+const MESSENGER_URL = 'https://messenger.bijacorp.com';
 const APPS_COLLAPSE_AT = 5;
 const APPS_OPEN_KEY = 'bijacorp-menu-apps-open';
 
