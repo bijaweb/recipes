@@ -98,6 +98,11 @@ export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () 
               <DropdownMenuItem asChild>
                 <a href={PLATFORM_URL}>BijaCorp</a>
               </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <a href={`${PLATFORM_URL}/api/webclip`} target="_blank" rel="noreferrer">
+                  iPhone icons
+                </a>
+              </DropdownMenuItem>
             </>
           )}
           {(otherApps.length > 0 || user.isAdmin) && <DropdownMenuSeparator />}
