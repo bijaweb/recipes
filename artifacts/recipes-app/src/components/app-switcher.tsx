@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 const PLATFORM_URL = 'https://bijacorp.com';
+const MESSENGER_URL = 'https://messages.bijacorp.com';
 const APPS_COLLAPSE_AT = 5;
 const APPS_OPEN_KEY = 'bijacorp-menu-apps-open';
 
@@ -55,6 +56,12 @@ export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () 
     }
   });
   const collapsible = otherApps.length > APPS_COLLAPSE_AT;
+  // Non-admins with Messenger: "Message admin" opens their thread with the
+  // admins, noting which app and page they were on.
+  const messageAdminUrl =
+    !user.isAdmin && (user.apps ?? []).some((a) => a.url.replace(/\/$/, '') === MESSENGER_URL)
+      ? `${MESSENGER_URL}/#/admin?app=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}`
+      : null;
 
   return (
     <div className="fixed right-4 top-3 z-40 flex items-center gap-2">
@@ -92,6 +99,14 @@ export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () 
                 </a>
               </DropdownMenuItem>
             ))}
+          {messageAdminUrl && (
+            <>
+              {otherApps.length > 0 && <DropdownMenuSeparator />}
+              <DropdownMenuItem asChild>
+                <a href={messageAdminUrl}>Message admin</a>
+              </DropdownMenuItem>
+            </>
+          )}
           {user.isAdmin && (
             <>
               {otherApps.length > 0 && <DropdownMenuSeparator />}
@@ -105,7 +120,7 @@ export function AppSwitcher({ onOpenSettings, leftSlot }: { onOpenSettings?: () 
               </DropdownMenuItem>
             </>
           )}
-          {(otherApps.length > 0 || user.isAdmin) && <DropdownMenuSeparator />}
+          {(otherApps.length > 0 || user.isAdmin || messageAdminUrl) && <DropdownMenuSeparator />}
           {onOpenSettings && (
             <DropdownMenuItem onSelect={onOpenSettings}>
               <Settings className="mr-2 h-4 w-4" />
